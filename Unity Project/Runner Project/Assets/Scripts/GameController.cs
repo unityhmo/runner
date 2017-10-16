@@ -8,7 +8,10 @@ public class GameController : MonoBehaviour {
 	public GameObject metaNivel;
 	public GameObject CanvasWin;
 	public GameObject CanvasLose;
-
+	public GameObject txtContadorVida;
+	public GameObject txtContadorPuntaje;
+	public int vida;
+	public int puntaje;
 
 	void Start () {
 		Time.timeScale = 1.0f; 
