@@ -14,6 +14,7 @@ public class SwipeSimpleCS : MonoBehaviour {
 	private Vector3 newLerpPosition = Vector3.zero;
 	private bool lerpInAction = false;
 
+
 	void Update () {
 
 		if(player.position.z > 70) {

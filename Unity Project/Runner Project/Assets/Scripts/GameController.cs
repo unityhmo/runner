@@ -1,38 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
 	public GameObject jugador;
-	public GameObject metaNivel;
 	public GameObject CanvasWin;
 	public GameObject CanvasLose;
-	public GameObject txtContadorVida;
-	public GameObject txtContadorPuntaje;
+	public Text txtContadorVida;
+	public Text txtContadorPuntaje;
 	public int vida;
+	int maxVida;
 	public int puntaje;
 
 	void Start () {
 		Time.timeScale = 1.0f; 
+		maxVida = vida;
 	}
 
 	void Update () {
-		RevisarPosicion ();
+		RevisarJugador ();
+		DibujarUI ();
+	}
+
+	public void IncrementarPuntaje(){
+		puntaje++;
+	}
+
+	public void QuitarVida(){
+		vida--;
 	}
 
 	//Revisa la posición del usuario para determinar si cayó por un agujero o no.
-	void RevisarPosicion()
+	void RevisarJugador()
 	{
 		if (jugador.transform.position.y < -2) {
 			//jugador cayó por un hoyo.
 			MostrarGameOver();
 		}
-
-		if (jugador.transform.position.z >= metaNivel.transform.position.z) {
-			MostrarWin ();
+		if (jugador != null) {
+			if (jugador.GetComponent<JugadorController> ().llegoAMeta) {
+				MostrarWin ();
+			}
 		}
+			
 	}
+
+	void DibujarUI()
+	{
+		txtContadorPuntaje.text = puntaje.ToString ();
+		txtContadorVida.text = vida.ToString () + "/" + maxVida.ToString ();;
+	}
+		
 
 	//Muestra el canvas de Game Over.
 	void MostrarGameOver(){
