@@ -74,6 +74,6 @@ public class GameMaster : MonoBehaviour
     }
 
     if (async.isDone)
-      fadeInFadeOut.SendMessage("fadeOut");
+      fadeInFadeOut.GetComponent<FadeInFadeOut>().fadeOut();
   }
 }
