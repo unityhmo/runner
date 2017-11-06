@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 // Component in charge of only reading user's input and sending them to PlayerController
-public class GameInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
   private float swipeDistance = 80;

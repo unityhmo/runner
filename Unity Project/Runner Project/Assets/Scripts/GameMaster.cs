@@ -19,12 +19,7 @@ public class GameMaster : MonoBehaviour
   public static GameMaster getInstance()
   {
     if (_instance == null)
-    {
-      GameObject master = new GameObject();
-      master.name = "GameMaster";
-
-      _instance = master.AddComponent<GameMaster>();
-    }
+      _instance = GameMasterFactory.createGameMaster();
 
     return _instance;
   }

@@ -3,6 +3,7 @@
 public class PlayerController : MonoBehaviour
 {
   private CharacterAnimation anim;
+  private CharacterFX fx;
   private CharacterController contr;
   private GameController gameController;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
   void Awake()
   {
     anim = transform.GetComponent<CharacterAnimation>();
+    fx = transform.GetComponent<CharacterFX>();
     contr = transform.GetComponent<CharacterController>();
     gameController = GameObject.FindGameObjectWithTag("GameController").transform.GetComponent<GameController>();
   }
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
       anim.jumpLeft();
       lerpInAction = true;
 
-      // TODO: Add special effects here
+      fx.jump();
     }
   }
   public void jumpRight()
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour
       anim.jumpRight();
       lerpInAction = true;
 
-      // TODO: Add special effects here
+      fx.jump();
     }
   }
   public void jumpUp()
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
       isJumping = true;
       anim.jumpUp();
 
-      // TODO: Add special effects here
+      fx.jump();
     }
   }
 
@@ -143,8 +145,6 @@ public class PlayerController : MonoBehaviour
   {
     gameController.lose();
     anim.death();
-
-    // TODO: Add death particle effects here
   }
 
   void OnTriggerEnter(Collider other)
@@ -160,7 +160,10 @@ public class PlayerController : MonoBehaviour
       gameController.registerDamage();
 
       if (gameController.getCurrentHP() > 0)
+      {
         anim.damage();
+        fx.damage();
+      }
       else
         endGame();
     }
