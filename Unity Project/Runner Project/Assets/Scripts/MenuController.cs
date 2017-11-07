@@ -72,13 +72,15 @@ public class MenuController : MonoBehaviour
     {
       if (!stages[i].getIslocked())
       {
-        newStageItem = Instantiate(baseStageButton);
-        newStageItem.transform.parent = canvasPlay.transform;
-        position.y -= 140;
-        newStageItem.transform.localPosition = position;
+        newStageItem = Instantiate (baseStageButton, canvasPlay.transform, false);
+		newStageItem.transform.localPosition = new Vector3 (-260, 226, 1738); // TODO - hardcoded values, replace for relative points from prefab.
         newStageItem.name = "s" + i;
 
-        newStageItem.GetComponent<StageMenuItem>().setLabel(stages[i].getLabel()).setStars(stages[i].getStars()).setLetters(stages[i].getLetters()).setStageIndex(i).setParent(this);
+		newStageItem.GetComponent<StageMenuItem> ()
+			.setLabel (stages [i].getLabel ())
+			.setStars (stages [i].getStars ())
+			.setLetters (stages [i].getLetters ())
+			.setStageIndex (i).setParent (this);
       }
     }
   }
