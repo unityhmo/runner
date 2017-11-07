@@ -4,7 +4,7 @@
 public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
-  private float swipeDistance = 80;
+  private float swipeDistance = 50;
   // first finger position
   private Vector2 fp;
   // last finger position

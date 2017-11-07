@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 
 public class GameMaster : MonoBehaviour
 {
   protected static GameMaster _instance;
-  private GameObject fadeInFadeOut;
+  private SceneLoader sceneLoader;
+
+  // Level to be loaded from Resources
+  private int currentStageIndex = 0;
+  private List<Stage> stages;
 
   void Awake()
   {
@@ -14,61 +17,52 @@ public class GameMaster : MonoBehaviour
       DestroyObject(gameObject);
     else
       _instance = this;
+
+    sceneLoader = transform.GetComponent<SceneLoader>();
+    stages = Stages.buildStages();
+
+    // TODO: Overload local saved date here
   }
 
+  public List<Stage> getStages()
+  {
+    return stages;
+  }
+  public int getStageCount()
+  {
+    return stages.Count;
+  }
+  public Stage getStage(int stageIndex)
+  {
+    return stages[stageIndex];
+  }
+  public void setStage(int stageIndex, Stage newStageData)
+  {
+    stages[stageIndex] = newStageData;
+  }
+
+  public void setStageIndex(int val)
+  {
+    currentStageIndex = val;
+  }
+  public int getStageIndex()
+  {
+    return currentStageIndex;
+  }
+
+  public void goToScene(int sceneIndex)
+  {
+    sceneLoader.goToScene(sceneIndex);
+  }
+  public SceneLoader getSceneLoader()
+  {
+    return sceneLoader;
+  }
   public static GameMaster getInstance()
   {
     if (_instance == null)
-      _instance = GameMasterFactory.createGameMaster();
+      _instance = ObjectFactory.createGameMaster();
 
     return _instance;
-  }
-
-  public void goToScene(string sceneName)
-  {
-    if (fadeInFadeOut == null)
-    {
-      fadeInFadeOut = new GameObject();
-      fadeInFadeOut.AddComponent<FadeInFadeOut>().fadeIn(sceneName);
-      fadeInFadeOut.name = "FadeInFadeOut";
-    }
-  }
-
-  public void fadeInCallback(string sceneName)
-  {
-    StartCoroutine(loadNewScene(sceneName));
-  }
-
-  public void fadeOutCallback()
-  {
-    Destroy(fadeInFadeOut);
-    fadeInFadeOut = null;
-
-    /*
-    Sends a broadcast to all gameobjects in ROOT level, just to let them know fadeIn cycle is done.
-    If you want something to happens at the begging of a scene, add 'fadeOutDone' function
-    in a root gameobject.
-    */
-    GameObject[] gos = (GameObject[])GameObject.FindObjectsOfType(typeof(GameObject));
-    foreach (GameObject go in gos)
-    {
-      if (go && go.transform.parent == null)
-      {
-        go.gameObject.SendMessage("fadeOutFinished", null, SendMessageOptions.DontRequireReceiver);
-      }
-    }
-  }
-
-  IEnumerator loadNewScene(string sceneName)
-  {
-    AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
-
-    while (!async.isDone)
-    {
-      yield return null;
-    }
-
-    if (async.isDone)
-      fadeInFadeOut.GetComponent<FadeInFadeOut>().fadeOut();
   }
 }

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
   }
   void LateUpdate()
   {
-    if (isPlayable && transform.position.y < -1f)
+    if (isPlayable && transform.position.y < -1.25f)
     {
       gameController.registerDamage(true);
       endGame();

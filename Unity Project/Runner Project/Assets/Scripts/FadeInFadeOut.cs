@@ -3,7 +3,7 @@
 public class FadeInFadeOut : MonoBehaviour
 {
   private GameMaster master;
-  private string destinationScene;
+  private int destinationScene;
   private float fIntroDuration = 0.5f;
   private float fOutroDuration = 0.5f;
   private float fCurrentDuration;
@@ -29,9 +29,9 @@ public class FadeInFadeOut : MonoBehaviour
     solidRect.Apply();
   }
 
-  public void fadeIn(string sceneName)
+  public void fadeIn(int sceneIndex)
   {
-    destinationScene = sceneName;
+    destinationScene = sceneIndex;
     fCurrentDuration = 0f;
     blnStartAnimation = true;
   }
@@ -74,7 +74,7 @@ public class FadeInFadeOut : MonoBehaviour
           blnTweenDone = true;
           blnIntroDone = true;
           // Sends callback to parent gobject telling fadein animation is done
-          master.fadeInCallback(destinationScene);
+          master.getSceneLoader().fadeInCallback(destinationScene);
         }
       }
 
@@ -85,7 +85,7 @@ public class FadeInFadeOut : MonoBehaviour
         if (fAlpha == 0)
         {
           // Sends callback to parent gobject telling fadeout animation is done
-          master.fadeOutCallback();
+          master.getSceneLoader().fadeOutCallback();
         }
       }
     }
