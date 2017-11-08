@@ -10,6 +10,10 @@ public class MenuController : MonoBehaviour
 	[SerializeField] private GameObject _panelOptions;
 	[SerializeField] private GameObject _panelCredits;
 	[SerializeField] private GameObject _buttonBack;
+	[SerializeField] private Skybox _mySkybox;
+	[SerializeField] private Material[] _skyboxPool; // expected to have 4 items
+	[SerializeField] private Animator _hmoManAnimatorController;
+	[SerializeField] private Animator _cameraAnimatorController;
 
 	[SerializeField] private GameObject _baseStageButton;
 
@@ -25,6 +29,9 @@ public class MenuController : MonoBehaviour
 		_panelMain.SetActive (false);
 		_panelPlay.SetActive (true);
 		_buttonBack.SetActive (true);
+		_mySkybox.material = _skyboxPool [2];
+		_hmoManAnimatorController.SetBool ("isReady", true);
+		_cameraAnimatorController.SetBool ("isPlay", true);
 	}
 
 	public void optionsButtonHandler ()
@@ -32,6 +39,8 @@ public class MenuController : MonoBehaviour
 		_panelMain.SetActive (false);
 		_panelOptions.SetActive (true);
 		_buttonBack.SetActive (true);
+		_mySkybox.material = _skyboxPool [0];
+		_hmoManAnimatorController.SetBool ("isWaving", true);
 	}
 
 	public void creditsButtonHandler ()
@@ -39,6 +48,9 @@ public class MenuController : MonoBehaviour
 		_panelMain.SetActive (false);
 		_panelCredits.SetActive (true);
 		_buttonBack.SetActive (true);
+		_mySkybox.material = _skyboxPool [1];
+		_hmoManAnimatorController.SetBool ("isWaving", true);
+		_cameraAnimatorController.SetBool ("isCredits", true);
 	}
 
 	public void selectStageButtonHandler (int stageIndex)
@@ -60,6 +72,11 @@ public class MenuController : MonoBehaviour
 		_panelOptions.SetActive (false);
 		_panelCredits.SetActive (false);
 		_buttonBack.SetActive (false);
+		_mySkybox.material = _skyboxPool [3];
+		_hmoManAnimatorController.SetBool ("isReady", false);
+		_hmoManAnimatorController.SetBool ("isWaving", false);
+		_cameraAnimatorController.SetBool ("isCredits", false);
+		_cameraAnimatorController.SetBool ("isPlay", false);
 	}
 
 	private void createStageButtons ()
