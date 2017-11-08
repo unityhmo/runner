@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
+// Static class with the sole responsability of returning a list of X stages we decide to add.
 public static class Stages
 {
   public static List<Stage> buildStages()
   {
+    // Note that we could skip adding some values, each stage will take its base value at Stage class.
     List<Stage> stages = new List<Stage>();
     Stage newStage;
 
@@ -27,5 +29,7 @@ public static class Stages
     stages.Add(newStage);
 
     return stages;
+
+    // TODO: Setting up total powerups is lame, we should find a automatic human-error-free method.
   }
 }

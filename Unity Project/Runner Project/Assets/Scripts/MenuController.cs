@@ -83,7 +83,6 @@ public class MenuController : MonoBehaviour
 	{
 		List<Stage> stages = _master.getStages ();
 		GameObject newStageItem;
-		Vector3 position = new Vector3 (_baseStageButton.transform.position.x, _baseStageButton.transform.position.y, 0);
 
 		for (int i = 0; i < stages.Count; i++) {
 			if (!stages [i].getIslocked ()) {

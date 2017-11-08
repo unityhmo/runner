@@ -7,17 +7,13 @@ public class PlayerController : MonoBehaviour
   private CharacterController contr;
   private GameController gameController;
 
-  [SerializeField]
-  private bool isPlayable = false;
-  [SerializeField]
-  private float runSpeed = 8;
+  [SerializeField] private bool isPlayable = false;
+  [SerializeField] private float runSpeed = 8f;
   private bool isJumping = false;
-  [SerializeField]
-  private float jumpSpeed = 10f;
+  [SerializeField] private float jumpSpeed = 10f;
   static float currentJumpSpeed = 0f;
   static float jumpY;
-  [SerializeField]
-  private float sideJumpDistance = 2f;
+  [SerializeField] private float sideJumpDistance = 2f;
   private Vector3 newLerpPosition = Vector3.zero;
   private bool lerpInAction = false;
 
@@ -33,14 +29,18 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
+    // We wont do a thing until the game is playable.
     if (isPlayable)
     {
       forwardMovement();
       sideJumpMovement();
     }
   }
+
   void LateUpdate()
   {
+    // Here we only check if player isn't falling.
+    // Is it cool to have a fixed vertical value to verify this?? /shrugs
     if (isPlayable && transform.position.y < -1.25f)
     {
       gameController.registerDamage(true);
@@ -48,12 +48,14 @@ public class PlayerController : MonoBehaviour
     }
   }
 
+  // Accesed by GameController, he knows better when the show can start
   public void startGame()
   {
     isPlayable = true;
     anim.setRunning(true);
   }
 
+  // GameInput actions---------------------INI
   public void jumpLeft()
   {
     if (isPlayable && contr.isGrounded && !lerpInAction)
@@ -88,17 +90,24 @@ public class PlayerController : MonoBehaviour
       fx.jump();
     }
   }
+  // GameInput actions---------------------END
 
+  // It all ends here, good or bad the outcome.
   private void endGame(bool isWinner = false)
   {
     isPlayable = false;
     anim.setRunning(false);
 
     if (isWinner)
+    {
+      fx.setLowLife(false);
       reachedGoal();
+    }
     else
       reachedDeath();
   }
+
+  // Moving forward and jumping up is handled here
   private void forwardMovement()
   {
     // Forward movement
@@ -123,6 +132,8 @@ public class PlayerController : MonoBehaviour
     // Apply movement to character controller
     contr.Move(moveDirection * Time.deltaTime);
   }
+
+  // Side jumping animation is handled here
   private void sideJumpMovement()
   {
     if (lerpInAction)
@@ -136,17 +147,24 @@ public class PlayerController : MonoBehaviour
       }
     }
   }
+
+  // Goal reached. Let gamecontroller know dummy!
   private void reachedGoal()
   {
     gameController.win();
     anim.victory();
   }
+
+  // Well, you lose. Lets play you a death animation.
   private void reachedDeath()
   {
     gameController.lose();
     anim.death();
   }
 
+  /*
+   * Collision handler. Here we notify collisioned elements and also apply changes in our player and game controller
+   */
   void OnTriggerEnter(Collider other)
   {
     if (other.gameObject.tag == "Goal")
@@ -163,11 +181,17 @@ public class PlayerController : MonoBehaviour
       {
         anim.damage();
         fx.damage();
+
+        if (gameController.getCurrentHP() == 1)
+          fx.setLowLife(true);
       }
       else
         endGame();
     }
 
+    /*
+     * SendMessage without receiver required, this way we wont have errors if no receiver is previously prepared in collisioned object
+     */
     other.gameObject.SendMessage("collisionDetected", SendMessageOptions.DontRequireReceiver);
   }
 }

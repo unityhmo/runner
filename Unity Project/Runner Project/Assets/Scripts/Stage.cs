@@ -1,4 +1,5 @@
-﻿public class Stage
+﻿// Base class for each stage. Only setter and getters.
+public class Stage
 {
   private bool isLocked = true;
   private string label = "noname";

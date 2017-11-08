@@ -6,8 +6,7 @@ public class CharacterAnimation : MonoBehaviour
   private Animator anim;
   private CharacterController contr;
   private bool isRunning = false;
-  [SerializeField]
-  private bool isGrounded = false;
+  [SerializeField] private bool isGrounded = false;
 
   void Awake()
   {

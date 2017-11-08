@@ -2,10 +2,14 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+/* 
+ * GameMaster additional component with the only mission of working along FadeInFadeOut gameObject to achieve transitioning between scenes smoothly
+ */
 public class SceneLoader : MonoBehaviour
 {
   private GameObject fadeInFadeOut;
 
+  // STEP 1: It all starts here
   public void goToScene(int sceneIndex)
   {
     if (fadeInFadeOut == null)
@@ -15,11 +19,15 @@ public class SceneLoader : MonoBehaviour
     }
   }
 
+  // STEP 2: After fadein is ready, we load next scene
   public void fadeInCallback(int sceneIndex)
   {
     StartCoroutine(loadNewScene(sceneIndex));
   }
 
+  /* 
+   * STEP 4: Last stop, here fadeout is ready. We let know all root gameobjects in new scene that they are free to do their things.
+   */
   public void fadeOutCallback()
   {
     Destroy(fadeInFadeOut);
@@ -40,6 +48,7 @@ public class SceneLoader : MonoBehaviour
     }
   }
 
+  // STEP 3: We load next scene, and afterwards we let know fadeInFadeOut to start fading out!
   IEnumerator loadNewScene(int sceneIndex)
   {
     AsyncOperation async = SceneManager.LoadSceneAsync(sceneIndex);

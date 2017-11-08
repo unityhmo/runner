@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 
+/*
+ * Init Scene MAIN (and probably only) GameObject component.
+ * Here we make sure we are ready displaying the correct resolution, user's options such sound toggle on/off.
+ * This component does NOT load external data; but ensures GameMaster is ready and there were no errors.
+ */
 public class InitController : MonoBehaviour
 {
-  private GameMaster master;
+  private GameMaster _master;
 
   void Start()
   {
-    master = GameMaster.getInstance();
+    _master = GameMaster.getInstance();
 
-    // TODO: Load local file configuration, saved score or whatever...
-    /*
-     * First scene to load GameMaster object. Load local configuration files and such... After we are ready we go to Menus Scene.
+    /* 
+     * TODO: GameMaster has to load and apply values from outside. Then we check everything is alright and only then we move forward.
      */
 
     // Temporal delayer...
@@ -19,6 +23,6 @@ public class InitController : MonoBehaviour
 
   private void goToMenus()
   {
-    master.goToScene(1);
+    _master.goToScene(1);
   }
 }

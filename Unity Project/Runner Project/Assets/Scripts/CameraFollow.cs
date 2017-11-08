@@ -3,8 +3,7 @@
 public class CameraFollow : MonoBehaviour
 {
   private Transform player;
-  [SerializeField]
-  private float speed = 10;
+  [SerializeField] private float speed = 10f;
   static float distance;
 
   void Start()
