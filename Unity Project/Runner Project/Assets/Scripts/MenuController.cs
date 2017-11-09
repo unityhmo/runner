@@ -77,7 +77,8 @@ public class MenuController : MonoBehaviour
 		_hmoManAnimatorController.SetBool ("isWaving", false);
 		_cameraAnimatorController.SetBool ("isCredits", false);
 		_cameraAnimatorController.SetBool ("isPlay", false);
-	}
+
+  }
 
 	private void createStageButtons ()
 	{
@@ -98,4 +99,9 @@ public class MenuController : MonoBehaviour
 			}
 		}
 	}
+
+  public void toggleSoundButtonHandler(bool value)
+  {
+    _master.dataController.setAudioSetting(value);
+  }
 }

@@ -12,6 +12,7 @@ public class GameMaster : MonoBehaviour
 {
   protected static GameMaster _instance;
   private SceneLoader sceneLoader;
+  public GameDataController dataController;
 
   // Level to be loaded from Resources
   private int currentStageIndex = 0;
@@ -21,16 +22,22 @@ public class GameMaster : MonoBehaviour
   // If our protected static instance variable isn't ready we destroy this one and return the existing one.
   void Awake()
   {
-    DontDestroyOnLoad(transform.gameObject);
-    if (_instance != null)
-      DestroyObject(gameObject);
-    else
+
+    if (_instance == null)
+    {
+      DontDestroyOnLoad(gameObject);
       _instance = this;
+    }
+    else if (_instance != this)
+    {
+      Destroy(gameObject);
+    }
 
     sceneLoader = transform.GetComponent<SceneLoader>();
-    stages = Stages.buildStages();
+    dataController = new GameDataController();
+    dataController.Load();
+    stages = Stages.buildStages(dataController.dataInfo);
 
-    // TODO: EXTERNAL LOAD - Overload local saved date here
   }
 
   // Build our base info for Stages,  this is before overwritting with user saved local progress data
@@ -56,7 +63,8 @@ public class GameMaster : MonoBehaviour
   {
     stages[stageIndex] = newStageData;
 
-    // TODO: EXTERNAL WRITE - To save file
+    dataController.saveUnlockedStage(stageIndex);
+
   }
 
   public void setStageIndex(int val)
