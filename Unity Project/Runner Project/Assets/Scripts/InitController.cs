@@ -11,18 +11,18 @@ public class InitController : MonoBehaviour
 
   void Start()
   {
-    _master = GameMaster.getInstance();
+    _master = GameMaster.GetInstance ();
 
     /* 
      * TODO: GameMaster has to load and apply values from outside. Then we check everything is alright and only then we move forward.
      */
 
     // Temporal delayer...
-    Invoke("goToMenus", 0.1f);
+    Invoke ("GoToMenus", 0.1f);
   }
 
-  private void goToMenus()
+  private void GoToMenus ()
   {
-    _master.goToScene(1);
+    _master.GoToScene (1);
   }
 }

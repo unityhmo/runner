@@ -2,20 +2,20 @@
 
 public class CameraFollow : MonoBehaviour
 {
-  private Transform player;
-  [SerializeField] private float speed = 10f;
-  static float distance;
+  private Transform _player;
+  [SerializeField] private float _speed = 10f;
+  static float _distance;
 
   void Start()
   {
-    player = GameObject.FindGameObjectWithTag("Player").transform;
-    distance = player.position.z - transform.position.z;
+    _player = GameObject.FindGameObjectWithTag("Player").transform;
+    _distance = _player.position.z - transform.position.z;
   }
 
   void LateUpdate()
   {
-    transform.position = new Vector3(transform.position.x, transform.position.y, player.position.z - distance);
+    transform.position = new Vector3(transform.position.x, transform.position.y, _player.position.z - _distance);
 
-    transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, transform.position.y, transform.position.z), Time.deltaTime * speed);
+    transform.position = Vector3.Lerp(transform.position, new Vector3(_player.position.x, transform.position.y, transform.position.z), Time.deltaTime * _speed);
   }
 }

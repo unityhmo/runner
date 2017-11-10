@@ -3,84 +3,84 @@
 // In charge of shader FX, particles and other gameobjects for visual purposes.
 public class CharacterFX : MonoBehaviour
 {
-  [SerializeField] private bool hasLowLife = false;
-  private Color baseColor; // Saves Standard original color
-  private Renderer rend;
-  [SerializeField] private Color lowHealthColor = Color.red; // Low health color, Red is good, huh?
-  [SerializeField] private GameObject mesh;
-  private Shader shaderStandard;
-  private Shader shaderUnlit;
+  [SerializeField] private bool _hasLowLife = false;
+  private Color _baseColor; // Saves Standard original color
+  private Renderer _rend;
+  [SerializeField] private Color _lowHealthColor = Color.red; // Low health color, Red is good, huh?
+  [SerializeField] private GameObject _mesh;
+  private Shader _shaderStandard;
+  private Shader _shaderUnlit;
 
   // Shader swapper timer variables...
-  private float shaderTimer = 0f;
-  [SerializeField] private float shaderTicSpeed = 1f;
-  private bool shaderOn = false;
+  private float _shaderTimer = 0f;
+  [SerializeField] private float _shaderTicSpeed = 1f;
+  private bool _shaderOn = false;
 
   void Start()
   {
-    rend = mesh.GetComponent<Renderer>();
-    baseColor = rend.material.GetColor("_Color");
+    _rend = _mesh.GetComponent<Renderer>();
+    _baseColor = _rend.material.GetColor("_Color");
 
-    shaderStandard = Shader.Find("Standard");
+    _shaderStandard = Shader.Find("Standard");
     // NOTE: Unlit Shader doesnt support shadows.
-    shaderUnlit = Shader.Find("Unlit/Color");
+    _shaderUnlit = Shader.Find("Unlit/Color");
   }
 
   void LateUpdate()
   {
     // If low health, keep tic timer running/looping
-    if (hasLowLife)
+    if (_hasLowLife)
     {
-      shaderTimer += Time.deltaTime;
-      if (shaderTimer > shaderTicSpeed)
+      _shaderTimer += Time.deltaTime;
+      if (_shaderTimer > _shaderTicSpeed)
       {
-        shaderTimer = 0f;
-        shaderOn = !shaderOn;
-        setShaderState();
+        _shaderTimer = 0f;
+        _shaderOn = !_shaderOn;
+        SetShaderState();
       }
     }
   }
 
-  public void setLowLife(bool val)
+  public void SetLowLife(bool val)
   {
-    hasLowLife = val;
-    shaderTimer = 0f;
+    _hasLowLife = val;
+    _shaderTimer = 0f;
 
-    if (hasLowLife)
-      shaderOn = true;
+    if (_hasLowLife)
+      _shaderOn = true;
     else
-      shaderOn = false;
+      _shaderOn = false;
 
-    setShaderState();
+    SetShaderState();
   }
 
-  public void death()
+  public void Death()
   {
     Debug.Log("Add: Death fx");
   }
 
-  public void jump()
+  public void Jump()
   {
     Debug.Log("Add: Jump fx");
   }
 
-  public void damage()
+  public void Damage()
   {
     Debug.Log("Add: Damage fx");
   }
 
   // Swapper of Shader type and Color for each shader.
-  private void setShaderState()
+  private void SetShaderState()
   {
-    if (shaderOn)
+    if (_shaderOn)
     {
-      rend.material.shader = shaderUnlit;
-      rend.material.SetColor("_Color", lowHealthColor);
+      _rend.material.shader = _shaderUnlit;
+      _rend.material.SetColor("_Color", _lowHealthColor);
     }
     else
     {
-      rend.material.shader = shaderStandard;
-      rend.material.SetColor("_Color", baseColor);
+      _rend.material.shader = _shaderStandard;
+      _rend.material.SetColor("_Color", _baseColor);
     }
   }
 }

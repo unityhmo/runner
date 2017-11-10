@@ -4,17 +4,17 @@
 public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
-  private float swipeDistance = 50;
+  private float _swipeDistance = 50;
   // first finger position
-  private Vector2 fp;
+  private Vector2 _fp;
   // last finger position
-  private Vector2 lp;
+  private Vector2 _lp;
 
-  private PlayerController contr;
+  private PlayerController _contr;
 
   void Start()
   {
-    contr = transform.GetComponent<PlayerController>();
+    _contr = transform.GetComponent<PlayerController>();
   }
 
   /*
@@ -26,58 +26,58 @@ public class PlayerInput : MonoBehaviour
     {
       if (touch.phase == TouchPhase.Began)
       {
-        fp = touch.position;
-        lp = touch.position;
+        _fp = touch.position;
+        _lp = touch.position;
       }
 
       if (touch.phase == TouchPhase.Moved)
       {
-        lp = touch.position;
+        _lp = touch.position;
       }
 
       if (touch.phase == TouchPhase.Ended)
       {
-        if ((fp.x - lp.x) > swipeDistance) // left
+        if ((_fp.x - _lp.x) > _swipeDistance) // left
         {
-          jumpLeft();
+          JumpLeft();
         }
-        else if ((fp.x - lp.x) < -swipeDistance) // right
+        else if ((_fp.x - _lp.x) < -_swipeDistance) // right
         {
-          jumpRight();
+          JumpRight();
         }
-        else if ((fp.y - lp.y) < -swipeDistance) // up
+        else if ((_fp.y - _lp.y) < -_swipeDistance) // up
         {
-          jumpUp();
+          JumpUp();
         }
       }
     }
 
     if (Input.GetKeyDown(KeyCode.LeftArrow))
     {
-      jumpLeft();
+      JumpLeft();
     }
     else if (Input.GetKeyDown(KeyCode.RightArrow))
     {
-      jumpRight();
+      JumpRight();
     }
     else if (Input.GetKeyDown(KeyCode.UpArrow))
     {
-      jumpUp();
+      JumpUp();
     }
   }
 
-  private void jumpLeft()
+  private void JumpLeft()
   {
-    contr.jumpLeft();
+    _contr.JumpLeft();
   }
 
-  private void jumpRight()
+  private void JumpRight()
   {
-    contr.jumpRight();
+    _contr.JumpRight();
   }
 
-  private void jumpUp()
+  private void JumpUp()
   {
-    contr.jumpUp();
+    _contr.JumpUp();
   }
 }

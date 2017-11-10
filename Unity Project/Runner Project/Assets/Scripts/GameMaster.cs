@@ -11,12 +11,12 @@ using System.Collections.Generic;
 public class GameMaster : MonoBehaviour
 {
   protected static GameMaster _instance;
-  private SceneLoader sceneLoader;
-  public GameDataController dataController;
+  private SceneLoader _sceneLoader;
+  private GameDataController _dataController;
 
   // Level to be loaded from Resources
-  private int currentStageIndex = 0;
-  private List<Stage> stages;
+  private int _currentStageIndex = 0;
+  private List<Stage> _stages;
 
   // We make sure this object do not vanishes in loadscenes
   // If our protected static instance variable isn't ready we destroy this one and return the existing one.
@@ -33,64 +33,68 @@ public class GameMaster : MonoBehaviour
       Destroy(gameObject);
     }
 
-    sceneLoader = transform.GetComponent<SceneLoader>();
-    dataController = new GameDataController();
-    dataController.Load();
-    stages = Stages.buildStages(dataController.dataInfo);
+    _sceneLoader = transform.GetComponent<SceneLoader>();
+    _dataController = new GameDataController();
+    _dataController.Load();
+    _stages = Stages.BuildStages(_dataController.GetDataInfo());
 
   }
 
   // Build our base info for Stages,  this is before overwritting with user saved local progress data
-  public List<Stage> getStages()
+  public List<Stage> GetStages()
   {
-    return stages;
+    return _stages;
   }
 
   // Simple getter for stage counter
-  public int getStageCount()
+  public int GetStageCount()
   {
-    return stages.Count;
+    return _stages.Count;
   }
 
   // Returns a specific Stage data to whomever ask for it
-  public Stage getStage(int stageIndex)
+  public Stage GetStage(int stageIndex)
   {
-    return stages[stageIndex];
+    return _stages[stageIndex];
   }
   // Overwrite specific Stage data into our stages data holder.
   // This is likely used after clearing a stage or beating a highscore
-  public void setStage(int stageIndex, Stage newStageData)
+  public void SetStage(int stageIndex, Stage newStageData)
   {
-    stages[stageIndex] = newStageData;
+    _stages[stageIndex] = newStageData;
 
-    dataController.saveUnlockedStage(stageIndex);
-
+    _dataController.SaveUnlockedStage(stageIndex);
   }
 
-  public void setStageIndex(int val)
+  public void SetStageIndex(int val)
   {
-    currentStageIndex = val;
+    _currentStageIndex = val;
   }
-  public int getStageIndex()
+  public int GetStageIndex()
   {
-    return currentStageIndex;
+    return _currentStageIndex;
   }
 
-  public void goToScene(int sceneIndex)
+  public void GoToScene(int sceneIndex)
   {
-    sceneLoader.goToScene(sceneIndex);
+    _sceneLoader.GoToScene(sceneIndex);
   }
-  public SceneLoader getSceneLoader()
+  public SceneLoader GetSceneLoader()
   {
-    return sceneLoader;
+    return _sceneLoader;
   }
 
   // When asked for GameMaster instance, we create one or return existing one
-  public static GameMaster getInstance()
+  public static GameMaster GetInstance()
   {
     if (_instance == null)
-      _instance = ObjectFactory.createGameMaster();
+      _instance = ObjectFactory.CreateGameMaster();
 
     return _instance;
+  }
+
+  public GameDataController GetDataController()
+  {
+    return _dataController;
   }
 }

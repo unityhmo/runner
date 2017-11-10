@@ -10,42 +10,42 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
   private GameMaster _master;
-  private int currentStageIndex;
+  private int _currentStageIndex;
 
   // Instead of start running right away, we have a delayer (for animation or whatever)
-  [SerializeField] private int getReadyTimer = 3;
+  [SerializeField] private int _getReadyTimer = 3;
 
-  [SerializeField] private int hp = 3; // Initial health points at stage
-  private int maxHP;
+  [SerializeField] private int _hp = 3; // Initial health points at stage
+  private int _maxHP;
 
-  private int score; // Power up counter
+  private int _pickUpCounter; // Pickup counter
 
   // UI Components
-  [SerializeField] private GameObject CanvasWin;
-  [SerializeField] private GameObject CanvasLose;
-  [SerializeField] private Text txtHP;
-  [SerializeField] private Text txtScore;
-  [SerializeField] private GameObject nextStageButton;
+  [SerializeField] private GameObject _canvasWin;
+  [SerializeField] private GameObject _canvasLose;
+  [SerializeField] private Text _txtHP;
+  [SerializeField] private Text _txtPickUps;
+  [SerializeField] private GameObject _nextStageButton;
 
   // Transform that will work as origin for all Resources loaded at the beginning of each stage.
-  [SerializeField] private Transform scenarioHolder;
+  [SerializeField] private Transform _scenarioHolder;
 
-  private Stage stageData;
+  private Stage _stageData;
 
   void Start()
   {
-    _master = GameMaster.getInstance();
+    _master = GameMaster.GetInstance();
 
-    currentStageIndex = _master.getStageIndex();
-    stageData = _master.getStage(currentStageIndex);
+    _currentStageIndex = _master.GetStageIndex();
+    _stageData = _master.GetStage(_currentStageIndex);
 
-    loadStage(stageData.getAssetPath());
+    loadStage(_stageData.GetAssetPath());
 
-    maxHP = hp;
-    updateUI();
+    _maxHP = _hp;
+    UpdateUI();
 
     // Starts up delayer at beginning of stage
-    StartCoroutine(startGame());
+    StartCoroutine(StartGame());
   }
 
   // Right at the start, we bring from Resource folder the corresponding stage level we want. This data is provided from GameMaster, it knows everything!
@@ -53,123 +53,123 @@ public class GameController : MonoBehaviour
   private void loadStage(string path)
   {
     GameObject stageAssets = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
-    stageAssets.name = "stage_" + currentStageIndex + ": " + stageData.getLabel();
-    stageAssets.transform.parent = scenarioHolder;
+    stageAssets.name = "stage_" + _currentStageIndex + ": " + _stageData.GetLabel();
+    stageAssets.transform.parent = _scenarioHolder;
   }
 
   // This is triggered after fadeout is done, we could use this further on...
-  public void fadeOutFinished()
+  public void FadeOutFinished()
   {
     //StartCoroutine(startGame());
   }
 
   // Collision detected from power up. Here we update score value and refresh UI
-  public void pickUpPowerUp()
+  public void PickUp()
   {
-    score++;
-    updateUI();
+    _pickUpCounter++;
+    UpdateUI();
   }
 
   // Collision detected from obstacle or falling to death. We update health and refresh UI
-  public void registerDamage(bool instaDeath = false)
+  public void RegisterDamage(bool instaDeath = false)
   {
     if (instaDeath)
-      hp = 0;
+      _hp = 0;
     else
-      hp--;
+      _hp--;
 
-    if (hp == 0)
-      lose();
+    if (_hp == 0)
+      Lose();
 
-    updateUI();
+    UpdateUI();
   }
 
   // HP getter for other components in this scene. GameController is the boss after all (right under GameMaster of course!).
-  public int getCurrentHP()
+  public int GetCurrentHP()
   {
-    return hp;
+    return _hp;
   }
 
   // Upon winning, we tell GameMaster to update our current stage data, and unlock the next stage (if there is one)
   // We take care of showing winner's UI
-  public void win()
+  public void Win()
   {
-    if (score > stageData.getStars())
+    if (_pickUpCounter > _stageData.GetStars())
     {
       // TODO: This is wrong, Stars are meassured from all pickups, then divided by mathf.floor 3
       // Only as a place holder and to see changes in menu
-      stageData.setStars(score);
+      _stageData.SetStars(_pickUpCounter);
     }
 
-    _master.setStage(currentStageIndex, stageData);
-    showWinUI();
+    _master.SetStage(_currentStageIndex, _stageData);
+    ShowWinUI();
 
     // Unlooks next stage
-    int nextStageIndex = currentStageIndex + 1;
-    if (nextStageIndex < _master.getStageCount())
+    int nextStageIndex = _currentStageIndex + 1;
+    if (nextStageIndex < _master.GetStageCount())
     {
-      Stage nextStage = _master.getStage(nextStageIndex);
-      nextStage.setIslocked(false);
-      _master.setStage(nextStageIndex, nextStage);
+      Stage nextStage = _master.GetStage(nextStageIndex);
+      nextStage.SetIslocked(false);
+      _master.SetStage(nextStageIndex, nextStage);
     }
     else
     {
-      Destroy(nextStageButton);
+      Destroy(_nextStageButton);
     }
   }
 
   // Shows loser's UI
-  public void lose()
+  public void Lose()
   {
-    showGameOverUI();
+    ShowGameOverUI();
   }
 
   // Public function for UI Buttons----INI
-  public void nextStage()
+  public void NextStage()
   {
-    currentStageIndex++;
-    loadScene();
+    _currentStageIndex++;
+    LoadScene();
   }
-  public void retryStage()
+  public void RetryStage()
   {
-    loadScene();
+    LoadScene();
   }
-  private void loadScene()
+  private void LoadScene()
   {
-    _master.setStageIndex(currentStageIndex);
-    _master.goToScene(2);
+    _master.SetStageIndex(_currentStageIndex);
+    _master.GoToScene(2);
   }
 
-  public void goToMenu()
+  public void GoToMenu()
   {
-    _master.goToScene(1);
+    _master.GoToScene(1);
   }
   // Public function for UI Buttons----END
 
-  private void showWinUI()
+  private void ShowWinUI()
   {
-    CanvasWin.SetActive(true);
+    _canvasWin.SetActive(true);
   }
 
-  private void showGameOverUI()
+  private void ShowGameOverUI()
   {
-    CanvasLose.SetActive(true);
+    _canvasLose.SetActive(true);
   }
 
   // UI components updater
-  private void updateUI()
+  private void UpdateUI()
   {
-    txtScore.text = score.ToString();
-    txtHP.text = hp.ToString() + "/" + maxHP.ToString(); ;
+    _txtPickUps.text = _pickUpCounter.ToString();
+    _txtHP.text = _hp.ToString() + "/" + _maxHP.ToString(); ;
   }
 
-  IEnumerator startGame()
+  IEnumerator StartGame()
   {
     // TODO: Prepare a "Ready!" message, then start
-    Debug.Log("STAGE: " + currentStageIndex + " - Wait for " + getReadyTimer + " seconds...");
+    Debug.Log("STAGE: " + _currentStageIndex + " - Wait for " + _getReadyTimer + " seconds...");
 
-    yield return new WaitForSeconds(getReadyTimer);
+    yield return new WaitForSeconds(_getReadyTimer);
 
-    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().startGame();
+    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StartGame();
   }
 }

@@ -4,7 +4,7 @@
 // Destruction behavoir and animations will be triggered here.
 public class Enemy : MonoBehaviour
 {
-  public void collisionDetected()
+  public void CollisionDetected()
   {
     Debug.Log(gameObject.name + " collisioned!");
     Destroy(gameObject);

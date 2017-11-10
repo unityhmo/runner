@@ -2,38 +2,38 @@
 
 public class PlayerController : MonoBehaviour
 {
-  private CharacterAnimation anim;
-  private CharacterFX fx;
-  private CharacterController contr;
-  private GameController gameController;
+  private CharacterAnimation _anim;
+  private CharacterFX _fx;
+  private CharacterController _contr;
+  private GameController _gameController;
 
-  [SerializeField] private bool isPlayable = false;
-  [SerializeField] private float runSpeed = 8f;
-  private bool isJumping = false;
-  [SerializeField] private float jumpSpeed = 10f;
-  static float currentJumpSpeed = 0f;
-  static float jumpY;
-  [SerializeField] private float sideJumpDistance = 2f;
-  private Vector3 newLerpPosition = Vector3.zero;
-  private bool lerpInAction = false;
+  [SerializeField] private bool _isPlayable = false;
+  [SerializeField] private float _runSpeed = 8f;
+  private bool _isJumping = false;
+  [SerializeField] private float _jumpSpeed = 10f;
+  static float _currentJumpSpeed = 0f;
+  static float _jumpY;
+  [SerializeField] private float _sideJumpDistance = 2f;
+  private Vector3 _newLerpPosition = Vector3.zero;
+  private bool _lerpInAction = false;
 
-  private Vector3 moveDirection = Vector3.zero;
+  private Vector3 _moveDirection = Vector3.zero;
 
   void Awake()
   {
-    anim = transform.GetComponent<CharacterAnimation>();
-    fx = transform.GetComponent<CharacterFX>();
-    contr = transform.GetComponent<CharacterController>();
-    gameController = GameObject.FindGameObjectWithTag("GameController").transform.GetComponent<GameController>();
+    _anim = transform.GetComponent<CharacterAnimation>();
+    _fx = transform.GetComponent<CharacterFX>();
+    _contr = transform.GetComponent<CharacterController>();
+    _gameController = GameObject.FindGameObjectWithTag("GameController").transform.GetComponent<GameController>();
   }
 
   void Update()
   {
     // We wont do a thing until the game is playable.
-    if (isPlayable)
+    if (_isPlayable)
     {
-      forwardMovement();
-      sideJumpMovement();
+      ForwardMovement();
+      SideJumpMovement();
     }
   }
 
@@ -41,125 +41,125 @@ public class PlayerController : MonoBehaviour
   {
     // Here we only check if player isn't falling.
     // Is it cool to have a fixed vertical value to verify this?? /shrugs
-    if (isPlayable && transform.position.y < -1.25f)
+    if (_isPlayable && transform.position.y < -1.25f)
     {
-      gameController.registerDamage(true);
-      endGame();
+      _gameController.RegisterDamage(true);
+      EndGame();
     }
   }
 
   // Accesed by GameController, he knows better when the show can start
-  public void startGame()
+  public void StartGame()
   {
-    isPlayable = true;
-    anim.setRunning(true);
+    _isPlayable = true;
+    _anim.SetRunning(true);
   }
 
   // GameInput actions---------------------INI
-  public void jumpLeft()
+  public void JumpLeft()
   {
-    if (isPlayable && contr.isGrounded && !lerpInAction)
+    if (_isPlayable && _contr.isGrounded && !_lerpInAction)
     {
-      newLerpPosition = transform.position + new Vector3(-sideJumpDistance, 0, 0);
+      _newLerpPosition = transform.position + new Vector3(-_sideJumpDistance, 0, 0);
 
-      anim.jumpLeft();
-      lerpInAction = true;
+      _anim.JumpLeft();
+      _lerpInAction = true;
 
-      fx.jump();
+      _fx.Jump();
     }
   }
-  public void jumpRight()
+  public void JumpRight()
   {
-    if (isPlayable && contr.isGrounded && !lerpInAction)
+    if (_isPlayable && _contr.isGrounded && !_lerpInAction)
     {
-      newLerpPosition = transform.position + new Vector3(sideJumpDistance, 0, 0);
+      _newLerpPosition = transform.position + new Vector3(_sideJumpDistance, 0, 0);
 
-      anim.jumpRight();
-      lerpInAction = true;
+      _anim.JumpRight();
+      _lerpInAction = true;
 
-      fx.jump();
+      _fx.Jump();
     }
   }
-  public void jumpUp()
+  public void JumpUp()
   {
-    if (isPlayable && contr.isGrounded && !lerpInAction)
+    if (_isPlayable && _contr.isGrounded && !_lerpInAction)
     {
-      isJumping = true;
-      anim.jumpUp();
+      _isJumping = true;
+      _anim.JumpUp();
 
-      fx.jump();
+      _fx.Jump();
     }
   }
   // GameInput actions---------------------END
 
   // It all ends here, good or bad the outcome.
-  private void endGame(bool isWinner = false)
+  private void EndGame(bool isWinner = false)
   {
-    isPlayable = false;
-    anim.setRunning(false);
+    _isPlayable = false;
+    _anim.SetRunning(false);
 
     if (isWinner)
     {
-      fx.setLowLife(false);
-      reachedGoal();
+      _fx.SetLowLife(false);
+      ReachedGoal();
     }
     else
-      reachedDeath();
+      ReachedDeath();
   }
 
   // Moving forward and jumping up is handled here
-  private void forwardMovement()
+  private void ForwardMovement()
   {
     // Forward movement
-    moveDirection = new Vector3(0, 0, 1);
-    moveDirection = transform.TransformDirection(moveDirection);
-    moveDirection *= runSpeed;
+    _moveDirection = new Vector3(0, 0, 1);
+    _moveDirection = transform.TransformDirection(_moveDirection);
+    _moveDirection *= _runSpeed;
 
     // Jumping movement.
-    if (isJumping)
+    if (_isJumping)
     {
-      jumpY = Mathf.Lerp(jumpSpeed, 0, currentJumpSpeed);
-      currentJumpSpeed += 2f * Time.deltaTime;
-      moveDirection.y = jumpY;
+      _jumpY = Mathf.Lerp(_jumpSpeed, 0, _currentJumpSpeed);
+      _currentJumpSpeed += 2f * Time.deltaTime;
+      _moveDirection.y = _jumpY;
 
-      if (jumpY < 0.1f)
+      if (_jumpY < 0.1f)
       {
-        isJumping = false;
-        currentJumpSpeed = 0f;
+        _isJumping = false;
+        _currentJumpSpeed = 0f;
       }
     }
 
     // Apply movement to character controller
-    contr.Move(moveDirection * Time.deltaTime);
+    _contr.Move(_moveDirection * Time.deltaTime);
   }
 
   // Side jumping animation is handled here
-  private void sideJumpMovement()
+  private void SideJumpMovement()
   {
-    if (lerpInAction)
+    if (_lerpInAction)
     {
-      transform.position = Vector3.Lerp(transform.position, newLerpPosition, Time.deltaTime * runSpeed);
+      transform.position = Vector3.Lerp(transform.position, _newLerpPosition, Time.deltaTime * _runSpeed);
 
-      if (Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(newLerpPosition.x)) < 0.2f)
+      if (Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(_newLerpPosition.x)) < 0.2f)
       {
-        lerpInAction = false;
-        transform.position = new Vector3(newLerpPosition.x, transform.position.y, transform.position.z);
+        _lerpInAction = false;
+        transform.position = new Vector3(_newLerpPosition.x, transform.position.y, transform.position.z);
       }
     }
   }
 
   // Goal reached. Let gamecontroller know dummy!
-  private void reachedGoal()
+  private void ReachedGoal()
   {
-    gameController.win();
-    anim.victory();
+    _gameController.Win();
+    _anim.Victory();
   }
 
   // Well, you lose. Lets play you a death animation.
-  private void reachedDeath()
+  private void ReachedDeath()
   {
-    gameController.lose();
-    anim.death();
+    _gameController.Lose();
+    _anim.Death();
   }
 
   /*
@@ -168,30 +168,30 @@ public class PlayerController : MonoBehaviour
   void OnTriggerEnter(Collider other)
   {
     if (other.gameObject.tag == "Goal")
-      endGame(true);
+      EndGame(true);
 
     if (other.gameObject.tag == "Powerup")
-      gameController.pickUpPowerUp();
+      _gameController.PickUp();
 
     if (other.gameObject.tag == "Enemy")
     {
-      gameController.registerDamage();
+      _gameController.RegisterDamage();
 
-      if (gameController.getCurrentHP() > 0)
+      if (_gameController.GetCurrentHP() > 0)
       {
-        anim.damage();
-        fx.damage();
+        _anim.Damage();
+        _fx.Damage();
 
-        if (gameController.getCurrentHP() == 1)
-          fx.setLowLife(true);
+        if (_gameController.GetCurrentHP() == 1)
+          _fx.SetLowLife(true);
       }
       else
-        endGame();
+        EndGame();
     }
 
     /*
      * SendMessage without receiver required, this way we wont have errors if no receiver is previously prepared in collisioned object
      */
-    other.gameObject.SendMessage("collisionDetected", SendMessageOptions.DontRequireReceiver);
+    other.gameObject.SendMessage("CollisionDetected", SendMessageOptions.DontRequireReceiver);
   }
 }

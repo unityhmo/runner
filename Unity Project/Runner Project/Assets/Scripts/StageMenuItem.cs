@@ -7,49 +7,49 @@ using UnityEngine.UI;
  */
 public class StageMenuItem : MonoBehaviour
 {
-  [SerializeField] private Button buttonStage;
-  [SerializeField] private Text txtStageIndex;
-  [SerializeField] private Text txtStageLabel;
-  [SerializeField] private Text txtStars;
-  [SerializeField] private Text txtLetters;
+  [SerializeField] private Button _buttonStage;
+  [SerializeField] private Text _txtStageIndex;
+  [SerializeField] private Text _txtStageLabel;
+  [SerializeField] private Text _txtStars;
+  [SerializeField] private Text _txtLetters;
 
-  private int stageIndex = 0;
+  private int _stageIndex = 0;
   private MenuController _parent;
 
-  public StageMenuItem setStageIndex(int val)
+  public StageMenuItem SetStageIndex(int val)
   {
-    stageIndex = val;
-    txtStageIndex.text += (val + 1).ToString();
+    _stageIndex = val;
+    _txtStageIndex.text += (val + 1).ToString();
     return this;
   }
 
-  public StageMenuItem setLabel(string val)
+  public StageMenuItem SetLabel(string val)
   {
-    txtStageLabel.text = val.ToString();
+    _txtStageLabel.text = val.ToString();
     return this;
   }
 
-  public StageMenuItem setStars(int val)
+  public StageMenuItem SetStars(int val)
   {
-    txtStars.text = val.ToString();
+    _txtStars.text = val.ToString();
     return this;
   }
 
-  public StageMenuItem setLetters(int val)
+  public StageMenuItem SetLetters(int val)
   {
-    txtLetters.text = val.ToString();
+    _txtLetters.text = val.ToString();
     return this;
   }
 
-  public StageMenuItem setParent(MenuController val)
+  public StageMenuItem SetParent(MenuController val)
   {
     _parent = val;
-    buttonStage.onClick.AddListener(buttonHandler);
+    _buttonStage.onClick.AddListener(ButtonHandler);
     return this;
   }
 
-  private void buttonHandler()
+  private void ButtonHandler()
   {
-    _parent.selectStageButtonHandler(stageIndex);
+    _parent.SelectStageButtonHandler(_stageIndex);
   }
 }

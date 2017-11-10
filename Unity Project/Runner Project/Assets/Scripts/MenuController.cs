@@ -14,94 +14,93 @@ public class MenuController : MonoBehaviour
 	[SerializeField] private Material[] _skyboxPool; // expected to have 4 items
 	[SerializeField] private Animator _hmoManAnimatorController;
 	[SerializeField] private Animator _cameraAnimatorController;
-
 	[SerializeField] private GameObject _baseStageButton;
 
-	void Start ()
+	void Start()
 	{
-		_master = GameMaster.getInstance ();
-		createStageButtons ();
-		resetPanels ();
+		_master = GameMaster.GetInstance();
+		CreateStageButtons();
+		ResetPanels();
 	}
 
-	public void playButtonHandler ()
+	public void PlayButtonHandler()
 	{
-		_panelMain.SetActive (false);
-		_panelPlay.SetActive (true);
-		_buttonBack.SetActive (true);
-		_mySkybox.material = _skyboxPool [2];
-		_hmoManAnimatorController.SetBool ("isReady", true);
-		_cameraAnimatorController.SetBool ("isPlay", true);
+		_panelMain.SetActive(false);
+		_panelPlay.SetActive(true);
+		_buttonBack.SetActive(true);
+		_mySkybox.material = _skyboxPool[2];
+		_hmoManAnimatorController.SetBool("isReady", true);
+		_cameraAnimatorController.SetBool("isPlay", true);
 	}
 
-	public void optionsButtonHandler ()
+	public void OptionsButtonHandler()
 	{
-		_panelMain.SetActive (false);
-		_panelOptions.SetActive (true);
-		_buttonBack.SetActive (true);
-		_mySkybox.material = _skyboxPool [0];
-		_hmoManAnimatorController.SetBool ("isWaving", true);
+		_panelMain.SetActive(false);
+		_panelOptions.SetActive(true);
+		_buttonBack.SetActive(true);
+		_mySkybox.material = _skyboxPool[0];
+		_hmoManAnimatorController.SetBool("isWaving", true);
 	}
 
-	public void creditsButtonHandler ()
+	public void CreditsButtonHandler()
 	{
-		_panelMain.SetActive (false);
-		_panelCredits.SetActive (true);
-		_buttonBack.SetActive (true);
-		_mySkybox.material = _skyboxPool [1];
-		_hmoManAnimatorController.SetBool ("isWaving", true);
-		_cameraAnimatorController.SetBool ("isCredits", true);
+		_panelMain.SetActive(false);
+		_panelCredits.SetActive(true);
+		_buttonBack.SetActive(true);
+		_mySkybox.material = _skyboxPool[1];
+		_hmoManAnimatorController.SetBool("isWaving", true);
+		_cameraAnimatorController.SetBool("isCredits", true);
 	}
 
-	public void selectStageButtonHandler (int stageIndex)
+	public void SelectStageButtonHandler(int stageIndex)
 	{
-		_master.setStageIndex (stageIndex);
-		_master.goToScene (2);
+		_master.SetStageIndex(stageIndex);
+		_master.GoToScene(2);
 	}
 
-	public void exitButtonHandler ()
+	public void ExitButtonHandler()
 	{
-		Debug.Log ("Quit");
-		Application.Quit ();
+		Debug.Log("Quit");
+		Application.Quit();
 	}
 
-	public void resetPanels ()
+	public void ResetPanels()
 	{
-		_panelMain.SetActive (true);
-		_panelPlay.SetActive (false);
-		_panelOptions.SetActive (false);
-		_panelCredits.SetActive (false);
-		_buttonBack.SetActive (false);
-		_mySkybox.material = _skyboxPool [3];
-		_hmoManAnimatorController.SetBool ("isReady", false);
-		_hmoManAnimatorController.SetBool ("isWaving", false);
-		_cameraAnimatorController.SetBool ("isCredits", false);
-		_cameraAnimatorController.SetBool ("isPlay", false);
+		_panelMain.SetActive(true);
+		_panelPlay.SetActive(false);
+		_panelOptions.SetActive(false);
+		_panelCredits.SetActive(false);
+		_buttonBack.SetActive(false);
+		_mySkybox.material = _skyboxPool[3];
+		_hmoManAnimatorController.SetBool("isReady", false);
+		_hmoManAnimatorController.SetBool("isWaving", false);
+		_cameraAnimatorController.SetBool("isCredits", false);
+		_cameraAnimatorController.SetBool("isPlay", false);
 
   }
 
-	private void createStageButtons ()
+	private void CreateStageButtons()
 	{
-		List<Stage> stages = _master.getStages ();
+		List<Stage> stages = _master.GetStages ();
 		GameObject newStageItem;
 
 		for (int i = 0; i < stages.Count; i++) {
-			if (!stages [i].getIslocked ()) {
+			if (!stages[i].GetIslocked()) {
 				newStageItem = Instantiate (_baseStageButton, _panelPlay.transform, false);
-				newStageItem.transform.localPosition = new Vector3 (-260, 226, 1738); // TODO - hardcoded values, replace for relative points from prefab.
+				newStageItem.transform.localPosition = new Vector3(-260, 226, 1738); // TODO - hardcoded values, replace for relative points from prefab.
 				newStageItem.name = "s" + i;
 
-				newStageItem.GetComponent<StageMenuItem> ()
-			.setLabel (stages [i].getLabel ())
-			.setStars (stages [i].getStars ())
-			.setLetters (stages [i].getLetters ())
-			.setStageIndex (i).setParent (this);
+				newStageItem.GetComponent<StageMenuItem>()
+			.SetLabel(stages[i].GetLabel())
+			.SetStars(stages[i].GetStars())
+			.SetLetters(stages[i].GetLetters())
+			.SetStageIndex(i).SetParent(this);
 			}
 		}
 	}
 
-  public void toggleSoundButtonHandler(bool value)
+  public void ToggleSoundButtonHandler(bool value)
   {
-    _master.dataController.setAudioSetting(value);
+    _master.GetDataController().SetAudioSetting(value);
   }
 }

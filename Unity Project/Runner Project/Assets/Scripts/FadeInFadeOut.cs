@@ -11,93 +11,93 @@
 public class FadeInFadeOut : MonoBehaviour
 {
   private GameMaster _master;
-  private int destinationScene;
-  private float fIntroDuration = 0.5f;
-  private float fOutroDuration = 0.5f;
-  private float fCurrentDuration;
-  private float fAlpha;
-  private bool blnTweenDone;
-  private bool blnIntroDone;
-  private bool blnOutroDone;
-  private bool blnStartAnimation;
-  private Color solidColor;
-  private Texture2D solidRect;
+  private int _destinationScene;
+  private float _fIntroDuration = 0.5f;
+  private float _fOutroDuration = 0.5f;
+  private float _fCurrentDuration;
+  private float _fAlpha;
+  private bool _blnTweenDone;
+  private bool _blnIntroDone;
+  private bool _blnOutroDone;
+  private bool _blnStartAnimation;
+  private Color _solidColor;
+  private Texture2D _solidRect;
 
   void Awake()
   {
-    _master = GameMaster.getInstance();
+    _master = GameMaster.GetInstance();
     DontDestroyOnLoad(transform.gameObject);
-    blnTweenDone = false;
-    blnIntroDone = false;
-    blnOutroDone = false;
-    blnStartAnimation = false;
-    solidColor = Color.black;
-    solidRect = new Texture2D(1, 1);
-    solidRect.SetPixel(0, 0, Color.red);
-    solidRect.Apply();
+    _blnTweenDone = false;
+    _blnIntroDone = false;
+    _blnOutroDone = false;
+    _blnStartAnimation = false;
+    _solidColor = Color.black;
+    _solidRect = new Texture2D(1, 1);
+    _solidRect.SetPixel(0, 0, Color.red);
+    _solidRect.Apply();
   }
 
   // STEP 1: Fade in
-  public void fadeIn(int sceneIndex)
+  public void FadeIn(int sceneIndex)
   {
-    destinationScene = sceneIndex;
-    fCurrentDuration = 0f;
-    blnStartAnimation = true;
+    _destinationScene = sceneIndex;
+    _fCurrentDuration = 0f;
+    _blnStartAnimation = true;
   }
 
   // STEP 3: After master obj loads destination scene, we start Fading out
-  public void fadeOut()
+  public void FadeOut()
   {
-    fCurrentDuration = 0f;
-    blnStartAnimation = true;
-    blnTweenDone = false;
-    blnIntroDone = true;
+    _fCurrentDuration = 0f;
+    _blnStartAnimation = true;
+    _blnTweenDone = false;
+    _blnIntroDone = true;
   }
 
   // Draws the fading in&out black rectangle
   void OnGUI()
   {
-    if (blnStartAnimation)
+    if (_blnStartAnimation)
     {
       GUI.depth = -1;
 
       Rect rectIntroSize = new Rect(0, 0, Screen.width, Screen.height);
 
-      solidColor.a = fAlpha;
-      GUI.color = solidColor;
-      GUI.DrawTexture(rectIntroSize, solidRect);
+      _solidColor.a = _fAlpha;
+      GUI.color = _solidColor;
+      GUI.DrawTexture(rectIntroSize, _solidRect);
     }
   }
 
   void LateUpdate()
   {
-    if (blnStartAnimation)
+    if (_blnStartAnimation)
     {
-      fCurrentDuration += Time.deltaTime;
+      _fCurrentDuration += Time.deltaTime;
 
       // Intro modificator
-      if (!blnTweenDone && !blnIntroDone)
+      if (!_blnTweenDone && !_blnIntroDone)
       {
-        fAlpha = Mathf.Lerp(0, 1, fCurrentDuration / fIntroDuration);
-        if (fAlpha == 1)
+        _fAlpha = Mathf.Lerp(0, 1, _fCurrentDuration / _fIntroDuration);
+        if (_fAlpha == 1)
         {
           // STEP 2: Fade in callback to GameMaster obj
-          blnTweenDone = true;
-          blnIntroDone = true;
+          _blnTweenDone = true;
+          _blnIntroDone = true;
           // Sends callback to parent gobject telling fadein animation is done
-          _master.getSceneLoader().fadeInCallback(destinationScene);
+          _master.GetSceneLoader().FadeInCallback(_destinationScene);
         }
       }
 
       // Outro modificator
-      if (!blnTweenDone && blnIntroDone && !blnOutroDone)
+      if (!_blnTweenDone && _blnIntroDone && !_blnOutroDone)
       {
-        fAlpha = Mathf.Lerp(1, 0, fCurrentDuration / fOutroDuration);
-        if (fAlpha == 0)
+        _fAlpha = Mathf.Lerp(1, 0, _fCurrentDuration / _fOutroDuration);
+        if (_fAlpha == 0)
         {
           // STEP 4: Fade out ends
           // Sends callback to parent gobject telling fadeout animation is done
-          _master.getSceneLoader().fadeOutCallback();
+          _master.GetSceneLoader().FadeOutCallback();
         }
       }
     }

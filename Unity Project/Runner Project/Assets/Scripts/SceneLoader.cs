@@ -7,31 +7,31 @@ using System.Collections;
  */
 public class SceneLoader : MonoBehaviour
 {
-  private GameObject fadeInFadeOut;
+  private GameObject _fadeInFadeOut;
 
   // STEP 1: It all starts here
-  public void goToScene(int sceneIndex)
+  public void GoToScene(int sceneIndex)
   {
-    if (fadeInFadeOut == null)
+    if (_fadeInFadeOut == null)
     {
-      fadeInFadeOut = ObjectFactory.createFadeInFadeOut();
-      fadeInFadeOut.GetComponent<FadeInFadeOut>().fadeIn(sceneIndex);
+      _fadeInFadeOut = ObjectFactory.CreateFadeInFadeOut();
+      _fadeInFadeOut.GetComponent<FadeInFadeOut>().FadeIn(sceneIndex);
     }
   }
 
   // STEP 2: After fadein is ready, we load next scene
-  public void fadeInCallback(int sceneIndex)
+  public void FadeInCallback(int sceneIndex)
   {
-    StartCoroutine(loadNewScene(sceneIndex));
+    StartCoroutine(LoadNewScene(sceneIndex));
   }
 
   /* 
    * STEP 4: Last stop, here fadeout is ready. We let know all root gameobjects in new scene that they are free to do their things.
    */
-  public void fadeOutCallback()
+  public void FadeOutCallback()
   {
-    Destroy(fadeInFadeOut);
-    fadeInFadeOut = null;
+    Destroy(_fadeInFadeOut);
+    _fadeInFadeOut = null;
 
     /*
     Sends a broadcast to all gameobjects in ROOT level, just to let them know fadeIn cycle is done.
@@ -43,13 +43,13 @@ public class SceneLoader : MonoBehaviour
     {
       if (go && go.transform.parent == null)
       {
-        go.gameObject.SendMessage("fadeOutFinished", null, SendMessageOptions.DontRequireReceiver);
+        go.gameObject.SendMessage("FadeOutFinished", null, SendMessageOptions.DontRequireReceiver);
       }
     }
   }
 
   // STEP 3: We load next scene, and afterwards we let know fadeInFadeOut to start fading out!
-  IEnumerator loadNewScene(int sceneIndex)
+  IEnumerator LoadNewScene(int sceneIndex)
   {
     AsyncOperation async = SceneManager.LoadSceneAsync(sceneIndex);
 
@@ -59,6 +59,6 @@ public class SceneLoader : MonoBehaviour
     }
 
     if (async.isDone)
-      fadeInFadeOut.GetComponent<FadeInFadeOut>().fadeOut();
+      _fadeInFadeOut.GetComponent<FadeInFadeOut>().FadeOut();
   }
 }

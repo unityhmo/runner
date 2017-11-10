@@ -1,81 +1,84 @@
 ﻿using UnityEngine;
-using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class GameDataController
 {
   // All Game Info is saved in this serialized object
-  public GameDataInfo dataInfo = new GameDataInfo();
+  private GameDataInfo _dataInfo = new GameDataInfo();
 
-  private string savePathName = Application.persistentDataPath + "/gameInfo.dat";
+  private string _savePathName = Application.persistentDataPath + "/gameInfo.dat";
 
+  public GameDataInfo GetDataInfo()
+  {
+    return _dataInfo;
+  }
 
   public void Save()
   {
     BinaryFormatter bf = new BinaryFormatter();
-    FileStream file = File.Create(savePathName);
+    FileStream file = File.Create(_savePathName);
 
-    bf.Serialize(file, dataInfo);
+    bf.Serialize(file, _dataInfo);
     file.Close();
   }
 
   public void Load()
   {
-    if (File.Exists(savePathName))
+    if (File.Exists(_savePathName))
     {
       BinaryFormatter bf = new BinaryFormatter();
-      FileStream file = File.Open(savePathName, FileMode.Open);
+      FileStream file = File.Open(_savePathName, FileMode.Open);
       try
       {
         // Reading File and setting value to data object
-        dataInfo = (GameDataInfo)bf.Deserialize(file);
+        _dataInfo = (GameDataInfo)bf.Deserialize(file);
       }
       catch
       {
         // If serialization fails, the saved object is old or damage. Create default one.
         file.Close();
-        createAndSaveDefault();
+        CreateAndSaveDefault();
       }
       file.Close();
 
     }
     else
     {
-      createAndSaveDefault();
+      CreateAndSaveDefault();
     }
   }
 
-  public void saveUnlockedStage(int stageIndex)
+  public void SaveUnlockedStage(int stageIndex)
   {
-    dataInfo.statesLocked["level_" + stageIndex] = false;
+    _dataInfo.StateIsLocked["level_" + stageIndex] = false;
     Save();
     Debug.Log("Level " + stageIndex + " Unlocked!");
   }
 
-  public void setAudioSetting(bool value)
+  public void SetAudioSetting(bool value)
   {
-    dataInfo.audio_enabled = value;
+    _dataInfo.AudioEnabled = value;
     Save();
     Debug.Log("Audio Set to " + value);
   }
 
-  private void createAndSaveDefault()
+  private void CreateAndSaveDefault()
   {
-    dataInfo = new GameDataInfo();
-    setDefault();
+    _dataInfo = new GameDataInfo();
+    SetDefault();
     Save();
   }
 
-  private void setDefault()
+  private void SetDefault()
   {
     // User Preferences
-    dataInfo.audio_enabled = true;
+    _dataInfo.AudioEnabled = true;
 
     // User Game Info
-    dataInfo.statesLocked.Add("level_0", false);
-    dataInfo.statesLocked.Add("level_1", true);
-    dataInfo.statesLocked.Add("level_2", true);
+    _dataInfo.StateIsLocked.Add("level_0", false);
+    _dataInfo.StateIsLocked.Add("level_1", true);
+    _dataInfo.StateIsLocked.Add("level_2", true);
   }
 
 }

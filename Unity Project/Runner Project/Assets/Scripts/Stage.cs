@@ -1,80 +1,70 @@
 ﻿// Base class for each stage. Only setter and getters.
 public class Stage
 {
-  private bool isLocked = true;
-  private string label = "noname";
-  private string assetPath;
-  private int totalPowerUps = 0;
-  private int highestPowerUps = 0;
-  private int stars = 0;
-  private int letters = 0;
+  private bool _isLocked = true;
+  private string _label = "noname";
+  private string _assetPath;
+  private int _pickUps = 0;
+  private int _stars = 0;
+  private int _letters = 0;
 
-  public Stage setIslocked(bool val)
+  public Stage SetIslocked(bool val)
   {
-    isLocked = val;
+    _isLocked = val;
     return this;
   }
-  public bool getIslocked()
+  public bool GetIslocked()
   {
-    return isLocked;
-  }
-
-  public Stage setLabel(string val)
-  {
-    label = val;
-    return this;
-  }
-  public string getLabel()
-  {
-    return label;
+    return _isLocked;
   }
 
-  public Stage setAssetPath(string val)
+  public Stage SetLabel(string val)
   {
-    assetPath = val;
+    _label = val;
     return this;
   }
-  public string getAssetPath()
+  public string GetLabel()
   {
-    return assetPath;
+    return _label;
   }
 
-  public Stage setTotalPowerUps(int val)
+  public Stage SetAssetPath(string val)
   {
-    totalPowerUps = val;
+    _assetPath = val;
     return this;
   }
-  public int getTotalPowerUps()
+  public string GetAssetPath()
   {
-    return totalPowerUps;
-  }
-  public Stage setHighestPowerUps(int val)
-  {
-    highestPowerUps = val;
-    return this;
-  }
-  public int getHighestPowerUps()
-  {
-    return highestPowerUps;
+    return _assetPath;
   }
 
-  public Stage setStars(int val)
+  public Stage SetPickUps(int val)
   {
-    stars = val;
+    _pickUps = val;
     return this;
   }
-  public int getStars()
+  public int GetPickUps()
   {
-    return stars;
+    return _pickUps;
   }
 
-  public Stage setLetters(int val)
+  public Stage SetStars(int val)
   {
-    letters = val;
+    _stars = val;
     return this;
   }
-  public int getLetters()
+  public int GetStars()
   {
-    return letters;
+    return _stars;
+  }
+
+  public Stage SetLetters(int val)
+  {
+    _letters = val;
+    return this;
+  }
+  public int GetLetters()
+  {
+    return _letters;
   }
 }

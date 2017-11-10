@@ -3,63 +3,63 @@
 // Component in charge of managing the Animator state machine
 public class CharacterAnimation : MonoBehaviour
 {
-  private Animator anim;
-  private CharacterController contr;
-  private bool isRunning = false;
-  [SerializeField] private bool isGrounded = false;
+  private Animator _anim;
+  private CharacterController _contr;
+  private bool _isRunning = false;
+  [SerializeField] private bool _isGrounded = false;
 
   void Awake()
   {
-    anim = transform.GetComponent<Animator>();
-    contr = transform.GetComponent<CharacterController>();
+    _anim = transform.GetComponent<Animator>();
+    _contr = transform.GetComponent<CharacterController>();
   }
 
   // Player input actions
-  public void jumpLeft()
+  public void JumpLeft()
   {
-    if (isGrounded && isRunning)
-      anim.Play("left");
+    if (_isGrounded && _isRunning)
+      _anim.Play("left");
   }
-  public void jumpRight()
+  public void JumpRight()
   {
-    if (isGrounded && isRunning)
-      anim.Play("right");
+    if (_isGrounded && _isRunning)
+      _anim.Play("right");
   }
-  public void jumpUp()
+  public void JumpUp()
   {
-    if (isGrounded && isRunning)
-      anim.Play("jump");
+    if (_isGrounded && _isRunning)
+      _anim.Play("jump");
   }
 
   // Level triggered actions
-  public void toggleRunning()
+  public void ToggleRunning()
   {
-    isRunning = !anim.GetBool("isRunning");
-    setBoolRunning();
+    _isRunning = !_anim.GetBool("isRunning");
+    SetBoolRunning();
   }
-  public void setRunning(bool state)
+  public void SetRunning(bool state)
   {
-    isRunning = state;
-    setBoolRunning();
+    _isRunning = state;
+    SetBoolRunning();
   }
-  public void victory()
+  public void Victory()
   {
-    setRunning(false);
-    anim.Play("victory");
+    SetRunning(false);
+    _anim.Play("victory");
   }
-  public void damage()
+  public void Damage()
   {
-    if (isRunning)
-      anim.Play("damage");
+    if (_isRunning)
+      _anim.Play("damage");
   }
-  public void death()
+  public void Death()
   {
-    anim.Play("death");
+    _anim.Play("death");
   }
 
-  private void setBoolRunning()
+  private void SetBoolRunning()
   {
-    anim.SetBool("isRunning", isRunning);
+    _anim.SetBool("isRunning", _isRunning);
   }
 
   /*
@@ -67,7 +67,7 @@ public class CharacterAnimation : MonoBehaviour
    */
   void LateUpdate()
   {
-    isGrounded = contr.isGrounded;
-    anim.SetBool("isGrounded", isGrounded);
+    _isGrounded = _contr.isGrounded;
+    _anim.SetBool("isGrounded", _isGrounded);
   }
 }
