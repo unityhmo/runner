@@ -7,49 +7,46 @@ using UnityEngine.UI;
  */
 public class StageMenuItem : MonoBehaviour
 {
-  [SerializeField] private Button _buttonStage;
-  [SerializeField] private Text _txtStageIndex;
-  [SerializeField] private Text _txtStageLabel;
-  [SerializeField] private Text _txtStars;
-  [SerializeField] private Text _txtLetters;
+	const string STAR_ICON = "★";
+	
+	[SerializeField] private Button _buttonStage;
+	[SerializeField] private Text _txtStageNameLabel;
+	[SerializeField] private Text _txtStarsNumberLabel;
+	[SerializeField] private MenuController _menuController;
 
-  private int _stageIndex = 0;
-  private MenuController _parent;
+	private int _stageIndex = 0;
+	private Transform _parent;
 
-  public StageMenuItem SetStageIndex(int val)
-  {
-    _stageIndex = val;
-    _txtStageIndex.text += (val + 1).ToString();
-    return this;
-  }
+	void Start ()
+	{
+		_menuController = GameObject.FindGameObjectWithTag ("MenuController").GetComponent<MenuController> ();
+		_buttonStage.onClick.AddListener (ButtonHandler);
+	}
 
-  public StageMenuItem SetLabel(string val)
-  {
-    _txtStageLabel.text = val.ToString();
-    return this;
-  }
+	public StageMenuItem SetStageIndex (int val)
+	{
+		_stageIndex = val;
+		return this;
+	}
 
-  public StageMenuItem SetStars(int val)
-  {
-    _txtStars.text = val.ToString();
-    return this;
-  }
+	public StageMenuItem SetStageNameLabel (string stageName, bool includeIndex)
+	{
+		_txtStageNameLabel.text = stageName;
+		return this;
+	}
 
-  public StageMenuItem SetLetters(int val)
-  {
-    _txtLetters.text = val.ToString();
-    return this;
-  }
+	public StageMenuItem SetStars (int starsNumber)
+	{
+		string starsLabel = "";
+		while (starsNumber-- > 0) {
+			starsLabel += STAR_ICON;
+		}
+		_txtStarsNumberLabel.text = starsLabel;
+		return this;
+	}
 
-  public StageMenuItem SetParent(MenuController val)
-  {
-    _parent = val;
-    _buttonStage.onClick.AddListener(ButtonHandler);
-    return this;
-  }
-
-  private void ButtonHandler()
-  {
-    _parent.SelectStageButtonHandler(_stageIndex);
-  }
+	private void ButtonHandler ()
+	{
+		_menuController.SelectStageButtonHandler (_stageIndex);
+	}
 }

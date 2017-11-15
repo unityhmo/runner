@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
 	[SerializeField] private Animator _hmoManAnimatorController;
 	[SerializeField] private Animator _cameraAnimatorController;
 	[SerializeField] private GameObject _baseStageButton;
+	[SerializeField] private GameObject _stageContainer;
 
 	void Start()
 	{
@@ -86,15 +87,14 @@ public class MenuController : MonoBehaviour
 
 		for (int i = 0; i < stages.Count; i++) {
 			if (!stages[i].GetIslocked()) {
-				newStageItem = Instantiate (_baseStageButton, _panelPlay.transform, false);
-				newStageItem.transform.localPosition = new Vector3(-260, 226, 1738); // TODO - hardcoded values, replace for relative points from prefab.
+				newStageItem = Instantiate (_baseStageButton, _stageContainer.transform, false);
+				newStageItem.transform.localPosition = new Vector3(0, 0, 0); // TODO - hardcoded values, replace for relative points from prefab.
 				newStageItem.name = "s" + i;
 
 				newStageItem.GetComponent<StageMenuItem>()
-			.SetLabel(stages[i].GetLabel())
-			.SetStars(stages[i].GetStars())
-			.SetLetters(stages[i].GetLetters())
-			.SetStageIndex(i).SetParent(this);
+					.SetStageNameLabel(stages[i].GetLabel(), false)
+					.SetStars(stages[i].GetStars())
+					.SetStageIndex(i);
 			}
 		}
 	}
