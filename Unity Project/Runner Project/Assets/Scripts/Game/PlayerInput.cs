@@ -37,15 +37,16 @@ public class PlayerInput : MonoBehaviour
 
       if (touch.phase == TouchPhase.Ended)
       {
-        if ((_fp.x - _lp.x) > _swipeDistance) // left
+        _lp = _lp - _fp;
+        if ((_lp.x) < -_swipeDistance && -_lp.x > _lp.y) // left
         {
           JumpLeft();
         }
-        else if ((_fp.x - _lp.x) < -_swipeDistance) // right
+        else if ((_lp.x) > _swipeDistance && _lp.x > _lp.y) // right
         {
           JumpRight();
         }
-        else if ((_fp.y - _lp.y) < -_swipeDistance) // up
+        else if ((_lp.y) > _swipeDistance) // up
         {
           JumpUp();
         }
