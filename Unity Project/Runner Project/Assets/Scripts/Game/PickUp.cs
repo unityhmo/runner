@@ -1,0 +1,12 @@
+﻿using UnityEngine;
+
+// Base class for any pickup that the player can grab
+// Destruction behavoir and animations will be triggered here.
+public class PickUp : MonoBehaviour
+{
+  public void CollisionDetected()
+  {
+    Debug.Log(gameObject.name + " collisioned!");
+    Destroy(gameObject);
+  }
+}
