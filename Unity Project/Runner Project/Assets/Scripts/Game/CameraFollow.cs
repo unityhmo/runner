@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
 
   void Start()
   {
-    _player = GameObject.FindGameObjectWithTag("Player").transform;
+    _player = GameObject.FindGameObjectWithTag(BaseValues.TAG_PLAYER).transform;
     _distance = _player.position.z - transform.position.z;
   }
 

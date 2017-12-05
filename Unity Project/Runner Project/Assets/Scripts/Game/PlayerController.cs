@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     _anim = transform.GetComponent<CharacterAnimation>();
     _fx = transform.GetComponent<CharacterFX>();
     _contr = transform.GetComponent<CharacterController>();
-    _gameController = GameObject.FindGameObjectWithTag("GameController").transform.GetComponent<GameController>();
+    _gameController = GameObject.FindGameObjectWithTag(BaseValues.TAG_GAME_CONTROLLER).transform.GetComponent<GameController>();
   }
 
   void Update()
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     // Is it cool to have a fixed vertical value to verify this?? /shrugs
     if (_isPlayable && transform.position.y < -1.25f)
     {
-      _gameController.RegisterDamage(true);
+      _gameController.RegisterDamage(0, true);
       EndGame();
     }
   }
@@ -179,15 +179,13 @@ public class PlayerController : MonoBehaviour
    */
   void OnTriggerEnter(Collider other)
   {
-    if (other.gameObject.tag == "Goal")
-      EndGame(true);
+    GameObject go = other.gameObject;
 
-    if (other.gameObject.tag == "Powerup")
-      _gameController.PickUp();
-
-    if (other.gameObject.tag == "Enemy")
+    if (go.tag == BaseValues.TAG_ORB_PICKUP)
+      _gameController.PickUpOrb();
+    else if (go.tag == BaseValues.TAG_OBSTACLE)
     {
-      _gameController.RegisterDamage();
+      _gameController.RegisterDamage(go.GetComponent<Obstacle>().GetDamage());
       AudioManager.GetCharFX().Damage();
 
       if (_gameController.GetCurrentHP() > 0)
@@ -201,10 +199,14 @@ public class PlayerController : MonoBehaviour
       else
         EndGame();
     }
+    else if (go.tag == BaseValues.TAG_LETTER_PICKUP)
+      _gameController.PickUpLetter();
+    else if (go.tag == BaseValues.TAG_GOAL)
+      EndGame(true);
 
     /*
      * SendMessage without receiver required, this way we wont have errors if no receiver is previously prepared in collisioned object
      */
-    other.gameObject.SendMessage("CollisionDetected", SendMessageOptions.DontRequireReceiver);
+    go.SendMessage(BaseValues.RECEIVER_COLLISION_DETECTED, SendMessageOptions.DontRequireReceiver);
   }
 }

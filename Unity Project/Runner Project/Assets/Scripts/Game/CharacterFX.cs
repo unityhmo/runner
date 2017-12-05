@@ -6,13 +6,14 @@ public class CharacterFX : MonoBehaviour
   [SerializeField]
   private bool _hasLowLife = false;
   private Color _baseColor;
+  private Texture _baseTexture;
   private Renderer _rend;
   [SerializeField]
   private Color _lowHealthColor = Color.red;
   [SerializeField]
   private GameObject _mesh;
   private Shader _shaderStandard;
-  private Shader _shaderUnlit;
+  private Shader _shaderLowHealth;
   private float _shaderTimer = 0f;
   [SerializeField]
   private float _shaderTicSpeed = 1f;
@@ -22,10 +23,10 @@ public class CharacterFX : MonoBehaviour
   {
     _rend = _mesh.GetComponent<Renderer>();
     _baseColor = _rend.material.GetColor("_Color");
+    _baseTexture = _rend.material.GetTexture("_MainTex");
 
     _shaderStandard = Shader.Find("Standard");
-    // NOTE: Unlit Shader doesnt support shadows.
-    _shaderUnlit = Shader.Find("Unlit/Color");
+    _shaderLowHealth = Shader.Find("Toon/Basic");
   }
 
   void LateUpdate()
@@ -89,13 +90,15 @@ public class CharacterFX : MonoBehaviour
   {
     if (_shaderOn)
     {
-      _rend.material.shader = _shaderUnlit;
+      _rend.material.shader = _shaderLowHealth;
       _rend.material.SetColor("_Color", _lowHealthColor);
+      _rend.material.SetTexture("_MainTex", null);
     }
     else
     {
       _rend.material.shader = _shaderStandard;
       _rend.material.SetColor("_Color", _baseColor);
+      _rend.material.SetTexture("_MainTex", _baseTexture);
     }
   }
 }

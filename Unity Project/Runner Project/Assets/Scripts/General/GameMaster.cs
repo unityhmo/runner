@@ -102,8 +102,8 @@ public class GameMaster : MonoBehaviour
 
   private void SetupSoundAndMusicManager()
   {
-    AudioManager.SetUIFX(CreateAudioObject("UIAudio").GetComponent<AudioUserInterface>());
-    AudioManager.SetMFX(CreateAudioObject("MusicAudio").GetComponent<AudioMusic>());
+    AudioManager.SetUIFX(CreateAudioObject(BaseValues.LABEL_UI_AUDIO).GetComponent<AudioUserInterface>());
+    AudioManager.SetMFX(CreateAudioObject(BaseValues.LABEL_MUSIC_AUDIO).GetComponent<AudioMusic>());
   }
 
   private GameObject CreateAudioObject(string name)

@@ -7,46 +7,51 @@ using UnityEngine.UI;
  */
 public class StageMenuItem : MonoBehaviour
 {
-	const string STAR_ICON = "★";
-	
-	[SerializeField] private Button _buttonStage;
-	[SerializeField] private Text _txtStageNameLabel;
-	[SerializeField] private Text _txtStarsNumberLabel;
-	[SerializeField] private MenuController _menuController;
+  const string STAR_ICON = "★";
 
-	private int _stageIndex = 0;
-	private Transform _parent;
+  [SerializeField]
+  private Button _buttonStage;
+  [SerializeField]
+  private Text _txtStageNameLabel;
+  [SerializeField]
+  private Text _txtStarsNumberLabel;
+  [SerializeField]
+  private MenuController _menuController;
 
-	void Start ()
-	{
-		_menuController = GameObject.FindGameObjectWithTag ("MenuController").GetComponent<MenuController> ();
-		_buttonStage.onClick.AddListener (ButtonHandler);
-	}
+  private int _stageIndex = 0;
+  private Transform _parent;
 
-	public StageMenuItem SetStageIndex (int val)
-	{
-		_stageIndex = val;
-		return this;
-	}
+  void Start()
+  {
+    _menuController = GameObject.FindGameObjectWithTag(BaseValues.TAG_MENU_CONTROLLER).GetComponent<MenuController>();
+    _buttonStage.onClick.AddListener(ButtonHandler);
+  }
 
-	public StageMenuItem SetStageNameLabel (string stageName, bool includeIndex)
-	{
-		_txtStageNameLabel.text = stageName;
-		return this;
-	}
+  public StageMenuItem SetStageIndex(int val)
+  {
+    _stageIndex = val;
+    return this;
+  }
 
-	public StageMenuItem SetStars (int starsNumber)
-	{
-		string starsLabel = "";
-		while (starsNumber-- > 0) {
-			starsLabel += STAR_ICON;
-		}
-		_txtStarsNumberLabel.text = starsLabel;
-		return this;
-	}
+  public StageMenuItem SetStageNameLabel(string stageName, bool includeIndex)
+  {
+    _txtStageNameLabel.text = stageName;
+    return this;
+  }
 
-	private void ButtonHandler ()
-	{
-		_menuController.SelectStageButtonHandler (_stageIndex);
-	}
+  public StageMenuItem SetStars(int starsNumber)
+  {
+    string starsLabel = "";
+    while (starsNumber-- > 0)
+    {
+      starsLabel += STAR_ICON;
+    }
+    _txtStarsNumberLabel.text = starsLabel;
+    return this;
+  }
+
+  private void ButtonHandler()
+  {
+    _menuController.SelectStageButtonHandler(_stageIndex);
+  }
 }

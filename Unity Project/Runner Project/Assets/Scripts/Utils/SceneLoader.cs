@@ -43,7 +43,7 @@ public class SceneLoader : MonoBehaviour
     {
       if (go && go.transform.parent == null)
       {
-        go.gameObject.SendMessage("FadeOutFinished", null, SendMessageOptions.DontRequireReceiver);
+        go.gameObject.SendMessage(BaseValues.RECEIVER_FADEOUT_FINISHED, null, SendMessageOptions.DontRequireReceiver);
       }
     }
   }

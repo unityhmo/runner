@@ -17,7 +17,8 @@ public class GameController : MonoBehaviour
   [SerializeField]
   private int _hp = 3; // Initial health points at stage
   private int _maxHP;
-  private int _pickUpCounter; // Pickup counter
+  private int _orbCounter; // Pickup counter
+  private int _letterCounter;
   // UI Components
   [SerializeField]
   private GameObject _canvasWin;
@@ -71,20 +72,27 @@ public class GameController : MonoBehaviour
   }
 
   // Collision detected from pick up. Here we update score value and refresh UI
-  public void PickUp()
+  public void PickUpOrb()
   {
     AudioManager.GetUIFX().PickUpOrb();
-    _pickUpCounter++;
+    _orbCounter++;
+    UpdateUI();
+  }
+
+  public void PickUpLetter()
+  {
+    AudioManager.GetUIFX().PickUpLetter();
+    _letterCounter++;
     UpdateUI();
   }
 
   // Collision detected from obstacle or falling to death. We update health and refresh UI
-  public void RegisterDamage(bool instaDeath = false)
+  public void RegisterDamage(int damage, bool instaDeath = false)
   {
     if (instaDeath)
       _hp = 0;
     else
-      _hp--;
+      _hp -= damage;
 
     if (_hp == 0)
       Lose();
@@ -102,11 +110,11 @@ public class GameController : MonoBehaviour
   // We take care of showing winner's UI
   public void Win()
   {
-    if (_pickUpCounter > _stageData.GetStars())
+    if (_orbCounter > _stageData.GetStars())
     {
       // TODO: This is wrong, Stars are meassured from all pickups, then divided by mathf.floor 3
       // Only as a place holder and to see changes in menu
-      _stageData.SetStars(_pickUpCounter);
+      _stageData.SetStars(_orbCounter);
     }
 
     _master.SetStage(_currentStageIndex, _stageData);
@@ -172,7 +180,7 @@ public class GameController : MonoBehaviour
   // UI components updater
   private void UpdateUI()
   {
-    _txtPickUps.text = _pickUpCounter.ToString();
+    _txtPickUps.text = _orbCounter.ToString();
     _txtHP.text = _hp.ToString() + "/" + _maxHP.ToString();
   }
 
@@ -183,6 +191,6 @@ public class GameController : MonoBehaviour
 
     yield return new WaitForSeconds(_getReadyTimer);
 
-    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StartGame();
+    GameObject.FindGameObjectWithTag(BaseValues.TAG_PLAYER).GetComponent<PlayerController>().StartGame();
   }
 }

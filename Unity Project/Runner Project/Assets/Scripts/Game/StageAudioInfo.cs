@@ -9,7 +9,8 @@ public class StageAudioInfo : MonoBehaviour
 
   void Start()
   {
-    if (_loopMain != null)
-      AudioManager.GetMFX().SetClip(_loopMain, _intro);
+    AudioMusic stageMusic = AudioManager.GetMFX();
+    if (_loopMain != null && stageMusic)
+      stageMusic.SetClip(_loopMain, _intro);
   }
 }

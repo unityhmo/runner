@@ -4,5 +4,4 @@
   {
     AudioManager.SetMenuScenarioFX(this);
   }
-
 }

@@ -11,7 +11,7 @@ public static class ObjectFactory
   {
     GameObject master = new GameObject();
     master.AddComponent<SceneLoader>();
-    master.name = "GameMaster";
+    master.name = BaseValues.LABEL_GAME_MASTER;
 
     return master.AddComponent<GameMaster>();
   }
@@ -23,7 +23,7 @@ public static class ObjectFactory
   {
     GameObject fadeInFadeOut = new GameObject();
     fadeInFadeOut.AddComponent<FadeInFadeOut>();
-    fadeInFadeOut.name = "FadeInFadeOut";
+    fadeInFadeOut.name = BaseValues.LABEL_FADEIN_FADEOUT;
 
     return fadeInFadeOut;
   }
