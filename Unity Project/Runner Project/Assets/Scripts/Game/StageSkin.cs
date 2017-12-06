@@ -5,38 +5,56 @@ public class StageSkin : MonoBehaviour
   [SerializeField]
   private Material _assetsMaterial;
   [SerializeField]
-  private GameObject _middleLaneLines;
+  private GameObject _middleLane;
   [SerializeField]
-  private GameObject _middleLaneNoLines;
+  private GameObject _middleLaneAlt;
   [SerializeField]
-  private GameObject _middleFrontLedge;
+  private GameObject _middleLedgeFront;
   [SerializeField]
-  private GameObject _middleBackLedge;
+  private GameObject _middleLedgeBack;
   [SerializeField]
-  private GameObject _sideLaneLines;
+  private GameObject _sideLane;
   [SerializeField]
-  private GameObject _sideLaneNoLines;
+  private GameObject _sideLaneAlt;
   [SerializeField]
-  private GameObject _sideFrontLedge;
+  private GameObject _sideLedgeFront;
   [SerializeField]
-  private GameObject _sideBackLedge;
+  private GameObject _sideLedgeBack;
   [SerializeField]
-  private GameObject _ledgeLines;
+  private GameObject _ledge;
   [SerializeField]
-  private GameObject _ledgeNoLines;
+  private GameObject _ledgeAlt;
 
   public GameObject GetAsset(string assetName)
   {
     GameObject asset;
     switch (assetName)
     {
+      case "mid":
+        asset = _middleLane;
+        break;
+      case "mid_alt":
+        asset = _middleLaneAlt;
+        break;
+      case "side":
+        asset = _sideLane;
+        break;
+      case "side_alt":
+        asset = _sideLaneAlt;
+        break;
       default:
-        asset = new GameObject();
+        asset = _middleLedgeFront;
         break;
     }
 
-    Debug.Log("Asking for asset");
-
     return asset;
+  }
+
+  public Material SkinMaterial
+  {
+    get
+    {
+      return _assetsMaterial;
+    }
   }
 }

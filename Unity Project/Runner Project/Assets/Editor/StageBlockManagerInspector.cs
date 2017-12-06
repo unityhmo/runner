@@ -41,8 +41,9 @@ public class StageBlockManagerInspector : Editor
 
     GUILayout.Label("\nFinal step. Creates a gameobject with the original\nlayout, but now with skin assets applied.");
     if (GUILayout.Button("Build Stage"))
-      _manager.ConstructFinalStage();
+      Selection.activeGameObject = _manager.ConstructFinalStage();
 
-    GUILayout.Label("\nDon't forget to save your built stage inside your level Resource.prefab gameObject.");
+    GUILayout.Label("\nDon't forget to save your built stage inside your\nlevel Resource.prefab gameObject.");
+
   }
 }

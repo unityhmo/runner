@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System;
+using UnityEngine;
 
 public class StageBlock : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class StageBlock : MonoBehaviour
   [SerializeField]
   private Material _validMaterial;
   private bool _isValid;
-  private List<float> _validPositions;
+  private float[] _validPositions;
   private Renderer _renderer;
 
   public void SnapCoords()
@@ -26,8 +26,8 @@ public class StageBlock : MonoBehaviour
     if (_w == 0f && _h == 0f)
     {
       _renderer = GetComponent<Renderer>();
-      _w = _renderer.bounds.extents.x * 2f;
-      _h = _renderer.bounds.extents.z * 2f;
+      _w = (float)Math.Round(_renderer.bounds.extents.x * 2f, 3);
+      _h = (float)Math.Round(_renderer.bounds.extents.z * 2f, 3);
     }
 
     _coords = transform.position;
@@ -38,9 +38,9 @@ public class StageBlock : MonoBehaviour
     _zVal = _coords.z;
     _zVal = Mathf.Round(_zVal / _h) * _h;
 
-    _coords.x = _xVal;
+    _coords.x = (float)Math.Round(_xVal, 3);
     _coords.y = 0f;
-    _coords.z = _zVal;
+    _coords.z = (float)Math.Round(_zVal, 3);
 
     transform.position = _coords;
 
@@ -57,7 +57,7 @@ public class StageBlock : MonoBehaviour
     _validPositions = _manager.GetValidPositions;
 
     bool positionFound = false;
-    for (int i = 0; i < _validPositions.Count; i++)
+    for (int i = 0; i < _validPositions.Length; i++)
     {
       if (_xVal == _validPositions[i])
       {

@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class StageBlockManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class StageBlockManager : MonoBehaviour
   private int _maxLanes; // Only odd numbers please
   [SerializeField]
   private int _createRows;
-  private List<float> _validPositions;
+  private float[] _validPositions;
   private GameObject[] _blocks;
   private float _blockWidth;
   private float _blockHeight;
@@ -20,6 +21,15 @@ public class StageBlockManager : MonoBehaviour
   private float _lowestZ;
   private float _highestZ;
   private int _stageLength;
+  private float _blockColliderHeight = 3f;
+
+  // Visual assets variables
+  private GameObject _bgo;
+  private BoxCollider _bcollider;
+  private Vector3 _bsize;
+  private Vector3 _bcenter;
+  private GameObject _basset;
+  private Renderer _brenderer;
 
   public void CreateBlocks()
   {
@@ -36,8 +46,8 @@ public class StageBlockManager : MonoBehaviour
       GetBlockSizes();
 
       blockPosition = Vector3.zero;
-      blockPosition.x = laneJump * _blockWidth;
-      blockPosition.z = currentRow * _blockHeight;
+      blockPosition.x = (float)Math.Round(laneJump * _blockWidth, 3);
+      blockPosition.z = (float)Math.Round(currentRow * _blockHeight, 3);
 
       SetZValue(blockPosition.z);
 
@@ -73,11 +83,11 @@ public class StageBlockManager : MonoBehaviour
 
     GetBlockSizes();
 
-    _validPositions = new List<float>();
+    _validPositions = new float[GetMaxLanes];
     for (int i = 0; i < _maxLanes; i++)
     {
-      xPosition = laneJump * _blockWidth;
-      _validPositions.Add(xPosition);
+      xPosition = (float)Math.Round(laneJump * _blockWidth, 3);
+      _validPositions[i] = xPosition;
 
       if (laneJump != 0)
       {
@@ -89,6 +99,8 @@ public class StageBlockManager : MonoBehaviour
       else
         laneJump++;
     }
+
+    Array.Sort(_validPositions);
   }
 
   public void CheckValidPositions(bool andRemove = false)
@@ -96,19 +108,19 @@ public class StageBlockManager : MonoBehaviour
     StageBlock blockComponent;
     _blocks = GameObject.FindGameObjectsWithTag(BaseValues.TAG_STAGE_BLOCK);
 
-    foreach (GameObject block in _blocks)
+    GameObject block;
+    for (int i = 0; i < _blocks.Length; i++)
     {
+      block = _blocks[i];
       blockComponent = block.GetComponent<StageBlock>();
       blockComponent.CheckValidPosition();
 
       if (andRemove && !blockComponent.IsValid)
-      {
         DestroyImmediate(block);
-      }
     }
   }
 
-  public List<float> GetValidPositions
+  public float[] GetValidPositions
   {
     get
     {
@@ -116,15 +128,15 @@ public class StageBlockManager : MonoBehaviour
     }
   }
 
-  public void StageCleanup()
+  public Dictionary<string, GameObject> StageCleanup()
   {
     _emptyZ = true;
 
     // First we remove all invalid blocks
     CheckValidPositions(true);
 
-    // Now we removed overlapped blocks
-    RemoveOverlapped();
+    // Now we removed overlapped blocks and return as result
+    return RemoveOverlapped();
   }
 
   public void SetMaxLanes(int value)
@@ -155,8 +167,8 @@ public class StageBlockManager : MonoBehaviour
     if (_blockWidth == 0f && _blockHeight == 0f)
     {
       Renderer renderer = _blockPrefab.GetComponent<Renderer>();
-      _blockWidth = renderer.bounds.extents.x * 2f;
-      _blockHeight = renderer.bounds.extents.z * 2f;
+      _blockWidth = (float)Math.Round(renderer.bounds.extents.x * 2f, 3);
+      _blockHeight = (float)Math.Round(renderer.bounds.extents.z * 2f, 3);
     }
   }
 
@@ -221,7 +233,7 @@ public class StageBlockManager : MonoBehaviour
 
     if (GetTotalBlocks() > 0)
     {
-      _stageLength = (int)Mathf.Round((GetHighestZ - GetLowestZ)/ GetBlockHeight) + 1;
+      _stageLength = (int)Mathf.Round((GetHighestZ - GetLowestZ) / GetBlockHeight) + 1;
     }
 
     return _stageLength;
@@ -235,7 +247,7 @@ public class StageBlockManager : MonoBehaviour
     }
   }
 
-  private void RemoveOverlapped()
+  private Dictionary<string, GameObject> RemoveOverlapped()
   {
     Dictionary<string, GameObject> blocksCoords = new Dictionary<string, GameObject>();
 
@@ -245,8 +257,10 @@ public class StageBlockManager : MonoBehaviour
 
     _blocks = GameObject.FindGameObjectsWithTag(BaseValues.TAG_STAGE_BLOCK);
 
-    foreach (GameObject block in _blocks)
+    GameObject block;
+    for (int i = 0; i < _blocks.Length; i++)
     {
+      block = _blocks[i];
       pos = block.transform.position;
       label = pos.x + "_" + pos.z;
       temp = null;
@@ -256,14 +270,104 @@ public class StageBlockManager : MonoBehaviour
       else
         blocksCoords.Add(label, block);
     }
+
+    return blocksCoords;
   }
 
-  public void ConstructFinalStage()
+  public GameObject ConstructFinalStage()
   {
-    StageCleanup();
+    _bsize = new Vector3(_blockWidth, _blockColliderHeight, _blockHeight);
+    _bcenter = new Vector3(0f, -_blockColliderHeight / 2, 0f);
 
+    GameObject result = new GameObject();
+    result.name = "stage_layout";
     StageSkin skin = _stageSkin.GetComponent<StageSkin>();
 
-    skin.GetAsset("test");
+    Dictionary<string, GameObject> blocksCoords = StageCleanup();
+    GameObject[][] rows = new GameObject[StageLength][];
+    int iRows;
+    float z = GetLowestZ;
+    Vector2 coords;
+    Vector2 indexes;
+
+    GameObject[] lanes;
+    int iLane;
+    string label;
+    GameObject block;
+    for (iRows = 0; iRows < StageLength; iRows++)
+    {
+      lanes = new GameObject[GetValidPositions.Length];
+      for (iLane = 0; iLane < GetValidPositions.Length; iLane++)
+      {
+        block = null;
+        coords.x = GetValidPositions[iLane];
+        coords.y = z;
+        indexes.x = iLane;
+        indexes.y = iRows;
+        label = coords.x + "_" + coords.y;
+
+        if (blocksCoords.ContainsKey(label))
+        {
+          block = blocksCoords[label];
+
+          InstantiateBlockAssets(blocksCoords, block.transform.position, coords, indexes, skin, result.transform);
+        }
+
+        lanes[iLane] = block;
+      }
+      rows[iRows] = lanes;
+      z += GetBlockHeight;
+    }
+
+    gameObject.SetActive(false);
+
+    return result;
+  }
+
+  private void InstantiateBlockAssets(Dictionary<string, GameObject> blockCoords, Vector3 position, Vector2 coords, Vector2 indexes, StageSkin skin, Transform parent)
+  {
+    _bgo = new GameObject();
+    _bgo.transform.position = position;
+    _bgo.name = "block: " + indexes.x + "_" + indexes.y;
+    _bcollider = _bgo.AddComponent<BoxCollider>();
+    _bcollider.size = _bsize;
+    _bcollider.center = _bcenter;
+
+    string meshCase;
+    bool flipped = false;
+    if (indexes.x > 0 && indexes.x < GetMaxLanes - 1)
+    {
+      meshCase = "mid";
+    }
+    else
+    {
+      meshCase = "side";
+
+      if (indexes.x == GetMaxLanes - 1)
+      {
+        flipped = true;
+      }
+    }
+
+    if (indexes.y != 0 && indexes.y % 2 != 0)
+    {
+      meshCase += "_alt";
+    }
+
+    _basset = Instantiate(skin.GetAsset(meshCase)) as GameObject;
+    _basset.name = "mesh: " + indexes.x + "_" + indexes.y + " type: " + meshCase;
+    _brenderer = _basset.GetComponent<Renderer>();
+    _brenderer.material = skin.SkinMaterial;
+    _basset.transform.parent = _bgo.transform;
+    _basset.transform.localPosition = Vector3.zero;
+
+    if (flipped)
+    {
+      Vector3 scale = _basset.transform.localScale;
+      scale.x = -scale.x;
+      _basset.transform.localScale = scale;
+    }
+
+    _bgo.transform.parent = parent;
   }
 }
