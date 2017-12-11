@@ -106,6 +106,30 @@ public static class BaseValues
     }
   }
 
+  public static string LABEL_STAGE_BLOCKS_RESULT
+  {
+    get
+    {
+      return "stage_layout";
+    }
+  }
+
+  public static string PATH_AUDIO_RESOURCES
+  {
+    get
+    {
+      return "Audio/";
+    }
+  }
+
+  public static string PATH_STAGES_RESOURCES
+  {
+    get
+    {
+      return "Stages/";
+    }
+  }
+
   public static string RECEIVER_FADEOUT_FINISHED
   {
     get

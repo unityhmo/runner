@@ -24,6 +24,8 @@ public class StageSkin : MonoBehaviour
   private GameObject _ledge;
   [SerializeField]
   private GameObject _ledgeAlt;
+  [SerializeField]
+  private GameObject _streetLight;
 
   public GameObject GetAsset(string assetName)
   {
@@ -36,11 +38,32 @@ public class StageSkin : MonoBehaviour
       case "mid_alt":
         asset = _middleLaneAlt;
         break;
+      case "mid_front":
+        asset = _middleLedgeFront;
+        break;
+      case "mid_back":
+        asset = _middleLedgeBack;
+        break;
       case "side":
         asset = _sideLane;
         break;
       case "side_alt":
         asset = _sideLaneAlt;
+        break;
+      case "side_front":
+        asset = _sideLedgeFront;
+        break;
+      case "side_back":
+        asset = _sideLedgeBack;
+        break;
+      case "ledge":
+        asset = _ledge;
+        break;
+      case "ledge_alt":
+        asset = _ledgeAlt;
+        break;
+      case "street_light":
+        asset = _streetLight;
         break;
       default:
         asset = _middleLedgeFront;
@@ -48,6 +71,14 @@ public class StageSkin : MonoBehaviour
     }
 
     return asset;
+  }
+
+  public GameObject StreetLightAsset
+  {
+    get
+    {
+      return _streetLight;
+    }
   }
 
   public Material SkinMaterial

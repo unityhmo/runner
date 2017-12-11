@@ -15,6 +15,7 @@ public class AudioMusic : AudioObject
       _coroutine = null;
     }
     _source.Stop();
+    _source.loop = false;
 
     _themeIntro = intro;
     _themeLoop = loop;
@@ -25,10 +26,7 @@ public class AudioMusic : AudioObject
       StartCoroutine(_coroutine);
     }
     else
-    {
-      _source.clip = _themeLoop;
-      _source.Play();
-    }
+      PlayLoop();
   }
 
   IEnumerator PlayIntroLoopTrack()
@@ -38,7 +36,13 @@ public class AudioMusic : AudioObject
 
     yield return new WaitForSeconds(_source.clip.length);
 
+    PlayLoop();
+  }
+
+  private void PlayLoop()
+  {
     _source.clip = _themeLoop;
+    _source.loop = true;
     _source.Play();
   }
 }

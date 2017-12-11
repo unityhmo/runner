@@ -12,6 +12,7 @@ public class StageBlockManagerInspector : Editor
     DrawDefaultInspector();
 
     _manager = target as StageBlockManager;
+    _manager.ForcePosition();
 
     if (_manager.GetMaxLanes < _manager.GetMinLanes || _manager.GetMaxLanes % 2 == 0)
     {
@@ -41,7 +42,9 @@ public class StageBlockManagerInspector : Editor
 
     GUILayout.Label("\nFinal step. Creates a gameobject with the original\nlayout, but now with skin assets applied.");
     if (GUILayout.Button("Build Stage"))
+    {
       Selection.activeGameObject = _manager.ConstructFinalStage();
+    }
 
     GUILayout.Label("\nDon't forget to save your built stage inside your\nlevel Resource.prefab gameObject.");
 

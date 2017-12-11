@@ -18,10 +18,19 @@ public class PlayerController : MonoBehaviour
   static float _jumpY;
   [SerializeField]
   private float _sideJumpDistance = 2f;
+  [SerializeField]
+  private float _invincibility = 1f;
+  private float _currentInvincibility;
+  private bool _isInvincible = false;
   private Vector3 _newLerpPosition = Vector3.zero;
   private bool _lerpInAction = false;
 
   private Vector3 _moveDirection = Vector3.zero;
+
+  [SerializeField]
+  private Light _victorySpotLight;
+  private float _spotlightSpeed;
+  private bool _winner = false;
 
   void Awake()
   {
@@ -43,12 +52,34 @@ public class PlayerController : MonoBehaviour
 
   void LateUpdate()
   {
-    // Here we only check if player isn't falling.
-    // Is it cool to have a fixed vertical value to verify this?? /shrugs
-    if (_isPlayable && transform.position.y < -1.25f)
+    if (_isPlayable)
     {
-      _gameController.RegisterDamage(0, true);
-      EndGame();
+      // Here we only check if player isn't falling.
+      // Is it cool to have a fixed vertical value to verify this?? /shrugs
+      if (transform.position.y < -1.25f)
+      {
+        _gameController.RegisterDamage(0, true);
+        EndGame();
+      }
+
+      // After player is hit, hmoman becomes invincible for _invincibility time
+      if (_isInvincible)
+      {
+        if (_currentInvincibility >= _invincibility)
+        {
+          _currentInvincibility = 0f;
+          _isInvincible = false;
+        }
+        else
+        {
+          _currentInvincibility += Time.deltaTime;
+        }
+      }
+    } else if (_winner && _spotlightSpeed < 1f)
+    {
+      _victorySpotLight.intensity = Mathf.Lerp(0f, 2f, _spotlightSpeed);
+
+      _spotlightSpeed += Time.deltaTime;
     }
   }
 
@@ -160,6 +191,11 @@ public class PlayerController : MonoBehaviour
   {
     _gameController.Win();
     _anim.Victory();
+
+    _victorySpotLight.gameObject.SetActive(true);
+    _winner = true;
+
+    Camera.main.GetComponent<CameraFollow>().VictoryZoom();
   }
 
   // Well, you lose. Lets play you a death animation.
@@ -183,9 +219,20 @@ public class PlayerController : MonoBehaviour
 
     if (go.tag == BaseValues.TAG_ORB_PICKUP)
       _gameController.PickUpOrb();
-    else if (go.tag == BaseValues.TAG_OBSTACLE)
+    else if (go.tag == BaseValues.TAG_OBSTACLE && !_isInvincible)
     {
-      _gameController.RegisterDamage(go.GetComponent<Obstacle>().GetDamage());
+      Obstacle obstacleComp = go.GetComponent<Obstacle>();
+
+      if (obstacleComp != null)
+      {
+        _gameController.RegisterDamage(obstacleComp.Damage);
+      }
+      else
+      {
+        ObstacleCollider colliderComp = go.GetComponent<ObstacleCollider>();
+        _gameController.RegisterDamage(colliderComp.Damage);
+      }
+
       AudioManager.GetCharFX().Damage();
 
       if (_gameController.GetCurrentHP() > 0)
@@ -195,6 +242,8 @@ public class PlayerController : MonoBehaviour
 
         if (_gameController.GetCurrentHP() == 1)
           _fx.SetLowLife(true);
+
+        _isInvincible = true;
       }
       else
         EndGame();

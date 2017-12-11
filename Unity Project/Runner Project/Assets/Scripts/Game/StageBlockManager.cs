@@ -7,6 +7,8 @@ public class StageBlockManager : MonoBehaviour
   [SerializeField]
   private GameObject _blockPrefab;
   [SerializeField]
+  private int _streetLightFrequency = 0;
+  [SerializeField]
   private GameObject _stageSkin;
   private int _minLanes = 3;
   [SerializeField]
@@ -22,6 +24,7 @@ public class StageBlockManager : MonoBehaviour
   private float _highestZ;
   private int _stageLength;
   private float _blockColliderHeight = 3f;
+  private int _nextStreetLight;
 
   // Visual assets variables
   private GameObject _bgo;
@@ -247,6 +250,11 @@ public class StageBlockManager : MonoBehaviour
     }
   }
 
+  public void ForcePosition()
+  {
+    transform.position = Vector3.zero;
+  }
+
   private Dictionary<string, GameObject> RemoveOverlapped()
   {
     Dictionary<string, GameObject> blocksCoords = new Dictionary<string, GameObject>();
@@ -276,30 +284,27 @@ public class StageBlockManager : MonoBehaviour
 
   public GameObject ConstructFinalStage()
   {
-    _bsize = new Vector3(_blockWidth, _blockColliderHeight, _blockHeight);
-    _bcenter = new Vector3(0f, -_blockColliderHeight / 2, 0f);
+    Vector2 coords;
+    Vector2 indexes;
+    int iRows;
+    int iLane;
+    string label;
+    float z = GetLowestZ;
 
     GameObject result = new GameObject();
-    result.name = "stage_layout";
+    result.name = BaseValues.LABEL_STAGE_BLOCKS_RESULT; ;
     StageSkin skin = _stageSkin.GetComponent<StageSkin>();
 
     Dictionary<string, GameObject> blocksCoords = StageCleanup();
-    GameObject[][] rows = new GameObject[StageLength][];
-    int iRows;
-    float z = GetLowestZ;
-    Vector2 coords;
-    Vector2 indexes;
 
-    GameObject[] lanes;
-    int iLane;
-    string label;
-    GameObject block;
+    _bsize = new Vector3(_blockWidth, _blockColliderHeight, _blockHeight);
+    _bcenter = new Vector3(0f, -_blockColliderHeight / 2, 0f);
+    _nextStreetLight = _streetLightFrequency;
+
     for (iRows = 0; iRows < StageLength; iRows++)
     {
-      lanes = new GameObject[GetValidPositions.Length];
       for (iLane = 0; iLane < GetValidPositions.Length; iLane++)
       {
-        block = null;
         coords.x = GetValidPositions[iLane];
         coords.y = z;
         indexes.x = iLane;
@@ -308,15 +313,13 @@ public class StageBlockManager : MonoBehaviour
 
         if (blocksCoords.ContainsKey(label))
         {
-          block = blocksCoords[label];
-
-          InstantiateBlockAssets(blocksCoords, block.transform.position, coords, indexes, skin, result.transform);
+          ConstructBlockAssets(blocksCoords, coords, indexes, skin, result.transform);
         }
-
-        lanes[iLane] = block;
       }
-      rows[iRows] = lanes;
       z += GetBlockHeight;
+
+      if (_streetLightFrequency > 0 && iRows == _nextStreetLight - 1)
+        _nextStreetLight += _streetLightFrequency;
     }
 
     gameObject.SetActive(false);
@@ -324,50 +327,146 @@ public class StageBlockManager : MonoBehaviour
     return result;
   }
 
-  private void InstantiateBlockAssets(Dictionary<string, GameObject> blockCoords, Vector3 position, Vector2 coords, Vector2 indexes, StageSkin skin, Transform parent)
+  private void ConstructBlockAssets(Dictionary<string, GameObject> blocksCoords, Vector2 coords, Vector2 indexes, StageSkin skin, Transform parent)
   {
+    Vector2 adjacentCoords;
+
     _bgo = new GameObject();
-    _bgo.transform.position = position;
+    _bgo.transform.position = new Vector3(coords.x, 0f, coords.y);
     _bgo.name = "block: " + indexes.x + "_" + indexes.y;
     _bcollider = _bgo.AddComponent<BoxCollider>();
     _bcollider.size = _bsize;
     _bcollider.center = _bcenter;
+    _bgo.transform.parent = parent;
 
+    // Ground
+    CreateLayoutBlock(indexes, coords, _bgo.transform, skin);
+
+    // Back
+    adjacentCoords = new Vector2(coords.x, coords.y + _blockHeight);
+    if (indexes.y < StageLength - 1 && !blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
+    {
+      CreateLayoutBlock(indexes, adjacentCoords, _bgo.transform, skin, "back");
+    }
+
+    // Front
+    adjacentCoords = new Vector2(coords.x, coords.y - _blockHeight);
+    if (indexes.y > 0 && !blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
+    {
+      CreateLayoutBlock(indexes, adjacentCoords, _bgo.transform, skin, "front");
+    }
+
+    // Left
+    adjacentCoords = new Vector2(coords.x - _blockWidth, coords.y);
+    if (indexes.x > 0 && !blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
+    {
+      CreateLayoutBlock(indexes, adjacentCoords, _bgo.transform, skin, "left");
+    }
+
+    // Right
+    adjacentCoords = new Vector2(coords.x + _blockWidth, coords.y);
+    if (indexes.x < GetMaxLanes - 1 && !blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
+    {
+      CreateLayoutBlock(indexes, adjacentCoords, _bgo.transform, skin, "right");
+    }
+
+    // Street Light
+    if ((indexes.x == 0 || indexes.x == GetValidPositions.Length - 1) && (skin.StreetLightAsset != null && _streetLightFrequency > 0))
+    {
+      if (indexes.y == _nextStreetLight - 1)
+      {
+        CreateStreetLight(indexes, coords, _bgo.transform, skin);
+      }
+    }
+  }
+
+  private void CreateLayoutBlock(Vector2 indexes, Vector2 coords, Transform appendTo, StageSkin skin, string direction = "none")
+  {
     string meshCase;
     bool flipped = false;
-    if (indexes.x > 0 && indexes.x < GetMaxLanes - 1)
+
+    if (direction == "left" || direction == "right")
     {
-      meshCase = "mid";
+      meshCase = "ledge";
+
+      if (direction == "left")
+        flipped = true;
     }
     else
     {
-      meshCase = "side";
-
-      if (indexes.x == GetMaxLanes - 1)
+      if (indexes.x > 0 && indexes.x < GetMaxLanes - 1)
+        meshCase = "mid";
+      else
       {
-        flipped = true;
+        meshCase = "side";
+
+        if (indexes.x == GetMaxLanes - 1)
+          flipped = true;
       }
+
+      if (direction == "back" || direction == "front")
+        meshCase += "_" + direction;
     }
 
-    if (indexes.y != 0 && indexes.y % 2 != 0)
+    if (meshCase == "mid" || meshCase == "side" || meshCase == "ledge")
     {
-      meshCase += "_alt";
+      if (indexes.y != 0 && indexes.y % 2 != 0)
+        meshCase += "_alt";
     }
 
-    _basset = Instantiate(skin.GetAsset(meshCase)) as GameObject;
-    _basset.name = "mesh: " + indexes.x + "_" + indexes.y + " type: " + meshCase;
-    _brenderer = _basset.GetComponent<Renderer>();
-    _brenderer.material = skin.SkinMaterial;
-    _basset.transform.parent = _bgo.transform;
-    _basset.transform.localPosition = Vector3.zero;
+    InstantiateSkinAsset(meshCase, flipped, coords, appendTo, skin);
+  }
 
+  private void CreateStreetLight(Vector2 indexes, Vector2 coords, Transform appendTo, StageSkin skin)
+  {
+    bool flipped = true;
+    if (indexes.x == 0)
+      flipped = false;
+
+    InstantiateSkinAsset("street_light", flipped, coords, appendTo, skin);
+  }
+
+  private void InstantiateSkinAsset(string meshCase, bool flipped, Vector2 coords, Transform appendTo, StageSkin skin)
+  {
+    _basset = Instantiate(skin.GetAsset(meshCase)) as GameObject;
+    _basset.name = "mesh: " + meshCase;
+    if (flipped)
+      _basset.name += " (flipped)";
+    _brenderer = _basset.GetComponent<Renderer>();
+    if (meshCase != "street_light")
+      _brenderer.material = skin.SkinMaterial;
+    _basset.transform.position = new Vector3(coords.x, 0f, coords.y);
+    _basset.transform.parent = appendTo;
+
+    Vector3 scale = _basset.transform.localScale;
     if (flipped)
     {
-      Vector3 scale = _basset.transform.localScale;
       scale.x = -scale.x;
-      _basset.transform.localScale = scale;
     }
-
-    _bgo.transform.parent = parent;
+    scale.x = (float)Math.Round(scale.x, 3);
+    scale.y = (float)Math.Round(scale.y, 3);
+    scale.z = (float)Math.Round(scale.z, 3);
+    _basset.transform.localScale = scale;
   }
+
+  /*private void InstantiateStreetLight(Vector2 coords, Transform appendTo, StageSkin skin, bool flipped = false)
+  {
+    _basset = Instantiate(skin.StreetLightAsset) as GameObject;
+    _basset.name = "mesh: streetlight";
+    if (flipped)
+      _basset.name += " (flipped)";
+    _brenderer = _basset.GetComponent<Renderer>();
+    _basset.transform.position = new Vector3(coords.x, 0f, coords.y);
+    _basset.transform.parent = appendTo;
+
+    Vector3 scale = _basset.transform.localScale;
+    if (flipped)
+    {
+      scale.x = -scale.x;
+    }
+    scale.x = (float)Math.Round(scale.x, 3);
+    scale.y = (float)Math.Round(scale.y, 3);
+    scale.z = (float)Math.Round(scale.z, 3);
+    _basset.transform.localScale = scale;
+  }*/
 }

@@ -109,7 +109,7 @@ public class GameMaster : MonoBehaviour
   private GameObject CreateAudioObject(string name)
   {
     GameObject go;
-    go = Instantiate(Resources.Load(name, typeof(GameObject))) as GameObject;
+    go = Instantiate(Resources.Load(BaseValues.PATH_AUDIO_RESOURCES + name, typeof(GameObject))) as GameObject;
     go.name = name;
     go.transform.parent = transform;
 

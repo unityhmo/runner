@@ -3,8 +3,16 @@
 public class CameraFollow : MonoBehaviour
 {
   private Transform _player;
-  [SerializeField] private float _speed = 10f;
-  static float _distance;
+  [SerializeField]
+  private float _speed = 10f;
+  private float _distance;
+  private Vector3 _endPos;
+
+  [SerializeField]
+  private float _victorySpeed = 1f;
+  [SerializeField]
+  private float _victoryZoomDistance = 3.85f;
+  private bool _zoomOn = false;
 
   void Start()
   {
@@ -14,8 +22,23 @@ public class CameraFollow : MonoBehaviour
 
   void LateUpdate()
   {
-    transform.position = new Vector3(transform.position.x, transform.position.y, _player.position.z - _distance);
+    if (!_zoomOn)
+    {
+      transform.position = new Vector3(transform.position.x, transform.position.y, _player.position.z - _distance);
 
-    transform.position = Vector3.Lerp(transform.position, new Vector3(_player.position.x, transform.position.y, transform.position.z), Time.deltaTime * _speed);
+      _endPos = new Vector3(_player.position.x, transform.position.y, transform.position.z);
+    }
+    else
+    {
+      _endPos = new Vector3(_player.position.x, _player.position.y + _victoryZoomDistance, _player.position.z - _victoryZoomDistance);
+    }
+
+    transform.position = Vector3.Lerp(transform.position, _endPos, Time.deltaTime * _speed);
+  }
+
+  public void VictoryZoom()
+  {
+    _speed = _victorySpeed;
+    _zoomOn = true;
   }
 }

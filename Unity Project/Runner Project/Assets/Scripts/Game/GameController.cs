@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
   // Anyways, we instantiate it and move it as a child of Scenario gameobject, it is the origin point for stages.
   private void loadStage(string path)
   {
-    GameObject stageAssets = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
+    GameObject stageAssets = Instantiate(Resources.Load(BaseValues.PATH_STAGES_RESOURCES + path, typeof(GameObject))) as GameObject;
     stageAssets.name = "stage_" + _currentStageIndex + ": " + _stageData.GetLabel();
     stageAssets.transform.parent = _scenarioHolder;
   }
