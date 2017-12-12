@@ -6,6 +6,7 @@ public class StageBlockManagerInspector : Editor
 {
   private StageBlockManager _manager;
   private int _supportedLanes;
+  private int _warningCount;
 
   public override void OnInspectorGUI()
   {
@@ -34,11 +35,27 @@ public class StageBlockManagerInspector : Editor
       _manager.CreateBlocks();
 
     GUILayout.Label("\nRegister blocks layout.\nRemove overlaped and invalid position blocks.\nRecalculate stage length (in blocks).");
-    if (GUILayout.Button("Update Layout"))
+    if (GUILayout.Button("Cleanup & Update Layout"))
       _manager.StageCleanup();
 
+    string label = "Destroy all Blocks";
+    if (_warningCount > 0)
+      label = "ARE YOU SURE?!";
+
+    if (GUILayout.Button(label))
+    {
+      _warningCount++;
+
+      if (_warningCount > 1)
+      {
+        _warningCount = 0;
+        _manager.DestroyAllBlocks();
+        _manager.StageCleanup();
+      }
+    }
+
     GUILayout.Label("Length (in blocks): " + _manager.SetStageLength());
-    GUILayout.Label("Total blocks: " + _manager.GetTotalBlocks());
+    GUILayout.Label("Total blocks: " + _manager.GetTotalBlocks().Length);
 
     GUILayout.Label("\nFinal step. Creates a gameobject with the original\nlayout, but now with skin assets applied.");
     if (GUILayout.Button("Build Stage"))
@@ -47,6 +64,10 @@ public class StageBlockManagerInspector : Editor
     }
 
     GUILayout.Label("\nDon't forget to save your built stage inside your\nlevel Resource.prefab gameObject.");
+  }
 
+  void OnDisable()
+  {
+    _warningCount = 0;
   }
 }

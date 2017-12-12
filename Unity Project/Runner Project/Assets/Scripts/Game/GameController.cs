@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
   private int _hp = 3; // Initial health points at stage
   private int _maxHP;
   private int _orbCounter; // Pickup counter
-  private int _letterCounter;
+  private int _totalOrbs;
   // UI Components
   [SerializeField]
   private GameObject _canvasWin;
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     _currentStageIndex = _master.GetStageIndex();
     _stageData = _master.GetStage(_currentStageIndex);
 
-    loadStage(_stageData.GetAssetPath());
+    loadStage(_stageData.AssetPath);
 
     _maxHP = _hp;
     UpdateUI();
@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
   private void loadStage(string path)
   {
     GameObject stageAssets = Instantiate(Resources.Load(BaseValues.PATH_STAGES_RESOURCES + path, typeof(GameObject))) as GameObject;
-    stageAssets.name = "stage_" + _currentStageIndex + ": " + _stageData.GetLabel();
+    stageAssets.name = "stage_" + _currentStageIndex + ": " + _stageData.Label;
     stageAssets.transform.parent = _scenarioHolder;
   }
 
@@ -78,12 +78,9 @@ public class GameController : MonoBehaviour
     _orbCounter++;
     UpdateUI();
   }
-
-  public void PickUpLetter()
+  public void OrbDetected()
   {
-    AudioManager.GetUIFX().PickUpLetter();
-    _letterCounter++;
-    UpdateUI();
+    _totalOrbs++;
   }
 
   // Collision detected from obstacle or falling to death. We update health and refresh UI
@@ -110,11 +107,13 @@ public class GameController : MonoBehaviour
   // We take care of showing winner's UI
   public void Win()
   {
-    if (_orbCounter > _stageData.GetStars())
+    if (_orbCounter > _stageData.HighestPickUps)
     {
       // TODO: This is wrong, Stars are meassured from all pickups, then divided by mathf.floor 3
       // Only as a place holder and to see changes in menu
-      _stageData.SetStars(_orbCounter);
+      _stageData.SetHighestPickUps(_orbCounter);
+      _stageData.SetTotalPickUps(_totalOrbs);
+      Debug.Log("New highscore!");
     }
 
     _master.SetStage(_currentStageIndex, _stageData);
@@ -180,7 +179,7 @@ public class GameController : MonoBehaviour
   // UI components updater
   private void UpdateUI()
   {
-    _txtPickUps.text = _orbCounter.ToString();
+    _txtPickUps.text = _orbCounter.ToString() + "/" + _totalOrbs.ToString();
     _txtHP.text = _hp.ToString() + "/" + _maxHP.ToString();
   }
 

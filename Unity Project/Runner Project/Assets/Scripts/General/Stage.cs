@@ -4,18 +4,20 @@ public class Stage
   private bool _isLocked = true;
   private string _label = "noname";
   private string _assetPath;
-  private int _pickUps = 0;
-  private int _stars = 0;
-  private int _letters = 0;
+  private int _totalPickUps = 0;
+  private int _highestPickUps = 0;
 
   public Stage SetIslocked(bool val)
   {
     _isLocked = val;
     return this;
   }
-  public bool GetIslocked()
+  public bool Islocked
   {
-    return _isLocked;
+    get
+    {
+      return _isLocked;
+    }
   }
 
   public Stage SetLabel(string val)
@@ -23,9 +25,12 @@ public class Stage
     _label = val;
     return this;
   }
-  public string GetLabel()
+  public string Label
   {
-    return _label;
+    get
+    {
+      return _label;
+    }
   }
 
   public Stage SetAssetPath(string val)
@@ -33,38 +38,37 @@ public class Stage
     _assetPath = val;
     return this;
   }
-  public string GetAssetPath()
+  public string AssetPath
   {
-    return _assetPath;
+    get
+    {
+      return _assetPath;
+    }
   }
 
-  public Stage SetPickUps(int val)
+  public Stage SetTotalPickUps(int val)
   {
-    _pickUps = val;
+    _totalPickUps = val;
     return this;
   }
-  public int GetPickUps()
+  public int TotalPickUps
   {
-    return _pickUps;
+    get
+    {
+      return _totalPickUps;
+    }
   }
 
-  public Stage SetStars(int val)
+  public Stage SetHighestPickUps(int val)
   {
-    _stars = val;
+    _highestPickUps = val;
     return this;
   }
-  public int GetStars()
+  public int HighestPickUps
   {
-    return _stars;
-  }
-
-  public Stage SetLetters(int val)
-  {
-    _letters = val;
-    return this;
-  }
-  public int GetLetters()
-  {
-    return _letters;
+    get
+    {
+      return _highestPickUps;
+    }
   }
 }

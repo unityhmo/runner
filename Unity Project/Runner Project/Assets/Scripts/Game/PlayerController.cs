@@ -248,8 +248,6 @@ public class PlayerController : MonoBehaviour
       else
         EndGame();
     }
-    else if (go.tag == BaseValues.TAG_LETTER_PICKUP)
-      _gameController.PickUpLetter();
     else if (go.tag == BaseValues.TAG_GOAL)
       EndGame(true);
 

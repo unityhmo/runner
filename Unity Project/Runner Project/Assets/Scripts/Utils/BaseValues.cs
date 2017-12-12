@@ -50,14 +50,6 @@ public static class BaseValues
     }
   }
 
-  public static string TAG_LETTER_PICKUP
-  {
-    get
-    {
-      return "Letter";
-    }
-  }
-
   public static string TAG_OBSTACLE
   {
     get
@@ -144,5 +136,24 @@ public static class BaseValues
     {
       return "CollisionDetected";
     }
+  }
+
+  public static int GetStars(int user, int total)
+  {
+    int stars = 0;
+
+    if (user > 0 && total > 0)
+    {
+      int percent = (int)Mathf.Round((user / total) * 100);
+
+      if (percent == 100)
+        stars = 3;
+      else if (percent > 75)
+        stars = 2;
+      else if (percent > 50)
+        stars = 1;
+    }
+
+    return stars;
   }
 }

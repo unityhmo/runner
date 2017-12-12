@@ -12,8 +12,7 @@ public static class Stages
     newStage = new Stage();
     newStage.SetIslocked((bool)dataInfo.StateIsLocked["level_0"])
       .SetAssetPath("level_0")
-      .SetLabel("Hello World")
-	  .SetStars(3);
+      .SetLabel("Hello World");
     stages.Add(newStage);
 
     newStage = new Stage();
