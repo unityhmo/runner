@@ -51,8 +51,6 @@ public class SceneLoader : MonoBehaviour
   // STEP 3: We load next scene, and afterwards we let know fadeInFadeOut to start fading out!
   IEnumerator LoadNewScene(int sceneIndex)
   {
-    // Here we clear our stage audiosources
-    AudioManager.ResetStageAudioSources();
 
     AsyncOperation async = SceneManager.LoadSceneAsync(sceneIndex);
 

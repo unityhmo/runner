@@ -78,7 +78,6 @@ public class GameMaster : MonoBehaviour
 
   public void GoToScene(int sceneIndex)
   {
-    AudioManager.ResetStageAudioSources();
     _sceneLoader.GoToScene(sceneIndex);
   }
   public SceneLoader GetSceneLoader()
