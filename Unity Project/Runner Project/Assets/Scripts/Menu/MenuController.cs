@@ -129,6 +129,8 @@ public class MenuController : MonoBehaviour
 
   public void ToggleSoundButtonHandler(bool value)
   {
+    Debug.Log("toggle buton"+value);
+    AudioListener.volume = value?1:0;
     _master.GetDataController().SetAudioSetting(value);
   }
 }

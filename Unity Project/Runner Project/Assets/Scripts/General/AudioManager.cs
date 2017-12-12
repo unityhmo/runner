@@ -10,36 +10,9 @@ public static class AudioManager
   private static CharacterSFX _charFx;
   private static MenuScenarioSFX _menuScenarioFx;
 
+    private static AudioListener _gameAudioListener;
+
   private static Dictionary<string, AudioSource> _stageAudioSources = new Dictionary<string, AudioSource>();
-
-  public static bool IsSoundOn()
-  {
-    return _soundOn;
-  }
-
-  public static void ToggleSound()
-  {
-    _soundOn = !_soundOn;
-    ApplySoundState();
-  }
-
-  public static void ApplySoundState()
-  {
-    _uiFx.SetSound(_soundOn);
-    _mFx.SetSound(_soundOn);
-
-    if (_charFx != null)
-      _charFx.SetSound(_soundOn);
-
-    if (_menuScenarioFx != null)
-      _menuScenarioFx.SetSound(_soundOn);
-
-    foreach (KeyValuePair<string, AudioSource> stageAudioSource in _stageAudioSources)
-    {
-      AudioSource stageAudioSourceComponent = _stageAudioSources[stageAudioSource.Key];
-      stageAudioSourceComponent.enabled = _soundOn;
-    }
-  }
 
   // Register individual AudioSource for items in stages
   public static void RegisterStageAudioSource(string keyValue, AudioSource audioSource)
