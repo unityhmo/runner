@@ -33,6 +33,9 @@ public class GameDataController
       {
         // Reading File and setting value to data object
         _dataInfo = (GameDataInfo)bf.Deserialize(file);
+
+        AudioListener.volume = _dataInfo.AudioEnabled ? 1 : 0;
+
       }
       catch
       {
@@ -60,7 +63,6 @@ public class GameDataController
   {
     _dataInfo.AudioEnabled = value;
     Save();
-    Debug.Log("Audio Set to " + value);
   }
 
   private void CreateAndSaveDefault()

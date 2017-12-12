@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class MenuController : MonoBehaviour
@@ -11,6 +12,8 @@ public class MenuController : MonoBehaviour
   private GameObject _panelPlay;
   [SerializeField]
   private GameObject _panelOptions;
+  [SerializeField]
+  private Toggle _toggleSound;
   [SerializeField]
   private GameObject _panelCredits;
   [SerializeField]
@@ -39,6 +42,9 @@ public class MenuController : MonoBehaviour
     ResetPanels();
 
     AudioManager.GetMFX().SetClip(_mainMenuThemeLoop, _mainMenuThemeIntro);
+    _toggleSound.isOn = _master.GetDataController().GetDataInfo().AudioEnabled;
+
+
   }
 
   public void PlayButtonHandler()
@@ -129,7 +135,6 @@ public class MenuController : MonoBehaviour
 
   public void ToggleSoundButtonHandler(bool value)
   {
-    Debug.Log("toggle buton"+value);
     AudioListener.volume = value?1:0;
     _master.GetDataController().SetAudioSetting(value);
   }
