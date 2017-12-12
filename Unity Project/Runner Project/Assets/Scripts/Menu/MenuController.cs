@@ -113,15 +113,15 @@ public class MenuController : MonoBehaviour
 
     for (int i = 0; i < stages.Count; i++)
     {
-      if (!stages[i].GetIslocked())
+      if (!stages[i].Islocked)
       {
         newStageItem = Instantiate(_baseStageButton, _stageContainer.transform, false);
         newStageItem.transform.localPosition = new Vector3(0, 0, 0); // TODO - hardcoded values, replace for relative points from prefab.
         newStageItem.name = "s" + i;
 
         newStageItem.GetComponent<StageMenuItem>()
-            .SetStageNameLabel(stages[i].GetLabel(), false)
-            .SetStars(stages[i].GetStars())
+            .SetStageNameLabel(stages[i].Label, false)
+            .SetStars(BaseValues.GetStars(stages[i].HighestPickUps, stages[i].TotalPickUps))
             .SetStageIndex(i);
       }
     }

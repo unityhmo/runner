@@ -109,7 +109,7 @@ public class StageBlockManager : MonoBehaviour
   public void CheckValidPositions(bool andRemove = false)
   {
     StageBlock blockComponent;
-    _blocks = GameObject.FindGameObjectsWithTag(BaseValues.TAG_STAGE_BLOCK);
+    _blocks = GetTotalBlocks();
 
     GameObject block;
     for (int i = 0; i < _blocks.Length; i++)
@@ -223,18 +223,18 @@ public class StageBlockManager : MonoBehaviour
     }
   }
 
-  public int GetTotalBlocks()
+  public GameObject[] GetTotalBlocks()
   {
     _blocks = GameObject.FindGameObjectsWithTag(BaseValues.TAG_STAGE_BLOCK);
 
-    return _blocks.Length;
+    return _blocks;
   }
 
   public int SetStageLength()
   {
     _stageLength = 0;
 
-    if (GetTotalBlocks() > 0)
+    if (GetTotalBlocks().Length > 0)
     {
       _stageLength = (int)Mathf.Round((GetHighestZ - GetLowestZ) / GetBlockHeight) + 1;
     }
@@ -449,24 +449,15 @@ public class StageBlockManager : MonoBehaviour
     _basset.transform.localScale = scale;
   }
 
-  /*private void InstantiateStreetLight(Vector2 coords, Transform appendTo, StageSkin skin, bool flipped = false)
+  public void DestroyAllBlocks()
   {
-    _basset = Instantiate(skin.StreetLightAsset) as GameObject;
-    _basset.name = "mesh: streetlight";
-    if (flipped)
-      _basset.name += " (flipped)";
-    _brenderer = _basset.GetComponent<Renderer>();
-    _basset.transform.position = new Vector3(coords.x, 0f, coords.y);
-    _basset.transform.parent = appendTo;
+    gameObject.SetActive(true);
 
-    Vector3 scale = _basset.transform.localScale;
-    if (flipped)
+    _blocks = GetTotalBlocks();
+
+    for (int i = 0; i < _blocks.Length; i++)
     {
-      scale.x = -scale.x;
+      DestroyImmediate(_blocks[i]);
     }
-    scale.x = (float)Math.Round(scale.x, 3);
-    scale.y = (float)Math.Round(scale.y, 3);
-    scale.z = (float)Math.Round(scale.z, 3);
-    _basset.transform.localScale = scale;
-  }*/
+  }
 }
