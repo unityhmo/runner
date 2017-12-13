@@ -36,6 +36,10 @@ public class GameDataController
 
         AudioListener.volume = _dataInfo.AudioEnabled ? 1 : 0;
 
+        if(_dataInfo.StageConfig == null) {
+          CreateAndSaveDefault();
+        }
+
       }
       catch
       {
@@ -52,11 +56,13 @@ public class GameDataController
     }
   }
 
-  public void SaveUnlockedStage(int stageIndex)
+  public void SaveUnlockedStage(int stageIndex, Stage newStageData)
   {
-    _dataInfo.StateIsLocked["level_" + stageIndex] = false;
+    _dataInfo.StageConfig["locked_" + stageIndex] = false;
+    _dataInfo.StageConfig["pickups_total_" + stageIndex] = newStageData.TotalPickUps;
+    _dataInfo.StageConfig["pickups_highest_" + stageIndex] = newStageData.HighestPickUps;
     Save();
-    Debug.Log("Level " + stageIndex + " Unlocked!");
+    Debug.Log("Level " + stageIndex + " Updated / Unlocked with this score: " + newStageData.HighestPickUps + "/"+ newStageData.TotalPickUps);
   }
 
   public void SetAudioSetting(bool value)
@@ -77,10 +83,22 @@ public class GameDataController
     // User Preferences
     _dataInfo.AudioEnabled = true;
 
-    // User Game Info
-    _dataInfo.StateIsLocked.Add("level_0", false);
-    _dataInfo.StateIsLocked.Add("level_1", true);
-    _dataInfo.StateIsLocked.Add("level_2", true);
+    // User Game Info (10 levels)
+    for(int i = 0; i < 10; i++)
+    {
+      if(i == 0)
+      {
+        _dataInfo.StageConfig.Add("locked_0", false);
+        _dataInfo.StageConfig.Add("pickups_total_0", 0);
+        _dataInfo.StageConfig.Add("pickups_highest_0", 0);
+      }
+      else
+      {
+        _dataInfo.StageConfig.Add("locked_" + i, true);
+        _dataInfo.StageConfig.Add("pickups_total_" + i, 0);
+        _dataInfo.StageConfig.Add("pickups_highest_" + i, 0);
+      }
+    }
   }
 
 }

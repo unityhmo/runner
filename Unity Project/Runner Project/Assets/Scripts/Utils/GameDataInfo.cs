@@ -5,5 +5,5 @@ using System.Collections;
 public class GameDataInfo
 {
   public bool AudioEnabled;
-  public Hashtable StateIsLocked = new Hashtable();
+  public Hashtable StageConfig = new Hashtable();
 }

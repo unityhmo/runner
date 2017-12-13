@@ -64,7 +64,7 @@ public class GameMaster : MonoBehaviour
   {
     _stages[stageIndex] = newStageData;
 
-    _dataController.SaveUnlockedStage(stageIndex);
+    _dataController.SaveUnlockedStage(stageIndex, newStageData);
   }
 
   public void SetStageIndex(int val)

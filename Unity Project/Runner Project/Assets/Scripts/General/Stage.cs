@@ -1,4 +1,6 @@
-﻿// Base class for each stage. Only setter and getters.
+﻿using System.Collections;
+
+// Base class for each stage. Only setter and getters.
 public class Stage
 {
   private bool _isLocked = true;
@@ -7,6 +9,13 @@ public class Stage
   private int _totalPickUps = 0;
   private int _highestPickUps = 0;
 
+  public Stage SetConfig(int index, Hashtable stageConfig)
+  {
+    _isLocked = (bool)stageConfig["locked_" + index];
+    _totalPickUps = (int)stageConfig["pickups_total_" + index];
+    _highestPickUps = (int)stageConfig["pickups_highest_" + index];
+    return this;
+  }
   public Stage SetIslocked(bool val)
   {
     _isLocked = val;
@@ -19,7 +28,6 @@ public class Stage
       return _isLocked;
     }
   }
-
   public Stage SetLabel(string val)
   {
     _label = val;
