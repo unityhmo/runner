@@ -15,7 +15,7 @@ public class Orb : MonoBehaviour
     if (gameController)
       gameController.GetComponent<GameController>().OrbDetected();
 
-    if (_rend)
+    if (_mesh)
       _rend = _mesh.GetComponent<Renderer>();
   }
 

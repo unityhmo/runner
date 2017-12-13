@@ -141,16 +141,17 @@ public static class BaseValues
   public static int GetStars(int user, int total)
   {
     int stars = 0;
+    int percent = 0;
 
     if (user > 0 && total > 0)
     {
-      int percent = (int)Mathf.Round((user / total) * 100);
+      percent = (int)Mathf.Round(((float)user / (float)total) * 100f);
 
       if (percent == 100)
         stars = 3;
-      else if (percent > 75)
+      else if (percent > 70)
         stars = 2;
-      else if (percent > 50)
+      else if (percent > 40)
         stars = 1;
     }
 
