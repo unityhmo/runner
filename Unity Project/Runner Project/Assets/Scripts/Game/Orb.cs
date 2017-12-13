@@ -15,12 +15,13 @@ public class Orb : MonoBehaviour
     if (gameController)
       gameController.GetComponent<GameController>().OrbDetected();
 
-    _rend = _mesh.GetComponent<Renderer>();
+    if (_rend)
+      _rend = _mesh.GetComponent<Renderer>();
   }
 
   void LateUpdate()
   {
-    if (_rend.isVisible)
+    if (_rend && _rend.isVisible)
       transform.Rotate(Vector3.up, _speed * Time.deltaTime);
   }
 
