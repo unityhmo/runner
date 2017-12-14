@@ -28,6 +28,12 @@ public static class Stages
       .SetLabel("Final Stage");
     stages.Add(newStage);
 
+    newStage = new Stage();
+    newStage.SetConfig(3, (Hashtable)dataInfo.StageConfig)
+        .SetAssetPath("level_3")
+        .SetLabel("stage medio mamon");
+    stages.Add(newStage);
+
     return stages;
   }
 }
