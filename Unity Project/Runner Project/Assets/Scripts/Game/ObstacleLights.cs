@@ -18,6 +18,9 @@ public class ObstacleLights : MonoBehaviour
 
   void Start()
   {
+    if (_rendererHolder == null)
+      return;
+
     _renderer = _rendererHolder.GetComponent<Renderer>();
 
     if (!_lightsOn && _off != null)
@@ -28,19 +31,22 @@ public class ObstacleLights : MonoBehaviour
 
   void LateUpdate()
   {
-    if (_lightsOn && _tic > 0 && _off != null && _on != null)
+    if (_renderer != null)
     {
-      if (_currentTime >= _tic)
+      if (_lightsOn && _tic > 0 && _off != null && _on != null)
       {
-        if (_currentLightsOn)
-          TurnOff();
-        else
-          TurnOn();
+        if (_currentTime >= _tic)
+        {
+          if (_currentLightsOn)
+            TurnOff();
+          else
+            TurnOn();
 
-        _currentTime = 0f;
+          _currentTime = 0f;
+        }
+        else
+          _currentTime += Time.deltaTime;
       }
-      else
-        _currentTime += Time.deltaTime;
     }
   }
 
@@ -48,25 +54,11 @@ public class ObstacleLights : MonoBehaviour
   {
     _renderer.material = _off;
     _currentLightsOn = false;
-
-    TurnOffFX();
   }
 
   private void TurnOn()
   {
     _renderer.material = _on;
     _currentLightsOn = true;
-
-    TurnOnFX();
-  }
-
-  public virtual void TurnOffFX()
-  {
-
-  }
-
-  public virtual void TurnOnFX()
-  {
-
   }
 }
