@@ -71,7 +71,7 @@ public class GameDataController
     Save();
   }
 
-  private void CreateAndSaveDefault()
+  public void CreateAndSaveDefault()
   {
     _dataInfo = new GameDataInfo();
     SetDefault();
@@ -99,6 +99,22 @@ public class GameDataController
         _dataInfo.StageConfig.Add("pickups_highest_" + i, 0);
       }
     }
+  }
+
+  public void UnlockAll()
+  {
+    _dataInfo = new GameDataInfo();
+
+    // User Game Info (10 levels)
+    for (int i = 0; i < 10; i++)
+    {
+      _dataInfo.StageConfig.Add("locked_" + i, false);
+      _dataInfo.StageConfig.Add("pickups_total_" + i, 0);
+      _dataInfo.StageConfig.Add("pickups_highest_" + i, 0);
+    }
+
+    Save();
+
   }
 
 }

@@ -41,6 +41,11 @@ public class GameMaster : MonoBehaviour
     SetupSoundAndMusicManager();
   }
 
+  public void RefreshStages()
+  {
+    _stages = Stages.BuildStages(_dataController.GetDataInfo());
+  }
+
   // Build our base info for Stages,  this is before overwritting with user saved local progress data
   public List<Stage> GetStages()
   {

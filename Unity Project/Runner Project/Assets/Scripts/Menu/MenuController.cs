@@ -117,6 +117,8 @@ public class MenuController : MonoBehaviour
     List<Stage> stages = _master.GetStages();
     GameObject newStageItem;
 
+    ClearStagesButtons();
+
     for (int i = 0; i < stages.Count; i++)
     {
       if (!stages[i].Islocked)
@@ -133,9 +135,33 @@ public class MenuController : MonoBehaviour
     }
   }
 
+  private void ClearStagesButtons()
+  {
+    foreach (Transform child in _stageContainer.transform)
+    {
+      GameObject.Destroy(child.gameObject);
+    }
+  }
+
   public void ToggleSoundButtonHandler(bool value)
   {
     AudioListener.volume = value?1:0;
     _master.GetDataController().SetAudioSetting(value);
+  }
+
+  public void RestartButtonHandler(bool value)
+  {
+    _master.GetDataController().CreateAndSaveDefault();
+    _master.RefreshStages();
+    CreateStageButtons();
+    ResetPanels();
+  }
+
+  public void UnlockLevelsButtonHandler(bool value)
+  {
+    _master.GetDataController().UnlockAll();
+    _master.RefreshStages();
+    CreateStageButtons();
+    ResetPanels();
   }
 }

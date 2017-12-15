@@ -19,19 +19,19 @@ public static class Stages
     newStage = new Stage();
     newStage.SetConfig(1, (Hashtable)dataInfo.StageConfig)
       .SetAssetPath("level_1")
-      .SetLabel("The Long Path");
+      .SetLabel("The Short Path");
     stages.Add(newStage);
 
     newStage = new Stage();
     newStage.SetConfig(2, (Hashtable)dataInfo.StageConfig)
       .SetAssetPath("level_2")
-      .SetLabel("Final Stage");
+      .SetLabel("The Long One");
     stages.Add(newStage);
 
     newStage = new Stage();
     newStage.SetConfig(3, (Hashtable)dataInfo.StageConfig)
         .SetAssetPath("level_3")
-        .SetLabel("stage medio mamon");
+        .SetLabel("An easy one");
     stages.Add(newStage);
 
     return stages;
