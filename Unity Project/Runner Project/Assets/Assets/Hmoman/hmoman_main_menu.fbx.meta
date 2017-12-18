@@ -94,14 +94,14 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hmoman_emission
-    second: {fileID: 2100000, guid: 3455ed01165a79f4a8247a8a51ecbb0b, type: 2}
+    second: {fileID: 2100000, guid: 4afe599df64100047a8228c702a6b08d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hmoman_opaque
-    second: {fileID: 2100000, guid: f483cdb0fb36c774ba7ad95f3439706c, type: 2}
+    second: {fileID: 2100000, guid: 5dcf725f8edebf249b6291959481189b, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
