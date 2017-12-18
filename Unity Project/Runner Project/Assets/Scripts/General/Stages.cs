@@ -34,6 +34,12 @@ public static class Stages
         .SetLabel("An easy one");
     stages.Add(newStage);
 
+    newStage = new Stage();
+    newStage.SetConfig(4, (Hashtable)dataInfo.StageConfig)
+        .SetAssetPath("level_4")
+        .SetLabel("Don't jump!");
+    stages.Add(newStage);
+
     return stages;
   }
 }
