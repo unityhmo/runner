@@ -40,6 +40,12 @@ public static class Stages
         .SetLabel("Don't jump!");
     stages.Add(newStage);
 
+    newStage = new Stage();
+    newStage.SetConfig(4, (Hashtable)dataInfo.StageConfig)
+        .SetAssetPath("level_5")
+        .SetLabel("Long & Fast");
+    stages.Add(newStage);
+
     return stages;
   }
 }
