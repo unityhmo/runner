@@ -41,9 +41,15 @@ public static class Stages
     stages.Add(newStage);
 
     newStage = new Stage();
-    newStage.SetConfig(4, (Hashtable)dataInfo.StageConfig)
+    newStage.SetConfig(5, (Hashtable)dataInfo.StageConfig)
         .SetAssetPath("level_5")
         .SetLabel("Long & Fast");
+    stages.Add(newStage);
+
+    newStage = new Stage();
+    newStage.SetConfig(6, (Hashtable)dataInfo.StageConfig)
+        .SetAssetPath("level_6")
+        .SetLabel("Zig Zag");
     stages.Add(newStage);
 
     return stages;
