@@ -4,17 +4,18 @@
 public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
-  private float _swipeDistance = 50;
-  // first finger position
-  private Vector2 _fp;
-  // last finger position
-  private Vector2 _lp;
-
+  private float _screenSwipePercent = 20; // percentage of screen swiped
+  private float _swipeDistance;
+  private Vector2 _fp; // first finger position
+  private Vector2 _lp; // last finger position
   private PlayerController _contr;
 
   void Start()
   {
     _contr = transform.GetComponent<PlayerController>();
+
+    _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
+    _swipeDistance = Screen.width / _screenSwipePercent;
   }
 
   /*
@@ -22,49 +23,39 @@ public class PlayerInput : MonoBehaviour
    */
   void LateUpdate()
   {
-    foreach (Touch touch in Input.touches)
+    if (Input.touches.Length > 0)
     {
+      Touch touch = Input.touches[0];
       if (touch.phase == TouchPhase.Began)
       {
         _fp = touch.position;
         _lp = touch.position;
       }
-
-      if (touch.phase == TouchPhase.Moved)
+      else if (touch.phase == TouchPhase.Moved)
       {
         _lp = touch.position;
-      }
-
-      if (touch.phase == TouchPhase.Ended)
-      {
-        _lp = _lp - _fp;
-        if ((_lp.x) < -_swipeDistance && -_lp.x > _lp.y) // left
+        if (Vector2.Distance(_lp, _fp) >= _swipeDistance)
         {
-          JumpLeft();
-        }
-        else if ((_lp.x) > _swipeDistance && _lp.x > _lp.y) // right
-        {
-          JumpRight();
-        }
-        else if ((_lp.y) > _swipeDistance) // up
-        {
-          JumpUp();
+          _lp = _lp - _fp;
+          if (Mathf.Abs(_lp.x) > Mathf.Abs(_lp.y))
+          {
+            if (_lp.x < 0f)
+              JumpLeft();
+            else if (_lp.x > 0f)
+              JumpRight();
+          }
+          else
+            JumpUp();
         }
       }
     }
 
     if (Input.GetKeyDown(KeyCode.LeftArrow))
-    {
       JumpLeft();
-    }
     else if (Input.GetKeyDown(KeyCode.RightArrow))
-    {
       JumpRight();
-    }
     else if (Input.GetKeyDown(KeyCode.UpArrow))
-    {
       JumpUp();
-    }
   }
 
   private void JumpLeft()
