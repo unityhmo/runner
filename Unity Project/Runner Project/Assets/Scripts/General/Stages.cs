@@ -52,6 +52,12 @@ public static class Stages
         .SetLabel("Zig Zag");
     stages.Add(newStage);
 
+    newStage = new Stage();
+    newStage.SetConfig(6, (Hashtable)dataInfo.StageConfig)
+        .SetAssetPath("level_7")
+        .SetLabel("One Long Line");
+    stages.Add(newStage);
+
     return stages;
   }
 }
