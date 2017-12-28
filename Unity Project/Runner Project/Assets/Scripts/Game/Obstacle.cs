@@ -29,8 +29,7 @@ public class Obstacle : MonoBehaviour
     if (_source != null && _destroyClip != null)
       _source.PlayOneShot(_destroyClip);
 
-    Debug.Log(gameObject.name + " collisioned!");
-    Destroy(gameObject);
+    //Destroy(gameObject);
   }
 
   public int Damage

@@ -46,6 +46,9 @@ public class PlayerInput : MonoBehaviour
           }
           else
             JumpUp();
+
+          _fp = touch.position;
+          _lp = touch.position;
         }
       }
     }

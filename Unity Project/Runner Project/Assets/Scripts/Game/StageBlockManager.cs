@@ -301,6 +301,16 @@ public class StageBlockManager : MonoBehaviour
     _bcenter = new Vector3(0f, -_blockColliderHeight / 2, 0f);
     _nextStreetLight = _streetLightFrequency;
 
+    // Goal Object
+    GameObject goal = new GameObject();
+    BoxCollider goalCollider = goal.AddComponent<BoxCollider>();
+    goalCollider.isTrigger = true;
+    goal.name = BaseValues.TAG_GOAL;
+    goal.tag = BaseValues.TAG_GOAL;
+    goalCollider.size = new Vector3(_blockWidth * GetValidPositions.Length, 4f, _blockHeight / 2);
+    goalCollider.center = new Vector3(0, 2f, 0);
+    goal.transform.parent = result.transform;
+
     for (iRows = 0; iRows < StageLength; iRows++)
     {
       for (iLane = 0; iLane < GetValidPositions.Length; iLane++)
@@ -315,7 +325,32 @@ public class StageBlockManager : MonoBehaviour
         {
           ConstructBlockAssets(blocksCoords, coords, indexes, skin, result.transform);
         }
+
+        // Creates the goal finish line
+        if (iRows == StageLength - 1)
+        {
+          bool goalFlipped = false;
+          string goalLabel = "goal_";
+
+          if (iLane > 0 && iLane < GetValidPositions.Length - 1)
+          {
+            goalLabel += "mid";
+          }
+          else
+          {
+            if (iLane == GetValidPositions.Length - 1)
+              goalFlipped = true;
+
+            goalLabel += "side";
+          }
+          coords.y = 0;
+          InstantiateSkinAsset(goalLabel, goalFlipped, coords, goal.transform, skin, false);
+        }
       }
+
+      if (iRows == StageLength - 1)
+        goal.transform.position = new Vector3(0, 0, z);
+
       z += GetBlockHeight;
 
       if (_streetLightFrequency > 0 && iRows == _nextStreetLight - 1)
@@ -344,7 +379,7 @@ public class StageBlockManager : MonoBehaviour
 
     // Back
     adjacentCoords = new Vector2(coords.x, coords.y + _blockHeight);
-    if (indexes.y < StageLength - 1 && !blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
+    if (!blocksCoords.ContainsKey(adjacentCoords.x + "_" + adjacentCoords.y))
     {
       CreateLayoutBlock(indexes, adjacentCoords, _bgo.transform, skin, "back");
     }
@@ -371,7 +406,7 @@ public class StageBlockManager : MonoBehaviour
     }
 
     // Street Light
-    if ((indexes.x == 0 || indexes.x == GetValidPositions.Length - 1) && (skin.StreetLightAsset != null && _streetLightFrequency > 0))
+    if (indexes.y < StageLength - 1 && (indexes.x == 0 || indexes.x == GetValidPositions.Length - 1) && (skin.StreetLightAsset != null && _streetLightFrequency > 0))
     {
       if (indexes.y == _nextStreetLight - 1)
       {
@@ -423,30 +458,36 @@ public class StageBlockManager : MonoBehaviour
     if (indexes.x == 0)
       flipped = false;
 
-    InstantiateSkinAsset("street_light", flipped, coords, appendTo, skin);
+    InstantiateSkinAsset("street_light", flipped, coords, appendTo, skin, false);
   }
 
-  private void InstantiateSkinAsset(string meshCase, bool flipped, Vector2 coords, Transform appendTo, StageSkin skin)
+  private void InstantiateSkinAsset(string meshCase, bool flipped, Vector2 coords, Transform appendTo, StageSkin skin, bool useSkinMaterial = true)
   {
     _basset = Instantiate(skin.GetAsset(meshCase)) as GameObject;
     _basset.name = "mesh: " + meshCase;
     if (flipped)
       _basset.name += " (flipped)";
-    _brenderer = _basset.GetComponent<Renderer>();
-    if (meshCase != "street_light")
+
+    if (useSkinMaterial)
+    {
+      _brenderer = _basset.GetComponent<Renderer>();
       _brenderer.material = skin.SkinMaterial;
+    }
+
     _basset.transform.position = new Vector3(coords.x, 0f, coords.y);
     _basset.transform.parent = appendTo;
 
     Vector3 scale = _basset.transform.localScale;
     if (flipped)
-    {
       scale.x = -scale.x;
-    }
+
     scale.x = (float)Math.Round(scale.x, 3);
     scale.y = (float)Math.Round(scale.y, 3);
     scale.z = (float)Math.Round(scale.z, 3);
     _basset.transform.localScale = scale;
+
+    if (meshCase == "goal_side" && flipped)
+      _basset.transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
   }
 
   public void DestroyAllBlocks()

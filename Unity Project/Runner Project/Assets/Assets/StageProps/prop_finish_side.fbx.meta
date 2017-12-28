@@ -1,26 +1,27 @@
 fileFormatVersion: 2
-guid: 991f75ca63658894fb1ad377a13040de
-timeCreated: 1512121101
+guid: 2db0032f9a8457b42a764b3fbcc8aabf
+timeCreated: 1514420881
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: ledge_side
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: stree_mat
-    second: {fileID: 2100000, guid: e3038b49002dbf04bbe0c2e3ec13c5c5, type: 2}
+    100000: goal_side_transparent
+    100002: //RootNode
+    400000: goal_side_transparent
+    400002: //RootNode
+    2100000: goal_mat
+    2300000: goal_side_transparent
+    2300002: //RootNode
+    3300000: goal_side_transparent
+    3300002: //RootNode
+    4300000: goal_side
+    4300002: goal_side_transparent
+  externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
