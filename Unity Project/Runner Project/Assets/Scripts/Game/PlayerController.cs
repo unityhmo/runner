@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     _fx = transform.GetComponent<CharacterFX>();
     _contr = transform.GetComponent<CharacterController>();
     _gameController = GameObject.FindGameObjectWithTag(BaseValues.TAG_GAME_CONTROLLER).transform.GetComponent<GameController>();
+
+    _fx.SetInvincibilityTimer(_invincibility);
   }
 
   void Update()
@@ -234,11 +236,11 @@ public class PlayerController : MonoBehaviour
       }
 
       AudioManager.GetCharFX().Damage();
+      _fx.Damage();
 
       if (_gameController.GetCurrentHP() > 0)
       {
         _anim.Damage();
-        _fx.Damage();
 
         if (_gameController.GetCurrentHP() == 1)
           _fx.SetLowLife(true);

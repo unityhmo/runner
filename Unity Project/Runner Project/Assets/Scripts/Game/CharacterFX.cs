@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 // In charge of shader FX, particles and other gameobjects for visual purposes.
 public class CharacterFX : MonoBehaviour
@@ -18,6 +19,13 @@ public class CharacterFX : MonoBehaviour
   [SerializeField]
   private float _shaderTicSpeed = 1f;
   private bool _shaderOn = false;
+  private bool _hasDamage = false;
+  private float _damageTimer;
+  private float _invincibilityTimer;
+  [SerializeField]
+  private RawImage _damageOverlay;
+  private Color _overlayColor;
+  private float _t;
 
   void Start()
   {
@@ -27,12 +35,14 @@ public class CharacterFX : MonoBehaviour
 
     _shaderStandard = Shader.Find("Standard");
     _shaderLowHealth = Shader.Find("Toon/Basic");
+
+    _overlayColor = _damageOverlay.color;
   }
 
   void LateUpdate()
   {
     // If low health, keep tic timer running/looping
-    if (_hasLowLife)
+    if (_hasLowLife || _hasDamage)
     {
       _shaderTimer += Time.deltaTime;
       if (_shaderTimer > _shaderTicSpeed)
@@ -40,6 +50,25 @@ public class CharacterFX : MonoBehaviour
         _shaderTimer = 0f;
         _shaderOn = !_shaderOn;
         SetShaderState();
+      }
+
+      if (_hasDamage)
+      {
+        _damageTimer += Time.deltaTime;
+
+        _overlayColor.a = Mathf.Lerp(1f, 0f, _t);
+        _t += Time.deltaTime / _invincibilityTimer;
+
+        if (_damageTimer > _invincibilityTimer)
+        {
+          _shaderTimer = 0f;
+          _shaderOn = false;
+          SetShaderState();
+          _damageOverlay.enabled = false;
+          _hasDamage = false;
+        }
+
+        _damageOverlay.color = _overlayColor;
       }
     }
   }
@@ -82,7 +111,15 @@ public class CharacterFX : MonoBehaviour
 
   public void Damage()
   {
-    Debug.Log("Add: Damage fx");
+    _t = 0f;
+    _damageTimer = 0f;
+    _damageOverlay.enabled = true;
+    _hasDamage = true;
+  }
+
+  public void SetInvincibilityTimer(float invincibilityTimer)
+  {
+    _invincibilityTimer = invincibilityTimer;
   }
 
   // Swapper of Shader type and Color for each shader.
