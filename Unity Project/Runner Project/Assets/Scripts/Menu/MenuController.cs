@@ -19,17 +19,17 @@ public class MenuController : MonoBehaviour
   [SerializeField]
   private GameObject _buttonBack;
   [SerializeField]
-  private Skybox _mySkybox;
-  [SerializeField]
-  private Material[] _skyboxPool; // expected to have 4 items
-  [SerializeField]
   private Animator _hmoManAnimatorController;
   [SerializeField]
   private Animator _cameraAnimatorController;
   [SerializeField]
   private GameObject _baseStageButton;
   [SerializeField]
+  private GameObject _stageView;
+  [SerializeField]
   private GameObject _stageContainer;
+  [SerializeField]
+  private Scrollbar _scrollbar;
   [SerializeField]
   private AudioClip _mainMenuThemeIntro;
   [SerializeField]
@@ -53,8 +53,7 @@ public class MenuController : MonoBehaviour
     _panelMain.SetActive(false);
     _panelPlay.SetActive(true);
     _buttonBack.SetActive(true);
-    _mySkybox.material = _skyboxPool[2];
-    _hmoManAnimatorController.SetBool("isReady", true);
+    _hmoManAnimatorController.SetBool("playActive", true);
     _cameraAnimatorController.SetBool("isPlay", true);
   }
 
@@ -64,8 +63,8 @@ public class MenuController : MonoBehaviour
     _panelMain.SetActive(false);
     _panelOptions.SetActive(true);
     _buttonBack.SetActive(true);
-    _mySkybox.material = _skyboxPool[0];
-    _hmoManAnimatorController.SetBool("isWaving", true);
+    _hmoManAnimatorController.SetBool("optionsActive", true);
+    _cameraAnimatorController.SetBool("isOptions", true);
   }
 
   public void CreditsButtonHandler()
@@ -74,8 +73,7 @@ public class MenuController : MonoBehaviour
     _panelMain.SetActive(false);
     _panelCredits.SetActive(true);
     _buttonBack.SetActive(true);
-    _mySkybox.material = _skyboxPool[1];
-    _hmoManAnimatorController.SetBool("isWaving", true);
+    _hmoManAnimatorController.SetBool("creditsActive", true);
     _cameraAnimatorController.SetBool("isCredits", true);
   }
 
@@ -104,11 +102,12 @@ public class MenuController : MonoBehaviour
     _panelOptions.SetActive(false);
     _panelCredits.SetActive(false);
     _buttonBack.SetActive(false);
-    _mySkybox.material = _skyboxPool[3];
-    _hmoManAnimatorController.SetBool("isReady", false);
-    _hmoManAnimatorController.SetBool("isWaving", false);
-    _cameraAnimatorController.SetBool("isCredits", false);
+    _hmoManAnimatorController.SetBool("playActive", false);
+    _hmoManAnimatorController.SetBool("optionsActive", false);
+    _hmoManAnimatorController.SetBool("creditsActive", false);
     _cameraAnimatorController.SetBool("isPlay", false);
+    _cameraAnimatorController.SetBool("isOptions", false);
+    _cameraAnimatorController.SetBool("isCredits", false);
 
   }
 
@@ -116,6 +115,14 @@ public class MenuController : MonoBehaviour
   {
     List<Stage> stages = _master.GetStages();
     GameObject newStageItem;
+    float buttonHeight = 0f;
+    float buttonSpacing = _stageContainer.GetComponent<VerticalLayoutGroup>().spacing;
+    float containerViewHeight = _stageView.GetComponent<RectTransform>().sizeDelta.y;
+    bool scrollNeeded = false;
+    RectTransform containerRect = _stageContainer.GetComponent<RectTransform>();
+    Vector2 containerSize = containerRect.sizeDelta;
+
+    _stageContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(0, containerViewHeight);
 
     ClearStagesButtons();
 
@@ -123,29 +130,46 @@ public class MenuController : MonoBehaviour
     {
       if (!stages[i].Islocked)
       {
+        if (buttonHeight == 0f)
+        {
+          buttonHeight = _baseStageButton.GetComponent<RectTransform>().sizeDelta.y;
+        }
+
         newStageItem = Instantiate(_baseStageButton, _stageContainer.transform, false);
-        newStageItem.transform.localPosition = new Vector3(0, 0, 0); // TODO - hardcoded values, replace for relative points from prefab.
         newStageItem.name = "s" + i;
 
         newStageItem.GetComponent<StageMenuItem>()
             .SetStageNameLabel(stages[i].Label, false)
             .SetStars(BaseValues.GetStars(stages[i].HighestPickUps, stages[i].TotalPickUps))
             .SetStageIndex(i);
+
+        containerSize.y = (buttonHeight + buttonSpacing) * (i + 1);
+
+        if (containerSize.y > containerViewHeight)
+        {
+          containerRect.sizeDelta = containerSize;
+          scrollNeeded = true;
+        }
       }
     }
+
+    if (!scrollNeeded)
+      _stageView.GetComponent<ScrollRect>().vertical = false;
+    else
+      _scrollbar.value = 0;
   }
 
   private void ClearStagesButtons()
   {
     foreach (Transform child in _stageContainer.transform)
     {
-      GameObject.Destroy(child.gameObject);
+      Destroy(child.gameObject);
     }
   }
 
   public void ToggleSoundButtonHandler(bool value)
   {
-    AudioListener.volume = value?1:0;
+    AudioListener.volume = value ? 1 : 0;
     _master.GetDataController().SetAudioSetting(value);
   }
 
