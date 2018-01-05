@@ -22,18 +22,21 @@ public class CameraFollow : MonoBehaviour
 
   void LateUpdate()
   {
-    if (!_zoomOn)
+    if (_player != null)
     {
-      transform.position = new Vector3(transform.position.x, transform.position.y, _player.position.z - _distance);
+      if (!_zoomOn)
+      {
+        transform.position = new Vector3(transform.position.x, transform.position.y, _player.position.z - _distance);
 
-      _endPos = new Vector3(_player.position.x, transform.position.y, transform.position.z);
-    }
-    else
-    {
-      _endPos = new Vector3(_player.position.x, _player.position.y + _victoryZoomDistance, _player.position.z - _victoryZoomDistance);
-    }
+        _endPos = new Vector3(_player.position.x, transform.position.y, transform.position.z);
+      }
+      else
+      {
+        _endPos = new Vector3(_player.position.x, _player.position.y + _victoryZoomDistance, _player.position.z - _victoryZoomDistance);
+      }
 
-    transform.position = Vector3.Lerp(transform.position, _endPos, Time.deltaTime * _speed);
+      transform.position = Vector3.Lerp(transform.position, _endPos, Time.deltaTime * _speed);
+    }
   }
 
   public void VictoryZoom()
