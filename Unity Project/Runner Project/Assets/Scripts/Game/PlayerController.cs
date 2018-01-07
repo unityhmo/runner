@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
       {
         _gameController.RegisterDamage(0, true);
         EndGame();
+
+        Invoke("DestroyMe", 2f);
       }
 
       // After player is hit, hmoman becomes invincible for _invincibility time
@@ -257,5 +259,10 @@ public class PlayerController : MonoBehaviour
      * SendMessage without receiver required, this way we wont have errors if no receiver is previously prepared in collisioned object
      */
     go.SendMessage(BaseValues.RECEIVER_COLLISION_DETECTED, SendMessageOptions.DontRequireReceiver);
+  }
+
+  private void DestroyMe()
+  {
+    Destroy(gameObject);
   }
 }
