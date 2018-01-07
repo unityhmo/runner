@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
   [SerializeField]
   private GameObject[] heartUi;
   [SerializeField]
+  private GameObject[] winStarUi;
+  [SerializeField]
   private Image gearProgresion;
   [SerializeField]
   private Text _txtPickUps;
@@ -168,7 +170,12 @@ public class GameController : MonoBehaviour
 
   private void ShowWinUI()
   {
-    _canvasWin.SetActive(true);
+        Debug.Log(_stageData.HighestPickUps);
+        Debug.Log(_totalOrbs);
+        winStarUi[0].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.OneStar);
+        winStarUi[1].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.TwoStar);
+        winStarUi[2].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.ThreeStar);
+        _canvasWin.SetActive(true);
   }
 
   private void ShowGameOverUI()
