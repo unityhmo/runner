@@ -9,54 +9,29 @@ public static class Stages
     // Note that we could skip adding some values, each stage will take its base value at Stage class.
     List<Stage> stages = new List<Stage>();
     Stage newStage;
-
-    newStage = new Stage();
-    newStage.SetConfig(0, (Hashtable)dataInfo.StageConfig)
-      .SetAssetPath("level_0")
-      .SetLabel("Hello World");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(1, (Hashtable)dataInfo.StageConfig)
-      .SetAssetPath("level_1")
-      .SetLabel("The Short Path");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(2, (Hashtable)dataInfo.StageConfig)
-      .SetAssetPath("level_2")
-      .SetLabel("The Long One");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(3, (Hashtable)dataInfo.StageConfig)
-        .SetAssetPath("level_3")
-        .SetLabel("An easy one");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(4, (Hashtable)dataInfo.StageConfig)
-        .SetAssetPath("level_4")
-        .SetLabel("Don't jump!");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(5, (Hashtable)dataInfo.StageConfig)
-        .SetAssetPath("level_5")
-        .SetLabel("Long & Fast");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(6, (Hashtable)dataInfo.StageConfig)
-        .SetAssetPath("level_6")
-        .SetLabel("Zig Zag");
-    stages.Add(newStage);
-
-    newStage = new Stage();
-    newStage.SetConfig(6, (Hashtable)dataInfo.StageConfig)
-        .SetAssetPath("level_7")
-        .SetLabel("One Long Line");
-    stages.Add(newStage);
+	
+	string[] names = {
+		"Hello World",
+		"The Short Path",
+		"The Long One",
+		"An easy one",
+		"Don't jump!",
+		"Long & Fast",
+		"Zig Zag",
+		"One Long Line",
+		"Run Free"
+	};
+	
+	for (int cnt = 0; cnt < names.Length; cnt++)
+	{
+		newStage = new Stage();
+		
+		newStage.SetConfig(cnt, (Hashtable)dataInfo.StageConfig)
+			.SetAssetPath("level_" + cnt)
+			.SetLabel(names[cnt]);
+		
+		stages.Add(newStage);
+	}
 
     return stages;
   }
