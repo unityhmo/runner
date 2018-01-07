@@ -147,14 +147,18 @@ public static class BaseValues
     {
       percent = (int)Mathf.Round(((float)user / (float)total) * 100f);
 
-      if (percent == 100)
+      if (percent == ThreeStar)
         stars = 3;
-      else if (percent > 70)
+      else if (percent > TwoStar)
         stars = 2;
-      else if (percent > 40)
+      else if (percent > OneStar)
         stars = 1;
     }
 
     return stars;
   }
+
+  public const int OneStar = 40;
+  public const int TwoStar = 70;
+  public const int ThreeStar = 100;
 }
