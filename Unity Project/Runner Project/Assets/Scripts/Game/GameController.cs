@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
   private int _getReadyTimer = 3;
   [SerializeField]
   private int _hp = 3; // Initial health points at stage
-  private int _maxHP;
   private int _orbCounter; // Pickup counter
   private int _totalOrbs;
   // UI Components
@@ -51,7 +50,6 @@ public class GameController : MonoBehaviour
 
     loadStage(_stageData.AssetPath);
 
-    _maxHP = _hp;
     UpdateUI();
 
     // Starts up delayer at beginning of stage
@@ -187,8 +185,6 @@ public class GameController : MonoBehaviour
         this.heartUi[1].SetActive(_hp > 1);
         this.heartUi[2].SetActive(_hp > 2);
         this.gearProgresion.fillAmount = (float)_orbCounter / (float)_totalOrbs;
-        Debug.Log(_orbCounter / _totalOrbs);
-        //this.gearProgresion.fillAmount = 00.5f;
     }
 
   IEnumerator StartGame()
