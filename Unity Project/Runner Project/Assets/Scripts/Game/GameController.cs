@@ -25,9 +25,9 @@ public class GameController : MonoBehaviour
   [SerializeField]
   private GameObject _canvasLose;
   [SerializeField]
-  private Text _txtHP;
-  [SerializeField]
   private GameObject[] heartUi;
+  [SerializeField]
+  private Image gearProgresion;
   [SerializeField]
   private Text _txtPickUps;
   [SerializeField]
@@ -178,15 +178,17 @@ public class GameController : MonoBehaviour
     _canvasLose.SetActive(true);
   }
 
-  // UI components updater
-  private void UpdateUI()
-  {
-    _txtPickUps.text = _orbCounter.ToString() + "/" + _totalOrbs.ToString();
-    //hearts
-    this.heartUi[0].SetActive(_hp > 0);
-    this.heartUi[1].SetActive(_hp > 1);
-    this.heartUi[2].SetActive(_hp > 2);
-        //_txtHP.text = _hp.ToString() + "/" + _maxHP.ToString();
+    // UI components updater
+    private void UpdateUI()
+    {
+        _txtPickUps.text = _orbCounter.ToString() + "/" + _totalOrbs.ToString();
+        //hearts
+        this.heartUi[0].SetActive(_hp > 0);
+        this.heartUi[1].SetActive(_hp > 1);
+        this.heartUi[2].SetActive(_hp > 2);
+        this.gearProgresion.fillAmount = (float)_orbCounter / (float)_totalOrbs;
+        Debug.Log(_orbCounter / _totalOrbs);
+        //this.gearProgresion.fillAmount = 00.5f;
     }
 
   IEnumerator StartGame()
