@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
   [SerializeField]
   private Text _txtHP;
   [SerializeField]
+  private GameObject[] heartUi;
+  [SerializeField]
   private Text _txtPickUps;
   [SerializeField]
   private GameObject _nextStageButton;
@@ -180,8 +182,12 @@ public class GameController : MonoBehaviour
   private void UpdateUI()
   {
     _txtPickUps.text = _orbCounter.ToString() + "/" + _totalOrbs.ToString();
-    _txtHP.text = _hp.ToString() + "/" + _maxHP.ToString();
-  }
+    //hearts
+    this.heartUi[0].SetActive(_hp > 0);
+    this.heartUi[1].SetActive(_hp > 1);
+    this.heartUi[2].SetActive(_hp > 2);
+        //_txtHP.text = _hp.ToString() + "/" + _maxHP.ToString();
+    }
 
   IEnumerator StartGame()
   {
