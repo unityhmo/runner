@@ -19,7 +19,8 @@ public static class Stages
 		"Long & Fast",
 		"Zig Zag",
 		"One Long Line",
-		"Run Free"
+		"Run Free",
+		"Impossible"
 	};
 	
 	for (int cnt = 0; cnt < names.Length; cnt++)
