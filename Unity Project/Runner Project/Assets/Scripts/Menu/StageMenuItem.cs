@@ -14,7 +14,7 @@ public class StageMenuItem : MonoBehaviour
   [SerializeField]
   private Text _txtStageNameLabel;
   [SerializeField]
-  private Text _txtStarsNumberLabel;
+  private GameObject[] stars;
   [SerializeField]
   private MenuController _menuController;
 
@@ -41,12 +41,9 @@ public class StageMenuItem : MonoBehaviour
 
   public StageMenuItem SetStars(int starsNumber)
   {
-    string starsLabel = "";
-    while (starsNumber-- > 0)
-    {
-      starsLabel += STAR_ICON;
-    }
-    _txtStarsNumberLabel.text = starsLabel;
+    stars[0].SetActive(starsNumber > 0);stars[0].SetActive(starsNumber > 0);
+    stars[1].SetActive(starsNumber > 1);
+    stars[2].SetActive(starsNumber > 2);
     return this;
   }
 
