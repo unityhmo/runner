@@ -11,9 +11,9 @@ public static class Stages
     Stage newStage;
 	
 	string[] names = {
-		"Hello  World",
+		"Three  of  Ten",
 		"The  Short  Path",
-		"The  Long  One",
+		"Not  so  Short",
 		"An  easy  one",
 		"Don't  jump!",
 		"Long  &  Fast",
