@@ -131,7 +131,9 @@ public class CharacterFX : MonoBehaviour
   public void CreateDash(bool flip)
   {
     GameObject particle = Instantiate(_dashFX);
-    particle.transform.position = transform.position;
+    Vector3 pos = transform.position;
+    pos.y += 0.5f;
+    particle.transform.position = pos;
     if (flip)
     {
       particle.transform.Rotate(Vector3.up, 180);

@@ -62,7 +62,6 @@ public class GameDataController
     _dataInfo.StageConfig["pickups_total_" + stageIndex] = newStageData.TotalPickUps;
     _dataInfo.StageConfig["pickups_highest_" + stageIndex] = newStageData.HighestPickUps;
     Save();
-    Debug.Log("Level " + stageIndex + " Updated / Unlocked with this score: " + newStageData.HighestPickUps + "/"+ newStageData.TotalPickUps);
   }
 
   public void SetAudioSetting(bool value)

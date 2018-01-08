@@ -170,8 +170,6 @@ public class GameController : MonoBehaviour
 
   private void ShowWinUI()
   {
-        Debug.Log(_stageData.HighestPickUps);
-        Debug.Log(_totalOrbs);
         winStarUi[0].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.OneStar);
         winStarUi[1].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.TwoStar);
         winStarUi[2].SetActive(((float)_stageData.HighestPickUps / (float)_totalOrbs) * 100 >= BaseValues.ThreeStar);
