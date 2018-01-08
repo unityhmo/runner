@@ -27,6 +27,8 @@ public class CharacterFX : MonoBehaviour
   private GameObject _deathFX;
   [SerializeField]
   private GameObject _hitsFX;
+  [SerializeField]
+  private GameObject _sparklesFX;
 
   void Start()
   {
@@ -39,7 +41,7 @@ public class CharacterFX : MonoBehaviour
   void LateUpdate()
   {
     // If low health, keep tic timer running/looping
-    if (_hasLowLife || _hasDamage)
+    if (_mesh && (_hasLowLife || _hasDamage))
     {
       _shaderTimer += Time.deltaTime;
       if (_shaderTimer > _shaderTicSpeed)
@@ -103,7 +105,6 @@ public class CharacterFX : MonoBehaviour
 
   public void Landing()
   {
-    Debug.Log("Add: Landing fx");
     AudioManager.GetCharFX().Land();
   }
 
@@ -118,6 +119,11 @@ public class CharacterFX : MonoBehaviour
   public void CreateHitsFX()
   {
     CreateParticle(_hitsFX);
+  }
+
+  public void PickUpFX()
+  {
+    CreateParticle(_sparklesFX);
   }
 
   private void CreateParticle(GameObject go)

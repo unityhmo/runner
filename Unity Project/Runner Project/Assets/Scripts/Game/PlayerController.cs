@@ -223,7 +223,10 @@ public class PlayerController : MonoBehaviour
     GameObject go = other.gameObject;
 
     if (go.tag == BaseValues.TAG_ORB_PICKUP)
+    {
       _gameController.PickUpOrb();
+      _fx.PickUpFX();
+    }
     else if (go.tag == BaseValues.TAG_OBSTACLE && !_isInvincible)
     {
       Obstacle obstacleComp = go.GetComponent<Obstacle>();
