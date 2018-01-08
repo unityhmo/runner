@@ -6,15 +6,12 @@ public class CharacterFX : MonoBehaviour
 {
   [SerializeField]
   private bool _hasLowLife = false;
-  private Color _baseColor;
-  private Texture _baseTexture;
+  private Material _baseMaterial;
   private Renderer _rend;
   [SerializeField]
-  private Color _lowHealthColor = Color.red;
+  private Material _hurtMaterial;
   [SerializeField]
   private GameObject _mesh;
-  private Shader _shaderStandard;
-  private Shader _shaderLowHealth;
   private float _shaderTimer = 0f;
   [SerializeField]
   private float _shaderTicSpeed = 1f;
@@ -26,15 +23,15 @@ public class CharacterFX : MonoBehaviour
   private RawImage _damageOverlay;
   private Color _overlayColor;
   private float _t;
+  [SerializeField]
+  private GameObject _deathFX;
+  [SerializeField]
+  private GameObject _hitsFX;
 
   void Start()
   {
     _rend = _mesh.GetComponent<Renderer>();
-    _baseColor = _rend.material.GetColor("_Color");
-    _baseTexture = _rend.material.GetTexture("_MainTex");
-
-    _shaderStandard = Shader.Find("Standard");
-    _shaderLowHealth = Shader.Find("Toon/Basic");
+    _baseMaterial = _rend.material;
 
     _overlayColor = _damageOverlay.color;
   }
@@ -94,13 +91,14 @@ public class CharacterFX : MonoBehaviour
 
   public void Death()
   {
-    Debug.Log("Add: Death fx");
+    CreateParticle(_deathFX);
     AudioManager.GetCharFX().Death();
+    Invoke("DestroyMe", 1f);
   }
 
   public void Jump()
   {
-    Debug.Log("Add: Jump fx");
+    // Dash and Jump particles here
   }
 
   public void Landing()
@@ -117,6 +115,20 @@ public class CharacterFX : MonoBehaviour
     _hasDamage = true;
   }
 
+  public void CreateHitsFX()
+  {
+    CreateParticle(_hitsFX);
+  }
+
+  private void CreateParticle(GameObject go)
+  {
+    GameObject particle = Instantiate(go, transform);
+    Vector3 pos = transform.position;
+    pos.y += 1f;
+    pos.z += -0.2f;
+    particle.transform.position = pos;
+  }
+
   public void SetInvincibilityTimer(float invincibilityTimer)
   {
     _invincibilityTimer = invincibilityTimer;
@@ -126,16 +138,13 @@ public class CharacterFX : MonoBehaviour
   private void SetShaderState()
   {
     if (_shaderOn)
-    {
-      _rend.material.shader = _shaderLowHealth;
-      _rend.material.SetColor("_Color", _lowHealthColor);
-      _rend.material.SetTexture("_MainTex", null);
-    }
+      _rend.material = _hurtMaterial;
     else
-    {
-      _rend.material.shader = _shaderStandard;
-      _rend.material.SetColor("_Color", _baseColor);
-      _rend.material.SetTexture("_MainTex", _baseTexture);
-    }
+      _rend.material = _baseMaterial;
+  }
+
+  private void DestroyMe()
+  {
+    Destroy(_mesh);
   }
 }

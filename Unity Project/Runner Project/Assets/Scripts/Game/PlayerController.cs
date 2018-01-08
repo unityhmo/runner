@@ -79,7 +79,8 @@ public class PlayerController : MonoBehaviour
           _currentInvincibility += Time.deltaTime;
         }
       }
-    } else if (_winner && _spotlightSpeed < 1f)
+    }
+    else if (_winner && _spotlightSpeed < 1f)
     {
       _victorySpotLight.intensity = Mathf.Lerp(0f, 2f, _spotlightSpeed);
 
@@ -250,7 +251,11 @@ public class PlayerController : MonoBehaviour
         _isInvincible = true;
       }
       else
+      {
+        _fx.CreateHitsFX();
         EndGame();
+      }
+
     }
     else if (go.tag == BaseValues.TAG_GOAL)
       EndGame(true);
