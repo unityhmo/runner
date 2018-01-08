@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
       _fx.Jump();
       AudioManager.GetCharFX().Dash();
+
+      _fx.CreateDash(false);
     }
   }
   public void JumpRight()
@@ -120,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
       _fx.Jump();
       AudioManager.GetCharFX().Dash();
+
+      _fx.CreateDash(true);
     }
   }
   public void JumpUp()

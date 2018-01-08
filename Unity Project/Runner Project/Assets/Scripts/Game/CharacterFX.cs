@@ -29,6 +29,8 @@ public class CharacterFX : MonoBehaviour
   private GameObject _hitsFX;
   [SerializeField]
   private GameObject _sparklesFX;
+  [SerializeField]
+  private GameObject _dashFX;
 
   void Start()
   {
@@ -124,6 +126,16 @@ public class CharacterFX : MonoBehaviour
   public void PickUpFX()
   {
     CreateParticle(_sparklesFX);
+  }
+
+  public void CreateDash(bool flip)
+  {
+    GameObject particle = Instantiate(_dashFX);
+    particle.transform.position = transform.position;
+    if (flip)
+    {
+      particle.transform.Rotate(Vector3.up, 180);
+    }
   }
 
   private void CreateParticle(GameObject go)

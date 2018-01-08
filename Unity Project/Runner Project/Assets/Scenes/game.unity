@@ -2540,6 +2540,7 @@ MonoBehaviour:
   _hitsFX: {fileID: 1539120583908472, guid: 825be998ce859524cb3b63329c2e7617, type: 2}
   _sparklesFX: {fileID: 1103752183411730, guid: 5ae6fb2b323b64c4c85abb0d58e7ec76,
     type: 2}
+  _dashFX: {fileID: 1986600662102896, guid: 3fbdaa3747aa2514cafcd7a529d4ccc4, type: 2}
 --- !u!82 &876878549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3586,7 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_EffectColor: {r: 0.66176474, g: 0.66176474, b: 0.66176474, a: 0.5019608}
   m_EffectDistance: {x: 5.84, y: -4.49}
   m_UseGraphicAlpha: 1
 --- !u!1 &1404007282
@@ -4769,7 +4770,7 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectColor: {r: 0.6627451, g: 0.6627451, b: 0.6627451, a: 0.5019608}
   m_EffectDistance: {x: 5.84, y: -4.49}
   m_UseGraphicAlpha: 1
 --- !u!1 &1904273199
