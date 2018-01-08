@@ -169,7 +169,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8193ab11108682944a1aa653e3e3f8cc, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8193ab11108682944a1aa653e3e3f8cc, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -6399,7 +6399,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d2825d1bcf782c44cadfdaa02595328c, type: 3}
+    m_Font: {fileID: 12800000, guid: 8193ab11108682944a1aa653e3e3f8cc, type: 3}
     m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
@@ -6410,7 +6410,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
-    m_LineSpacing: 2
+    m_LineSpacing: 1.9
   m_Text: "UNITY USER GROUP HMO\nArvin Valenzuela\nCarlos Castro\nJavier Martinez\nJuan
     Pablo Ca\xF1ez\nRafael Montoya\nSergio Mireles\nTony Martinez\nUriel Carrillo"
 --- !u!222 &819258721
@@ -13882,7 +13882,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987938570}
-  m_LocalRotation: {x: 0.81267375, y: -0.15914106, z: 0.5036898, w: -0.24603233}
+  m_LocalRotation: {x: 0.81267387, y: -0.15914108, z: 0.5036899, w: -0.24603236}
   m_LocalPosition: {x: -7.06, y: 0.34, z: -0.87}
   m_LocalScale: {x: 0.7500001, y: 0.7500001, z: 0.75}
   m_Children:
