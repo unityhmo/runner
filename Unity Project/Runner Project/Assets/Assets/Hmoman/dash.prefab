@@ -113,7 +113,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1811380412
+  randomSeed: -1881845522
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3452,7 +3452,7 @@ ParticleSystemRenderer:
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0.7
+  m_MinParticleSize: 0.65
   m_MaxParticleSize: 10
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
@@ -3460,7 +3460,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 0
   m_RenderAlignment: 2
-  m_Pivot: {x: -0.42, y: 0.4, z: 0}
+  m_Pivot: {x: 0, y: 0.4, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
   m_Mesh: {fileID: 0}
