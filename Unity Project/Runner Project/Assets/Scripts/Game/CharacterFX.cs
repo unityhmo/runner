@@ -134,10 +134,8 @@ public class CharacterFX : MonoBehaviour
     Vector3 pos = transform.position;
     pos.y += 0.5f;
     particle.transform.position = pos;
-    if (flip)
-    {
+    if (!flip)
       particle.transform.Rotate(Vector3.up, 180);
-    }
   }
 
   private void CreateParticle(GameObject go)
