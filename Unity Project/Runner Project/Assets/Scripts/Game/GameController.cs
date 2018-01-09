@@ -194,9 +194,6 @@ public class GameController : MonoBehaviour
 
   IEnumerator StartGame()
   {
-    // TODO: Prepare a "Ready!" message, then start
-    Debug.Log("STAGE: " + _currentStageIndex + " - Wait for " + _getReadyTimer + " seconds...");
-
     yield return new WaitForSeconds(_getReadyTimer);
 
     GameObject.FindGameObjectWithTag(BaseValues.TAG_PLAYER).GetComponent<PlayerController>().StartGame();

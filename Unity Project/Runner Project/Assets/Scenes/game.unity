@@ -2661,7 +2661,7 @@ MonoBehaviour:
   _jump: {fileID: 8300000, guid: ff21941d2bf59d6468705d20ab5a8fd5, type: 3}
   _land: {fileID: 8300000, guid: 62fd9290aebf9244084bc1c5c2ce1f1c, type: 3}
   _damage: {fileID: 8300000, guid: 4afd7f2dd9b464047aa747e7e213c41e, type: 3}
-  _death: {fileID: 8300000, guid: 22303414afe8c5b4d8b092f3fe3a21bf, type: 3}
+  _death: {fileID: 8300000, guid: d915b489eae47f745bd77c0d598339ab, type: 3}
 --- !u!1 &937214590
 GameObject:
   m_ObjectHideFlags: 0
