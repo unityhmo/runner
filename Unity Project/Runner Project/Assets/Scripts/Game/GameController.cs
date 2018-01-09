@@ -33,11 +33,11 @@ public class GameController : MonoBehaviour
   private Text _txtPickUps;
   [SerializeField]
   private GameObject _nextStageButton;
-  // Transform that will work as origin for all Resources loaded at the beginning of each stage.
+  [SerializeField]
+  private Text _stageName;
   [SerializeField]
   private Transform _scenarioHolder;
   private Stage _stageData;
-
   [SerializeField]
   private AudioClip _victoryIntro;
   [SerializeField]
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
 
     _currentStageIndex = _master.GetStageIndex();
     _stageData = _master.GetStage(_currentStageIndex);
-
+    _stageName.text = _stageData.Label;
     loadStage(_stageData.AssetPath);
 
     UpdateUI();
