@@ -43,8 +43,12 @@ public class MenuController : MonoBehaviour
 
     AudioManager.GetMFX().SetClip(_mainMenuThemeLoop, _mainMenuThemeIntro);
     _toggleSound.isOn = _master.GetDataController().GetDataInfo().AudioEnabled;
+  }
 
-
+  void LateUpdate()
+  {
+    if (Input.GetKeyDown(KeyCode.Escape))
+      Application.Quit();
   }
 
   public void PlayButtonHandler()

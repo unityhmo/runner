@@ -115,7 +115,6 @@ public class GameController : MonoBehaviour
       // Only as a place holder and to see changes in menu
       _stageData.SetHighestPickUps(_orbCounter);
       _stageData.SetTotalPickUps(_totalOrbs);
-      Debug.Log("New highscore!");
     }
 
     _master.SetStage(_currentStageIndex, _stageData);
