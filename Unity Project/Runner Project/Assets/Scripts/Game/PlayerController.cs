@@ -146,12 +146,11 @@ public class PlayerController : MonoBehaviour
     _anim.SetRunning(false);
 
     if (isWinner)
-    {
-      _fx.SetLowLife(false);
       ReachedGoal();
-    }
     else
       ReachedDeath();
+
+    _fx.SetLowLife(false);
   }
 
   // Moving forward and jumping up is handled here
