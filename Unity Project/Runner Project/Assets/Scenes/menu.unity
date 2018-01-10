@@ -1534,8 +1534,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0.4, b: 0, a: 0.78431374}
-    m_HighlightedColor: {r: 1, g: 0.58, b: 0.3, a: 1}
+    m_NormalColor: {r: 1, g: 0.40000004, b: 0, a: 0.78431374}
+    m_HighlightedColor: {r: 1, g: 0.4, b: 0, a: 0.78431374}
     m_PressedColor: {r: 0.39999998, g: 0.16, b: 0, a: 1}
     m_DisabledColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
     m_ColorMultiplier: 1
@@ -1732,7 +1732,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.78431374}
     m_PressedColor: {r: 0.39999998, g: 0.39999998, b: 0.39999998, a: 1}
     m_DisabledColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
     m_ColorMultiplier: 1
@@ -7870,8 +7870,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.31163496, g: 0.6396822, b: 0.9632353, a: 0.78431374}
-    m_HighlightedColor: {r: 0.64588237, g: 0.8737255, b: 0.93686277, a: 1}
+    m_NormalColor: {r: 0.1102941, g: 0.5582152, b: 1, a: 0.78431374}
+    m_HighlightedColor: {r: 0.10980392, g: 0.5568628, b: 1, a: 0.78431374}
     m_PressedColor: {r: 0.19764705, g: 0.32784313, b: 0.36392155, a: 1}
     m_DisabledColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
     m_ColorMultiplier: 1
@@ -8131,8 +8131,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0.16176468, b: 0.16176468, a: 0.78431374}
-    m_HighlightedColor: {r: 0.93686277, g: 0.64588237, b: 0.64588237, a: 1}
+    m_NormalColor: {r: 1, g: 0.051470578, b: 0.051470578, a: 0.78431374}
+    m_HighlightedColor: {r: 1, g: 0.050980393, b: 0.050980393, a: 0.78431374}
     m_PressedColor: {r: 0.36392152, g: 0.19764704, b: 0.19764704, a: 1}
     m_DisabledColor: {r: 0.8784314, g: 0.8784314, b: 0.8784314, a: 1}
     m_ColorMultiplier: 1
@@ -13869,7 +13869,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987938570}
-  m_LocalRotation: {x: 0.81267387, y: -0.15914108, z: 0.5036899, w: -0.24603236}
+  m_LocalRotation: {x: 0.81267375, y: -0.15914106, z: 0.5036898, w: -0.24603233}
   m_LocalPosition: {x: -7.06, y: 0.34, z: -0.87}
   m_LocalScale: {x: 0.7500001, y: 0.7500001, z: 0.75}
   m_Children:
