@@ -24,13 +24,7 @@ public class PlayerController : MonoBehaviour
   private bool _isInvincible = false;
   private Vector3 _newLerpPosition = Vector3.zero;
   private bool _lerpInAction = false;
-
   private Vector3 _moveDirection = Vector3.zero;
-
-  [SerializeField]
-  private Light _victorySpotLight;
-  private float _spotlightSpeed;
-  private bool _winner = false;
 
   void Awake()
   {
@@ -79,12 +73,6 @@ public class PlayerController : MonoBehaviour
           _currentInvincibility += Time.deltaTime;
         }
       }
-    }
-    else if (_winner && _spotlightSpeed < 1f)
-    {
-      _victorySpotLight.intensity = Mathf.Lerp(0f, 2f, _spotlightSpeed);
-
-      _spotlightSpeed += Time.deltaTime;
     }
   }
 
@@ -199,9 +187,6 @@ public class PlayerController : MonoBehaviour
   {
     _gameController.Win();
     _anim.Victory();
-
-    _victorySpotLight.gameObject.SetActive(true);
-    _winner = true;
 
     Camera.main.GetComponent<CameraFollow>().VictoryZoom();
   }
