@@ -2178,8 +2178,8 @@ MonoBehaviour:
   _stageView: {fileID: 1992516787}
   _stageContainer: {fileID: 121869992}
   _scrollbar: {fileID: 1483656768}
-  _mainMenuThemeIntro: {fileID: 8300000, guid: 3c70634011874044da7425ffab5ce35d, type: 3}
-  _mainMenuThemeLoop: {fileID: 8300000, guid: 43c2a46be2f4d78498113dafa882bf0e, type: 3}
+  _mainMenuThemeIntro: {fileID: 0}
+  _mainMenuThemeLoop: {fileID: 8300000, guid: 1a92b0b5d92b868489f61542d4a02363, type: 3}
 --- !u!4 &620271211
 Transform:
   m_ObjectHideFlags: 0
@@ -13869,7 +13869,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1987938570}
-  m_LocalRotation: {x: 0.81267387, y: -0.15914108, z: 0.5036899, w: -0.24603236}
+  m_LocalRotation: {x: 0.81267375, y: -0.15914106, z: 0.5036898, w: -0.24603233}
   m_LocalPosition: {x: -7.06, y: 0.34, z: -0.87}
   m_LocalScale: {x: 0.7500001, y: 0.7500001, z: 0.75}
   m_Children:
