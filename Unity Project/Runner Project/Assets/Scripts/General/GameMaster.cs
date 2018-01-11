@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
       "One long line",
       "Run free",
       "Impossible",
-      "Its so simple"
+      "It's so simple"
   };
 
   // We make sure this object do not vanishes in loadscenes
