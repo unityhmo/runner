@@ -88,8 +88,13 @@ public class GameDataController
 
   private void SetDefault()
   {
+    bool currentAudioEnable = _dataInfo.AudioEnabled;
 
-    for(int i = 0; i < _stageNames.Length; i++)
+    _dataInfo = new GameDataInfo();
+
+    _dataInfo.AudioEnabled = currentAudioEnable;
+
+    for (int i = 0; i < _stageNames.Length; i++)
     {
       if(i == 0)
       {
@@ -108,7 +113,11 @@ public class GameDataController
 
   public void UnlockAll()
   {
+    bool currentAudioEnable = _dataInfo.AudioEnabled;
+
     _dataInfo = new GameDataInfo();
+
+    _dataInfo.AudioEnabled = currentAudioEnable;
 
     for (int i = 0; i < _stageNames.Length; i++)
     {
