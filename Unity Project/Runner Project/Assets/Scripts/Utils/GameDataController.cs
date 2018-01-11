@@ -9,6 +9,8 @@ public class GameDataController
 
   private string _savePathName = Application.persistentDataPath + "/gameInfo.dat";
 
+  private string[] _stageNames;
+
   public GameDataInfo GetDataInfo()
   {
     return _dataInfo;
@@ -23,8 +25,10 @@ public class GameDataController
     file.Close();
   }
 
-  public void Load()
+  public void Load(string[] names)
   {
+    _stageNames = names;
+
     if (File.Exists(_savePathName))
     {
       BinaryFormatter bf = new BinaryFormatter();
@@ -36,8 +40,14 @@ public class GameDataController
 
         AudioListener.volume = _dataInfo.AudioEnabled ? 1 : 0;
 
-        if(_dataInfo.StageConfig == null) {
+        if (_dataInfo.StageConfig == null)
+        {
           CreateAndSaveDefault();
+        }
+        else
+        {
+          /* Check if the last stage is available, otherwise, reset game in catch exception*/
+          bool lastStage = (bool)_dataInfo.StageConfig["locked_" + (_stageNames.Length - 1)];
         }
 
       }
@@ -72,18 +82,14 @@ public class GameDataController
 
   public void CreateAndSaveDefault()
   {
-    _dataInfo = new GameDataInfo();
     SetDefault();
     Save();
   }
 
   private void SetDefault()
   {
-    // User Preferences
-    _dataInfo.AudioEnabled = true;
 
-    // User Game Info (10 levels)
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < _stageNames.Length; i++)
     {
       if(i == 0)
       {
@@ -104,8 +110,7 @@ public class GameDataController
   {
     _dataInfo = new GameDataInfo();
 
-    // User Game Info (10 levels)
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < _stageNames.Length; i++)
     {
       _dataInfo.StageConfig.Add("locked_" + i, false);
       _dataInfo.StageConfig.Add("pickups_total_" + i, 0);

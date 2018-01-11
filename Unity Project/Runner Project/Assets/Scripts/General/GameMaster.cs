@@ -18,6 +18,21 @@ public class GameMaster : MonoBehaviour
   private int _currentStageIndex = 0;
   private List<Stage> _stages;
 
+  // Stage Names. This Array defines also how many stages exists.
+  private string[] _stageNames = {
+      "Hello world",
+      "The short path",
+      "Not so short",
+      "An easy one",
+      "Don't jump!",
+      "Long and fast",
+      "Zig zag",
+      "One long line",
+      "Run free",
+      "Impossible",
+      "Its so simple"
+  };
+
   // We make sure this object do not vanishes in loadscenes
   // If our protected static instance variable isn't ready we destroy this one and return the existing one.
   void Awake()
@@ -35,15 +50,15 @@ public class GameMaster : MonoBehaviour
     _sceneLoader = transform.GetComponent<SceneLoader>();
 
     _dataController = new GameDataController();
-    _dataController.Load();
-    _stages = Stages.BuildStages(_dataController.GetDataInfo());
+    _dataController.Load(_stageNames);
+    _stages = Stages.BuildStages(_stageNames, _dataController.GetDataInfo());
 
     SetupSoundAndMusicManager();
   }
 
   public void RefreshStages()
   {
-    _stages = Stages.BuildStages(_dataController.GetDataInfo());
+    _stages = Stages.BuildStages(_stageNames, _dataController.GetDataInfo());
   }
 
   // Build our base info for Stages,  this is before overwritting with user saved local progress data
