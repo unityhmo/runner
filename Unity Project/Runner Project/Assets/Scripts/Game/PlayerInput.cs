@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     _contr = transform.GetComponent<PlayerController>();
 
     _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
-    _swipeDistance = Screen.width / _screenSwipePercent;
+    _swipeDistance = Screen.width * (_screenSwipePercent / 100);
     _tapDistance = _swipeDistance / 3f;
   }
 

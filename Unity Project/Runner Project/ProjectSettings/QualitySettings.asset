@@ -120,7 +120,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Beautiful
-    pixelLightCount: 3
+    pixelLightCount: 1
     shadows: 1
     shadowResolution: 2
     shadowProjection: 1
