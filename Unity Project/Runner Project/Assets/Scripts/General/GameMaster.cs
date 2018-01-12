@@ -20,18 +20,27 @@ public class GameMaster : MonoBehaviour
 
   // Stage Names. This Array defines also how many stages exists.
   private string[] _stageNames = {
-      "Hello world",
-      "The short path",
-      "Not so short",
-      "An easy one",
-      "Don't jump!",
-      "Long and fast",
-      "Zig zag",
-      "One long line",
-      "Run free",
-      "Impossible",
-      "It's so simple",
-      "Tall and hot"
+    "Where am I?",
+    "It's a disaster!",
+    "Triplets!",
+    "Hello world",
+    "This is funny!!!",
+    "Interesting...",
+    "That's wrong",
+    "Easy piece",
+    "Barrier",
+    "The short path",
+    "Not so short",
+    "An easy one",
+    "Don't jump?",
+    "Long and fast",
+    "Zig zag",
+    "One long line",
+    "Run free",
+    "Really hard",
+    "It's so simple",
+    "Tall and hot",
+    "Impossible"
   };
 
   // We make sure this object do not vanishes in loadscenes
