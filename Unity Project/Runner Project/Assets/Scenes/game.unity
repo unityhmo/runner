@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257160a0103b4a24afe10e2876b7cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenSwipePercent: 12.5
+  _screenSwipePercent: 15
 --- !u!143 &876878545
 CharacterController:
   m_ObjectHideFlags: 0

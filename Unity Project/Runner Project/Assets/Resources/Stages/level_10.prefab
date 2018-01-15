@@ -38579,7 +38579,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.75
-    m_Bias: 0
+    m_Bias: 0.2
     m_NormalBias: 0.1
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
@@ -39259,7 +39259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intro: {fileID: 0}
-  _loopMain: {fileID: 8300000, guid: 052bfefe70edb60488ebb8f4b55dd335, type: 3}
+  _loopMain: {fileID: 8300000, guid: 827bd6bf8c090e4488f446b3be98fe59, type: 3}
 --- !u!114 &114829216316762404
 MonoBehaviour:
   m_ObjectHideFlags: 1

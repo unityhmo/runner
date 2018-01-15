@@ -2841,6 +2841,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4161423761777854}
+  - component: {fileID: 114159172768746194}
   m_Layer: 0
   m_Name: level_5
   m_TagString: Untagged
@@ -45313,12 +45314,12 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
+    m_Strength: 0.75
+    m_Bias: 0.2
+    m_NormalBias: 0.1
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
@@ -45520,6 +45521,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mesh: {fileID: 1919969799135466}
   _speed: 250
+--- !u!114 &114159172768746194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225526278565754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f038ef2883335674e99f69fca28fb342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intro: {fileID: 0}
+  _loopMain: {fileID: 8300000, guid: 71a7eac53e5b8e043b9b6361241ba56b, type: 3}
 --- !u!114 &114162904147037446
 MonoBehaviour:
   m_ObjectHideFlags: 1
