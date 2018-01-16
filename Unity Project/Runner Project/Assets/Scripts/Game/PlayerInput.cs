@@ -6,8 +6,8 @@ public class PlayerInput : MonoBehaviour
   [SerializeField]
   private float _screenSwipePercent = 20; // percentage of screen swiped
   private float _swipeDistance;
-  private float _tapDistance;
-  private bool _swipeActionDetected;
+  private int _touchBeganCounter = 0;
+  private bool _swipeActionDetected = false;
   private Vector2 _fp; // first finger position
   private Vector2 _lp; // last finger position
   private PlayerController _contr;
@@ -16,14 +16,10 @@ public class PlayerInput : MonoBehaviour
   {
     _contr = transform.GetComponent<PlayerController>();
 
-    _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
+    _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 0.01f, 100);
     _swipeDistance = Screen.width * (_screenSwipePercent / 100);
-    _tapDistance = _swipeDistance / 3f;
   }
 
-  /*
-   * Let's face it, we humans are slow (compared to computers), there is no need to use computing resources in reading X times per frame our inputs. We send our input management to LateUpdate.
-   */
   void LateUpdate()
   {
     if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -44,37 +40,35 @@ public class PlayerInput : MonoBehaviour
         _fp = touch.position;
         _lp = touch.position;
         _swipeActionDetected = false;
+        _touchBeganCounter = 1;
       }
-      else if (touch.phase == TouchPhase.Moved)
+      else if (touch.phase == TouchPhase.Moved && !_swipeActionDetected && _touchBeganCounter == 1)
       {
         _lp = touch.position;
-        if (Mathf.Abs(_lp.x - _fp.x) >= _swipeDistance || Mathf.Abs(_lp.y - _fp.y) >= _swipeDistance)
-        {
-          _lp = _lp - _fp;
-          if (Mathf.Abs(_lp.x) > Mathf.Abs(_lp.y))
-          {
-            if (_lp.x < 0f)
-            {
-              JumpLeft();
-            }
-            else if (_lp.x > 0f)
-            {
-              JumpRight();
-            }
+        if (_lp.y > _fp.y + _swipeDistance) {
+          JumpUp ();
+        } else {
+          if (_lp.x < _fp.x) {
+            JumpLeft ();
+          } else {
+            JumpRight ();
           }
-          else
-          {
-            JumpUp();
-          }
-
-          _fp = touch.position;
-          _lp = touch.position;
-          _swipeActionDetected = true;
         }
+        _fp = touch.position;
+        _swipeActionDetected = true;
       }
-      else if (!_swipeActionDetected && touch.phase == TouchPhase.Ended && (Mathf.Abs(_lp.x - _fp.x) <= _tapDistance || Mathf.Abs(_lp.y - _fp.y) <= _tapDistance))
+      else if (touch.phase == TouchPhase.Ended)
       {
-        JumpUp();
+        if (!_swipeActionDetected && _touchBeganCounter == 1) {
+          
+          _lp = touch.position;
+          if (Mathf.Abs(_lp.x - _fp.x) <= _swipeDistance || Mathf.Abs(_lp.y - _fp.y) <= _swipeDistance)
+          {
+            JumpUp ();
+          }
+          _swipeActionDetected = false;
+          _touchBeganCounter--;
+        }
       }
     }
   }
@@ -93,4 +87,5 @@ public class PlayerInput : MonoBehaviour
   {
     _contr.JumpUp();
   }
+
 }
