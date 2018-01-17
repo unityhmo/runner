@@ -1103,8 +1103,8 @@ MonoBehaviour:
   _nextStageButton: {fileID: 467584477}
   _stageName: {fileID: 2073676435}
   _scenarioHolder: {fileID: 1289981522}
-  _victoryIntro: {fileID: 8300000, guid: 6d2a3d7d5d3efa844b5893d8dab09ae3, type: 3}
-  _victoryLoop: {fileID: 8300000, guid: 829ba5c12de1d3d4caa7650b7fac1d35, type: 3}
+  _victoryIntro: {fileID: 0}
+  _victoryLoop: {fileID: 8300000, guid: 86b81dccfb3c631428ab9ccc3046eadb, type: 3}
 --- !u!1 &327955563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9257160a0103b4a24afe10e2876b7cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenSwipePercent: 7
+  _screenSwipePercent: 5
 --- !u!143 &876878545
 CharacterController:
   m_ObjectHideFlags: 0
