@@ -39,8 +39,7 @@ public class GameMaster : MonoBehaviour
     "Run free",
     "It's so simple",
     "Zig zag",
-    "Tall and hot"/*,
-    "Impossible"*/
+    "Thanks 4 playing"
   };
 
   // We make sure this object do not vanishes in loadscenes
