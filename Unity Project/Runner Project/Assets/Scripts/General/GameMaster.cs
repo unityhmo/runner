@@ -34,11 +34,11 @@ public class GameMaster : MonoBehaviour
     "An easy one",
     "Don't jump?",
     "Long and fast",
-    "Zig zag",
+    "Really hard",
     "One long line",
     "Run free",
-    "Really hard",
     "It's so simple",
+    "Zig zag",
     "Tall and hot"/*,
     "Impossible"*/
   };
