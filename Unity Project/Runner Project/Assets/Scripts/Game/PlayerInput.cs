@@ -21,20 +21,7 @@ public class PlayerInput : MonoBehaviour
     _tapDistance = _swipeDistance / 3f;
   }
 
-  /*
-   * Let's face it, we humans are slow (compared to computers), there is no need to use computing resources in reading X times per frame our inputs. We send our input management to LateUpdate.
-   */
   void LateUpdate()
-  {
-    if (Input.GetKeyDown(KeyCode.LeftArrow))
-      JumpLeft();
-    else if (Input.GetKeyDown(KeyCode.RightArrow))
-      JumpRight();
-    else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-      JumpUp();
-  }
-
-  void FixedUpdate()
   {
     if (Input.touches.Length > 0)
     {
@@ -77,6 +64,13 @@ public class PlayerInput : MonoBehaviour
         JumpUp();
       }
     }
+
+    if (Input.GetKeyDown(KeyCode.LeftArrow))
+      JumpLeft();
+    else if (Input.GetKeyDown(KeyCode.RightArrow))
+      JumpRight();
+    else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+      JumpUp();
   }
 
   private void JumpLeft()
