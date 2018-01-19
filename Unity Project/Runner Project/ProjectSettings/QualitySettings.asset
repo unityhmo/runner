@@ -178,3 +178,4 @@ QualitySettings:
     Android: 4
     Standalone: 4
     WebGL: 4
+    iPhone: 4
