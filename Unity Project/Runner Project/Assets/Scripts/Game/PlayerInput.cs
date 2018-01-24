@@ -25,12 +25,6 @@ public class PlayerInput : MonoBehaviour
   {
     if (Input.touches.Length > 0)
     {
-      if (!_contr.IsPlayable && !_contr.IsGameOver)
-      {
-        _contr.StartGame();
-        return;
-      }
-      
       Touch touch = Input.touches[0];
       if (touch.phase == TouchPhase.Began)
       {
@@ -71,12 +65,6 @@ public class PlayerInput : MonoBehaviour
       }
     }
 
-    if (Input.anyKeyDown && !_contr.IsPlayable && !_contr.IsGameOver)
-    {
-      _contr.StartGame();
-      return;
-    }
-    
     if (Input.GetKeyDown(KeyCode.LeftArrow))
       JumpLeft();
     else if (Input.GetKeyDown(KeyCode.RightArrow))

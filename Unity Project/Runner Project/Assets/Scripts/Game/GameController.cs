@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
     UpdateUI();
 
     // Starts up delayer at beginning of stage
-    //StartCoroutine(StartGame());
+    StartCoroutine(StartGame());
   }
 
   // Right at the start, we bring from Resource folder the corresponding stage level we want. This data is provided from GameMaster, it knows everything!
