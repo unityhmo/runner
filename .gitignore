@@ -21,6 +21,7 @@ sysinfo.txt
 /**/*.user
 /**/*.unityproj
 /**/*.booproj
+.idea/
  
 # ============ #
 # OS generated #
