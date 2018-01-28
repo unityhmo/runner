@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // Component in charge of only reading user's input and sending them to PlayerController
 public class PlayerInput : MonoBehaviour
@@ -15,6 +17,11 @@ public class PlayerInput : MonoBehaviour
   void Start()
   {
     _contr = transform.GetComponent<PlayerController>();
+
+    // Aspect Ratio equals or larger than 3:4 (some tablets, ipads)
+    if (GetAspectRatio() >= 0.75) {
+      _screenSwipePercent = 1;
+    }
 
     _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
     _swipeDistance = Screen.width * (_screenSwipePercent / 100);
@@ -86,5 +93,10 @@ public class PlayerInput : MonoBehaviour
   private void JumpUp()
   {
     _contr.JumpUp();
+  }
+
+  private float GetAspectRatio()
+  {
+    return Screen.width / Screen.height;
   }
 }
