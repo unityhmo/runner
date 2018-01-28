@@ -7,6 +7,8 @@ public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
   private float _screenSwipePercent = 20; // percentage of screen swiped
+  [SerializeField]
+  private float _tabletScreenSwipePercent = 1; // percentage of screen swiped (tablet)
   private float _swipeDistance;
   private float _tapDistance;
   private bool _swipeActionDetected;
@@ -14,13 +16,17 @@ public class PlayerInput : MonoBehaviour
   private Vector2 _lp; // last finger position
   private PlayerController _contr;
 
+  private DeviceController _device;
+
   void Start()
   {
     _contr = transform.GetComponent<PlayerController>();
 
-    // Aspect Ratio equals or larger than 3:4 (some tablets, ipads)
-    if (GetAspectRatio() >= 0.75) {
-      _screenSwipePercent = 1;
+    _device = new DeviceController ();
+
+    // if tablet use less swipe percent because it's bigger screen:
+    if (_device.isTablet()) {
+      _screenSwipePercent = _tabletScreenSwipePercent;
     }
 
     _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
@@ -95,8 +101,4 @@ public class PlayerInput : MonoBehaviour
     _contr.JumpUp();
   }
 
-  private float GetAspectRatio()
-  {
-    return Screen.width / Screen.height;
-  }
 }

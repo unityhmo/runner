@@ -2396,6 +2396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenSwipePercent: 5
+  _tabletScreenSwipePercent: 1
 --- !u!143 &876878545
 CharacterController:
   m_ObjectHideFlags: 0
