@@ -17,11 +17,9 @@ public class DeviceController
 
   }
 
-  public float GetAspectRatio()
+  private float GetAspectRatio()
   {
-    Debug.Log (Screen.width + " x " + Screen.height);
     return (float)Screen.width / (float)Screen.height;
-
   }
 
 }
