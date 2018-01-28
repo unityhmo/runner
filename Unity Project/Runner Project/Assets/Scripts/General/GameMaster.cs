@@ -18,6 +18,8 @@ public class GameMaster : MonoBehaviour
   private int _currentStageIndex = 0;
   private List<Stage> _stages;
 
+  private DeviceController _device;
+
   // Stage Names. This Array defines also how many stages exists.
   private string[] _stageNames = {
     "Where am I?",
@@ -63,6 +65,14 @@ public class GameMaster : MonoBehaviour
     _stages = Stages.BuildStages(_stageNames, _dataController.GetDataInfo());
 
     SetupSoundAndMusicManager();
+
+    _device = new DeviceController ();
+
+    // if tablet use "fastest" quality (Index 0);
+    if (_device.isTablet ()) {
+      QualitySettings.SetQualityLevel (0);
+    }
+
   }
 
   public void RefreshStages()

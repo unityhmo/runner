@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // Component in charge of only reading user's input and sending them to PlayerController
 public class PlayerInput : MonoBehaviour
 {
   [SerializeField]
   private float _screenSwipePercent = 20; // percentage of screen swiped
+  [SerializeField]
+  private float _tabletScreenSwipePercent = 1; // percentage of screen swiped (tablet)
   private float _swipeDistance;
   private float _tapDistance;
   private bool _swipeActionDetected;
@@ -12,9 +16,18 @@ public class PlayerInput : MonoBehaviour
   private Vector2 _lp; // last finger position
   private PlayerController _contr;
 
+  private DeviceController _device;
+
   void Start()
   {
     _contr = transform.GetComponent<PlayerController>();
+
+    _device = new DeviceController ();
+
+    // if tablet use less swipe percent because it's bigger screen:
+    if (_device.isTablet()) {
+      _screenSwipePercent = _tabletScreenSwipePercent;
+    }
 
     _screenSwipePercent = Mathf.Clamp(_screenSwipePercent, 1, 99);
     _swipeDistance = Screen.width * (_screenSwipePercent / 100);
@@ -87,4 +100,5 @@ public class PlayerInput : MonoBehaviour
   {
     _contr.JumpUp();
   }
+
 }
