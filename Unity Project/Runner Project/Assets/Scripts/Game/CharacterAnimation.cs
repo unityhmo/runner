@@ -3,71 +3,69 @@
 // Component in charge of managing the Animator state machine
 public class CharacterAnimation : MonoBehaviour
 {
-  private Animator _anim;
-  private CharacterController _contr;
-  private bool _isRunning = false;
-  [SerializeField] private bool _isGrounded = false;
+    [SerializeField] private PlayerController _playerController;
 
-  void Awake()
-  {
-    _anim = transform.GetComponent<Animator>();
-    _contr = transform.GetComponent<CharacterController>();
-  }
+    private Animator _anim;
+    private bool _isRunning;
+    private bool _isGrounded;
 
-  // Player input actions
-  public void JumpLeft()
-  {
-    if (_isGrounded && _isRunning)
-      _anim.Play("left");
-  }
-  public void JumpRight()
-  {
-    if (_isGrounded && _isRunning)
-      _anim.Play("right");
-  }
-  public void JumpUp()
-  {
-    if (_isGrounded && _isRunning)
-      _anim.Play("jump");
-  }
+    void Awake()
+    {
+        _anim = transform.GetComponent<Animator>();
+    }
 
-  // Level triggered actions
-  public void ToggleRunning()
-  {
-    _isRunning = !_anim.GetBool("isRunning");
-    SetBoolRunning();
-  }
-  public void SetRunning(bool state)
-  {
-    _isRunning = state;
-    SetBoolRunning();
-  }
-  public void Victory()
-  {
-    SetRunning(false);
-    _anim.Play("victory");
-  }
-  public void Damage()
-  {
-    if (_isRunning)
-      _anim.Play("damage");
-  }
-  public void Death()
-  {
-    _anim.Play("death");
-  }
+    // Player input actions
+    public void JumpLeft()
+    {
+        if (_isRunning)
+            _anim.Play("left");
+    }
+    public void JumpRight()
+    {
+        if (_isRunning)
+            _anim.Play("right");
+    }
+    public void JumpUp()
+    {
+        if (_isGrounded && _isRunning)
+            _anim.Play("jump");
+    }
 
-  private void SetBoolRunning()
-  {
-    _anim.SetBool("isRunning", _isRunning);
-  }
+    // Level triggered actions
+    public void ToggleRunning()
+    {
+        _isRunning = !_anim.GetBool("isRunning");
+        SetBoolRunning();
+    }
+    public void SetRunning(bool state)
+    {
+        _isRunning = state;
+        SetBoolRunning();
+    }
+    public void Victory()
+    {
+        SetRunning(false);
+        _anim.Play("victory");
+    }
+    public void Damage()
+    {
+        if (_isRunning)
+            _anim.Play("damage");
+    }
+    public void Death()
+    {
+        _anim.Play("death");
+    }
 
-  /*
-   * Since animation and visuals aren't critical for execution, we keep all our frame by frame code in LateUpdate
-   */
-  void LateUpdate()
-  {
-    _isGrounded = _contr.isGrounded;
-    _anim.SetBool("isGrounded", _isGrounded);
-  }
+    private void SetBoolRunning()
+    {
+        _anim.SetBool("isRunning", _isRunning);
+    }
+
+    private void Update()
+    {
+        if (_isGrounded == _playerController.IsGrounded) return;
+        _isGrounded = _playerController.IsGrounded;
+        _anim.SetBool("isGrounded", _isGrounded);
+    }
 }

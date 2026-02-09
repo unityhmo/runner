@@ -659,7 +659,7 @@ namespace Gamestrap
 
             if (GUILayout.Button("Save as...", btnLinestyle))
             {
-                string themePath = AssetDatabase.GetAssetPath(theme.GetInstanceID());
+                string themePath = AssetDatabase.GetAssetPath(theme);
                 themePath = themePath.Substring(0, themePath.LastIndexOf('/') + 1);
 
                 string path = EditorUtility.SaveFilePanel("Save Theme", themePath, "New Theme.asset", "asset");

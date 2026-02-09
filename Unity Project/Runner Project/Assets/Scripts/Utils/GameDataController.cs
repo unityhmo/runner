@@ -7,7 +7,7 @@ public class GameDataController
   // All Game Info is saved in this serialized object
   private GameDataInfo _dataInfo = new GameDataInfo();
 
-  private string _savePathName = Application.persistentDataPath + "/gameInfo.dat";
+  private string _savePathName = Application.persistentDataPath + "/game_save.sav";
 
   private string[] _stageNames;
 

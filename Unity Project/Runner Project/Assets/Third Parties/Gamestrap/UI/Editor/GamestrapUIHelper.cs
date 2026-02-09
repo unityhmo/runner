@@ -158,15 +158,7 @@ namespace Gamestrap
 
         #region Unity Useful Methods
 
-        public static IEnumerable<GameObject> GetSceneGameObjectRoots()
-        {
-            var prop = new HierarchyProperty(HierarchyType.GameObjects);
-            var expanded = new int[0];
-            while (prop.Next(expanded))
-            {
-                yield return prop.pptrValue as GameObject;
-            }
-        }
+        
 
         #endregion
     }
