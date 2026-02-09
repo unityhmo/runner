@@ -42,11 +42,21 @@ public class GameController : MonoBehaviour
     private AudioClip _victoryIntro;
     [SerializeField]
     private AudioClip _victoryLoop;
+    [Header("UI")]
+    [SerializeField] private CanvasScaler[] _uiCanvases;
 
     private void Awake()
     {
         _canvasWin.SetActive(false);
         _canvasLose.SetActive(false);
+
+        float aspectRation = (float)Screen.height / Screen.width;
+        if (aspectRation > 1.5f) return;
+
+        foreach (CanvasScaler canv in _uiCanvases)
+        {
+            canv.matchWidthOrHeight = 1f;
+        }
     }
 
     void Start()

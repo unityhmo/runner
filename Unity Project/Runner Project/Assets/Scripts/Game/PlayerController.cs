@@ -4,11 +4,9 @@ public class PlayerController : MonoBehaviour
 {
     public bool IsGrounded { get; private set; }
 
-    [SerializeField]
-    private float _runSpeed = 8f;
-    private bool _isJumping = false;
-    [SerializeField]
-    private float _jumpSpeed = 10f;
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private float _runSpeed = 8f;
+    [SerializeField] private float _jumpSpeed = 10f;
     static float _currentJumpSpeed = 0f;
     static float _jumpY;
     [SerializeField]
@@ -24,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     private bool _isPlayable;
+    private bool _isJumping;
     private CharacterAnimation _anim;
     private CharacterFX _fx;
     private GameController _gameController;
@@ -54,16 +53,29 @@ public class PlayerController : MonoBehaviour
         if (!_isPlayable) return;
 
         IsGrounded = CheckIsGrounded();
+
+        CheckForGroundWall();
     }
 
-    public bool CheckIsGrounded()
+    private bool CheckIsGrounded()
     {
         int hits = Physics.BoxCastNonAlloc(transform.position, new Vector3(0.05f, 0.1f, 0.1f), Vector3.down, _raycastHits, Quaternion.identity, 0.1f, _groundLayer);
 
         return hits > 0;
     }
 
-    void LateUpdate()
+    private void CheckForGroundWall()
+    {
+        int hits = Physics.BoxCastNonAlloc(transform.position + Vector3.up, new Vector3(0.1f, 0.2f, 0.1f), Vector3.forward, _raycastHits, Quaternion.identity, 0.75f, _groundLayer);
+
+        if (hits == 0) return;
+
+        _rigidbody.isKinematic = true;
+        _gameController.RegisterDamage(0, true);
+        EndGame();
+    }
+
+    private void LateUpdate()
     {
         if (_isPlayable)
         {

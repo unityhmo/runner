@@ -29,6 +29,15 @@ public class MenuController : MonoBehaviour
     private AudioClip _mainMenuThemeIntro;
     [SerializeField]
     private AudioClip _mainMenuThemeLoop;
+    [SerializeField] private CanvasScaler _uiCanvas;
+
+    private void Awake()
+    {
+        float aspectRation = (float)Screen.height / Screen.width;
+        if (aspectRation > 1.5f) return;
+
+        _uiCanvas.matchWidthOrHeight = 1f;
+    }
 
     void Start()
     {
