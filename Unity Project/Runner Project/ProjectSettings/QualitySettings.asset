@@ -7,7 +7,7 @@ QualitySettings:
   m_CurrentQuality: 0
   m_QualitySettings:
   - serializedVersion: 5
-    name: Beautiful
+    name: Default
     pixelLightCount: 1
     shadows: 2
     shadowResolution: 3
@@ -48,7 +48,8 @@ QualitySettings:
     asyncUploadBufferSize: 4
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 0}
+    customRenderPipeline: {fileID: 11400000, guid: 1c2961d03edf6ed42af1fc87757c01e9,
+      type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1

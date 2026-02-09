@@ -103100,6 +103100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _intro: {fileID: 0}
   _loopMain: {fileID: 8300000, guid: e8c72ede78119464fb19b295a9a4b535, type: 3}
+  _backgroundColor: {r: 0.554717, g: 0.28583834, b: 0.06593803, a: 0}
 --- !u!1 &1664830986458964
 GameObject:
   m_ObjectHideFlags: 0

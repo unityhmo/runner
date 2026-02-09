@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
-using System.Collections;
+using DG.Tweening;
 
 /*
  * Game Scene MAIN GameObject component.
@@ -42,8 +45,26 @@ public class GameController : MonoBehaviour
     private AudioClip _victoryIntro;
     [SerializeField]
     private AudioClip _victoryLoop;
+    [SerializeField] private Volume _volume;
     [Header("UI")]
     [SerializeField] private CanvasScaler[] _uiCanvases;
+
+    private float _depthOfFieldBaseValue;
+    private DepthOfField _depthOfField;
+
+    private void OnApplicationQuit()
+    {
+        if (_depthOfField == null) return;
+
+        _depthOfField.focalLength.value = _depthOfFieldBaseValue;
+    }
+
+    private void OnDisable()
+    {
+        if (_depthOfField == null) return;
+
+        _depthOfField.focalLength.value = _depthOfFieldBaseValue;
+    }
 
     private void Awake()
     {
@@ -59,24 +80,32 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
         _master = GameMaster.GetInstance();
 
         _currentStageIndex = _master.GetStageIndex();
         _stageData = _master.GetStage(_currentStageIndex);
         _stageName.text = _stageData.Label;
-        loadStage(_stageData.AssetPath);
+        LoadStage(_stageData.AssetPath);
 
         UpdateUI();
 
         // Starts up delayer at beginning of stage
         StartCoroutine(StartGame());
+
+        if (_volume.profile.TryGet(out _depthOfField))
+        {
+            _depthOfFieldBaseValue = _depthOfField.focalLength.value;
+            float dofValue = 1f;
+            _depthOfField.focalLength.value = dofValue;
+            DOTween.To(() => dofValue, x => dofValue = x, _depthOfFieldBaseValue, _getReadyTimer * 2f).OnUpdate(() => _depthOfField.focalLength.value = dofValue).SetDelay(_getReadyTimer * 0.5f).SetEase(Ease.OutCubic);
+        }
     }
 
     // Right at the start, we bring from Resource folder the corresponding stage level we want. This data is provided from GameMaster, it knows everything!
     // Anyways, we instantiate it and move it as a child of Scenario gameobject, it is the origin point for stages.
-    private void loadStage(string path)
+    private void LoadStage(string path)
     {
         GameObject stageAssets = Instantiate(Resources.Load(BaseValues.PATH_STAGES_RESOURCES + path, typeof(GameObject))) as GameObject;
         stageAssets.name = "stage_" + _currentStageIndex + ": " + _stageData.Label;

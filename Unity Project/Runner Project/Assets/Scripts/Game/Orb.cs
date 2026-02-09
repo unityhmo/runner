@@ -2,31 +2,33 @@
 
 public class Orb : MonoBehaviour
 {
-  [SerializeField]
-  private GameObject _mesh;
-  private Renderer _rend;
-  [SerializeField]
-  private float _speed = 250f;
+    [SerializeField]
+    private GameObject _mesh;
+    private Renderer _rend;
+    [SerializeField]
+    private float _speed = 250f;
 
-  void Awake()
-  {
-    GameObject gameController = GameObject.FindGameObjectWithTag(BaseValues.TAG_GAME_CONTROLLER);
+    private void Awake()
+    {
+        GameObject gameController = GameObject.FindGameObjectWithTag(BaseValues.TAG_GAME_CONTROLLER);
 
-    if (gameController)
-      gameController.GetComponent<GameController>().OrbDetected();
+        if (gameController)
+            gameController.GetComponent<GameController>().OrbDetected();
 
-    if (_mesh)
-      _rend = _mesh.GetComponent<Renderer>();
-  }
+        if (_mesh)
+            _rend = _mesh.GetComponent<Renderer>();
 
-  void LateUpdate()
-  {
-    if (_rend && _rend.isVisible)
-      transform.Rotate(Vector3.up, _speed * Time.deltaTime);
-  }
+        transform.localEulerAngles = new Vector3(0f, Random.Range(-180f, 180f), 0f);
+    }
 
-  public void CollisionDetected()
-  {
-    Destroy(gameObject);
-  }
+    private void LateUpdate()
+    {
+        if (_rend && _rend.isVisible)
+            transform.Rotate(Vector3.up, _speed * Time.deltaTime);
+    }
+
+    public void CollisionDetected()
+    {
+        Destroy(gameObject);
+    }
 }

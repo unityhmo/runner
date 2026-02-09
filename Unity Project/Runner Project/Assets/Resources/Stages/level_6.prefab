@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 4274196880081312}
   - component: {fileID: 33250715646094118}
   - component: {fileID: 23764233014791340}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 4197328274447962}
   - component: {fileID: 65719132853653054}
   - component: {fileID: 114087334354995522}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 4090636568079088}
   - component: {fileID: 65646958642475214}
   - component: {fileID: 114816421959323856}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 4166984154649272}
   - component: {fileID: 33894057436567784}
   - component: {fileID: 23485318302960148}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ GameObject:
   - component: {fileID: 4292535868626462}
   - component: {fileID: 65268259917285010}
   - component: {fileID: 114030589763732660}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (12)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 4348733195959382}
   - component: {fileID: 114222450476902480}
   - component: {fileID: 114746687668638768}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (8)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1388,7 +1388,7 @@ GameObject:
   - component: {fileID: 65688993728208508}
   - component: {fileID: 114470396375662710}
   - component: {fileID: 114645378139806154}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 4627131840256710}
   - component: {fileID: 33906854309174588}
   - component: {fileID: 23877909203768158}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4850768877968298}
   - component: {fileID: 114183913196298196}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1853,7 +1853,7 @@ GameObject:
   - component: {fileID: 4514493146707964}
   - component: {fileID: 33365781299434254}
   - component: {fileID: 23315815111491518}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1998,7 +1998,7 @@ GameObject:
   - component: {fileID: 4179948219541832}
   - component: {fileID: 65277639719589334}
   - component: {fileID: 114244043546252484}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 4141218786552506}
   - component: {fileID: 65042787350866518}
   - component: {fileID: 114450508772762608}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2619,7 +2619,7 @@ GameObject:
   - component: {fileID: 4405240510644696}
   - component: {fileID: 65000353577400594}
   - component: {fileID: 114424826259280504}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2797,7 +2797,7 @@ GameObject:
   - component: {fileID: 4791805480423738}
   - component: {fileID: 65216030779736802}
   - component: {fileID: 114847100945980044}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2863,7 +2863,7 @@ GameObject:
   - component: {fileID: 4585791125368452}
   - component: {fileID: 65946964276568460}
   - component: {fileID: 114382064744545414}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2984,7 +2984,7 @@ GameObject:
   - component: {fileID: 4994065069679740}
   - component: {fileID: 65717774444037670}
   - component: {fileID: 114287110977038944}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (8)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3108,7 +3108,7 @@ GameObject:
   - component: {fileID: 4164895405271004}
   - component: {fileID: 33436255397397320}
   - component: {fileID: 23242369700739224}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3287,7 +3287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4255749135883410}
   - component: {fileID: 114635346200837926}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3769,7 +3769,7 @@ GameObject:
   - component: {fileID: 4020652386382924}
   - component: {fileID: 33102930475611226}
   - component: {fileID: 23495259742581014}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3860,7 +3860,7 @@ GameObject:
   - component: {fileID: 4313932405915212}
   - component: {fileID: 33141885774794856}
   - component: {fileID: 23178749831129914}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4005,7 +4005,7 @@ GameObject:
   - component: {fileID: 4460295239925382}
   - component: {fileID: 65586207231693116}
   - component: {fileID: 114619124581042448}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4809,7 +4809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650152721771334}
   - component: {fileID: 114445393521643554}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: level_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4850,6 +4850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _intro: {fileID: 0}
   _loopMain: {fileID: 8300000, guid: 827bd6bf8c090e4488f446b3be98fe59, type: 3}
+  _backgroundColor: {r: 0.5849056, g: 0.2492971, b: 0.1401566, a: 0}
 --- !u!1 &1082336018951826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5295,7 +5296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689689523143560}
   - component: {fileID: 114856557510188364}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5672,7 +5673,7 @@ GameObject:
   - component: {fileID: 4105089585622736}
   - component: {fileID: 65277774144420114}
   - component: {fileID: 114609882438366876}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5847,7 +5848,7 @@ GameObject:
   - component: {fileID: 4150366416559328}
   - component: {fileID: 65821435273598220}
   - component: {fileID: 114631389946610120}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (11)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -5916,7 +5917,7 @@ GameObject:
   - component: {fileID: 4168274119659862}
   - component: {fileID: 33593127918657166}
   - component: {fileID: 23706250072624714}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6006,7 +6007,7 @@ GameObject:
   - component: {fileID: 4047775757000064}
   - component: {fileID: 33468944649142744}
   - component: {fileID: 23641724002761986}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6186,7 +6187,7 @@ GameObject:
   - component: {fileID: 4557068336766654}
   - component: {fileID: 33026454044115156}
   - component: {fileID: 23035094698417152}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6692,7 +6693,7 @@ GameObject:
   - component: {fileID: 4039453474508162}
   - component: {fileID: 65983774073901656}
   - component: {fileID: 114715517519656810}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (7)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -6942,7 +6943,7 @@ GameObject:
   - component: {fileID: 4137900682214440}
   - component: {fileID: 33556353745878014}
   - component: {fileID: 23970333800095272}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7266,7 +7267,7 @@ GameObject:
   - component: {fileID: 4200681195157474}
   - component: {fileID: 114950245069308736}
   - component: {fileID: 114295431963205254}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -7572,7 +7573,7 @@ GameObject:
   - component: {fileID: 4694453859255634}
   - component: {fileID: 65677342717702672}
   - component: {fileID: 114602301077894544}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (7)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -7965,7 +7966,7 @@ GameObject:
   - component: {fileID: 4263153650024712}
   - component: {fileID: 33198563787740260}
   - component: {fileID: 23302821381618792}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8055,7 +8056,7 @@ GameObject:
   - component: {fileID: 4370337940907192}
   - component: {fileID: 33789702675153902}
   - component: {fileID: 23049885891235980}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8145,7 +8146,7 @@ GameObject:
   - component: {fileID: 4777799012059816}
   - component: {fileID: 114888348080052072}
   - component: {fileID: 114506546199875824}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -8215,7 +8216,7 @@ GameObject:
   - component: {fileID: 4773147120967806}
   - component: {fileID: 33941839034938904}
   - component: {fileID: 23494280957406448}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8918,7 +8919,7 @@ GameObject:
   - component: {fileID: 4706714923041138}
   - component: {fileID: 65165992350801888}
   - component: {fileID: 114316665563545698}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -9583,7 +9584,7 @@ GameObject:
   - component: {fileID: 4717523884473504}
   - component: {fileID: 114037383260200284}
   - component: {fileID: 114985360073537104}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -9797,7 +9798,7 @@ GameObject:
   - component: {fileID: 4274988897011058}
   - component: {fileID: 65266142379336812}
   - component: {fileID: 114280010103254170}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (17)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -10101,7 +10102,7 @@ GameObject:
   - component: {fileID: 4600619559208440}
   - component: {fileID: 65488745410182430}
   - component: {fileID: 114631388428664928}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -10451,7 +10452,7 @@ GameObject:
   - component: {fileID: 4956830982266014}
   - component: {fileID: 33603070154953646}
   - component: {fileID: 23257620307603598}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10972,7 +10973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866590106055786}
   - component: {fileID: 108366347883021600}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11070,7 +11071,7 @@ GameObject:
   - component: {fileID: 4452513653678682}
   - component: {fileID: 33433400234104910}
   - component: {fileID: 23734378598091852}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11161,7 +11162,7 @@ GameObject:
   - component: {fileID: 4493989427900632}
   - component: {fileID: 65413019150220674}
   - component: {fileID: 114046060912464384}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelFire
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -11606,7 +11607,7 @@ GameObject:
   - component: {fileID: 4267679295611080}
   - component: {fileID: 65886170105079118}
   - component: {fileID: 114789012549344582}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -11816,7 +11817,7 @@ GameObject:
   - component: {fileID: 4774821382002202}
   - component: {fileID: 65178104708175440}
   - component: {fileID: 114869012143600142}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -11882,7 +11883,7 @@ GameObject:
   - component: {fileID: 4112001279996318}
   - component: {fileID: 65745876476142580}
   - component: {fileID: 114864398945282326}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -12583,7 +12584,7 @@ GameObject:
   - component: {fileID: 4954085441207004}
   - component: {fileID: 33028228998915916}
   - component: {fileID: 23888759125354134}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12673,7 +12674,7 @@ GameObject:
   - component: {fileID: 4831721968285074}
   - component: {fileID: 33322735219380222}
   - component: {fileID: 23823511390040466}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12961,7 +12962,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4087651130916716}
   - component: {fileID: 108055463651694502}
-  m_Layer: 6
+  - component: {fileID: 8549646461204257392}
+  m_Layer: 0
   m_Name: Directional light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13048,6 +13050,35 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &8549646461204257392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191911720171128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1192383325299198
 GameObject:
   m_ObjectHideFlags: 0
@@ -13168,7 +13199,7 @@ GameObject:
   - component: {fileID: 4896232445391860}
   - component: {fileID: 33169723070201408}
   - component: {fileID: 23902167784275028}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13367,7 +13398,7 @@ GameObject:
   - component: {fileID: 4916457575931890}
   - component: {fileID: 33022973255113286}
   - component: {fileID: 23805602599322466}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13597,7 +13628,7 @@ GameObject:
   - component: {fileID: 4108834831011356}
   - component: {fileID: 65174023487240064}
   - component: {fileID: 114547744822224578}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -13757,7 +13788,7 @@ GameObject:
   - component: {fileID: 4821018279018708}
   - component: {fileID: 33180775543701774}
   - component: {fileID: 23611618434431122}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14026,7 +14057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4627537525181848}
   - component: {fileID: 114469753627037076}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -14637,7 +14668,7 @@ GameObject:
   - component: {fileID: 4480013639366086}
   - component: {fileID: 65164022267403896}
   - component: {fileID: 114483199474292222}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (9)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -14886,7 +14917,7 @@ GameObject:
   - component: {fileID: 4955320320523030}
   - component: {fileID: 33537575058134878}
   - component: {fileID: 23190810149082036}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15121,7 +15152,7 @@ GameObject:
   - component: {fileID: 4469460296220716}
   - component: {fileID: 65756764331831176}
   - component: {fileID: 114450902355734970}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (2)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -15568,7 +15599,7 @@ GameObject:
   - component: {fileID: 4243684883314334}
   - component: {fileID: 65304283986020494}
   - component: {fileID: 114601672485035926}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (21)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -15637,7 +15668,7 @@ GameObject:
   - component: {fileID: 4569828038944758}
   - component: {fileID: 65977894883782766}
   - component: {fileID: 114017389657684790}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (13)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -15707,7 +15738,7 @@ GameObject:
   - component: {fileID: 65453048048481590}
   - component: {fileID: 114160922922327836}
   - component: {fileID: 114228917039304812}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -15974,7 +16005,7 @@ GameObject:
   - component: {fileID: 4339193857734414}
   - component: {fileID: 33932387576065522}
   - component: {fileID: 23947069293653862}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16064,7 +16095,7 @@ GameObject:
   - component: {fileID: 4209611478726464}
   - component: {fileID: 65919317498110508}
   - component: {fileID: 114414505558794074}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -16188,7 +16219,7 @@ GameObject:
   - component: {fileID: 4022209407995974}
   - component: {fileID: 65826904268758732}
   - component: {fileID: 114462765348819284}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -16534,7 +16565,7 @@ GameObject:
   - component: {fileID: 4089853507990780}
   - component: {fileID: 65594610252029518}
   - component: {fileID: 114065999093596442}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (1)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -16859,7 +16890,7 @@ GameObject:
   - component: {fileID: 4720413973442480}
   - component: {fileID: 33208468517396522}
   - component: {fileID: 23196562985427810}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16949,7 +16980,7 @@ GameObject:
   - component: {fileID: 4587543408314164}
   - component: {fileID: 33594185340510520}
   - component: {fileID: 23621725161683946}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17309,7 +17340,7 @@ GameObject:
   - component: {fileID: 4269247582538224}
   - component: {fileID: 33127375428109300}
   - component: {fileID: 23054353487660870}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18138,7 +18169,7 @@ GameObject:
   - component: {fileID: 4976525954932742}
   - component: {fileID: 33316561977617504}
   - component: {fileID: 23771905711159914}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18318,7 +18349,7 @@ GameObject:
   - component: {fileID: 4276284458692238}
   - component: {fileID: 33354512742845344}
   - component: {fileID: 23358065611376240}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18409,7 +18440,7 @@ GameObject:
   - component: {fileID: 4226016505448754}
   - component: {fileID: 65460049270037224}
   - component: {fileID: 114927578337761816}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -19036,7 +19067,7 @@ GameObject:
   - component: {fileID: 4950212544596756}
   - component: {fileID: 33373192059847410}
   - component: {fileID: 23165324804164988}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19868,7 +19899,7 @@ GameObject:
   - component: {fileID: 4049713536789198}
   - component: {fileID: 33458480856770790}
   - component: {fileID: 23763278946480630}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: goal_side_transparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20211,7 +20242,7 @@ GameObject:
   - component: {fileID: 4325668123559784}
   - component: {fileID: 33256385030067900}
   - component: {fileID: 23293570353467090}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20302,7 +20333,7 @@ GameObject:
   - component: {fileID: 4602403325626744}
   - component: {fileID: 33876385848072370}
   - component: {fileID: 23351976309460558}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20681,7 +20712,7 @@ GameObject:
   - component: {fileID: 4711592704313862}
   - component: {fileID: 33357980500370532}
   - component: {fileID: 23181669797176334}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20771,7 +20802,7 @@ GameObject:
   - component: {fileID: 4497995200982724}
   - component: {fileID: 33219935686723818}
   - component: {fileID: 23052651111665764}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20861,7 +20892,7 @@ GameObject:
   - component: {fileID: 4634263895982338}
   - component: {fileID: 33286735066948726}
   - component: {fileID: 23430178635708132}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21329,7 +21360,7 @@ GameObject:
   - component: {fileID: 4230390321369214}
   - component: {fileID: 65329409007534686}
   - component: {fileID: 114426315279307716}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -21542,7 +21573,7 @@ GameObject:
   - component: {fileID: 4028779740511876}
   - component: {fileID: 65380415815315958}
   - component: {fileID: 114846065250779236}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -21698,7 +21729,7 @@ GameObject:
   - component: {fileID: 4769845328691522}
   - component: {fileID: 65062315262162846}
   - component: {fileID: 114159755128860612}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -21768,7 +21799,7 @@ GameObject:
   - component: {fileID: 4675947294691422}
   - component: {fileID: 198682094536071130}
   - component: {fileID: 199548794660116536}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26466,7 +26497,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26815,7 +26845,7 @@ GameObject:
   - component: {fileID: 4456022389565246}
   - component: {fileID: 33120405747275778}
   - component: {fileID: 23100240123153098}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26906,7 +26936,7 @@ GameObject:
   - component: {fileID: 65926026638231784}
   - component: {fileID: 114742735029658784}
   - component: {fileID: 114230554361554704}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -27552,7 +27582,7 @@ GameObject:
   - component: {fileID: 4896861057730954}
   - component: {fileID: 33336802935996256}
   - component: {fileID: 23802133680544428}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27912,7 +27942,7 @@ GameObject:
   - component: {fileID: 4261840295356868}
   - component: {fileID: 33118361835535014}
   - component: {fileID: 23280447413650520}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28002,7 +28032,7 @@ GameObject:
   - component: {fileID: 4615132210567774}
   - component: {fileID: 33440057806551584}
   - component: {fileID: 23894909080095724}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29536,7 +29566,7 @@ GameObject:
   - component: {fileID: 4128781357998790}
   - component: {fileID: 65711505752633258}
   - component: {fileID: 114997417025959088}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -29602,7 +29632,7 @@ GameObject:
   - component: {fileID: 4984950850801186}
   - component: {fileID: 65092961598814410}
   - component: {fileID: 114599200242055816}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (5)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -29870,7 +29900,7 @@ GameObject:
   - component: {fileID: 4773601650548794}
   - component: {fileID: 65669472893829594}
   - component: {fileID: 114742227604596626}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (3)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -29939,7 +29969,7 @@ GameObject:
   - component: {fileID: 4673804827886662}
   - component: {fileID: 33214582838524202}
   - component: {fileID: 23928091261205890}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30139,7 +30169,7 @@ GameObject:
   - component: {fileID: 65679659849409490}
   - component: {fileID: 114345505188798316}
   - component: {fileID: 114158062238551740}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -30982,7 +31012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4243159699252654}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31054,7 +31084,7 @@ GameObject:
   - component: {fileID: 4182864004310950}
   - component: {fileID: 33036162937798228}
   - component: {fileID: 23971220827160144}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32181,7 +32211,7 @@ GameObject:
   - component: {fileID: 4441015635338816}
   - component: {fileID: 114151604136488416}
   - component: {fileID: 114580634785224350}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (7)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -32521,7 +32551,7 @@ GameObject:
   - component: {fileID: 4187215053103702}
   - component: {fileID: 33654692020303438}
   - component: {fileID: 23762144663905480}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32719,7 +32749,7 @@ GameObject:
   - component: {fileID: 4929727200765744}
   - component: {fileID: 33624233615366030}
   - component: {fileID: 23071286778270130}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32953,7 +32983,7 @@ GameObject:
   - component: {fileID: 4661046857128150}
   - component: {fileID: 65726448753297656}
   - component: {fileID: 114382537218284898}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (15)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -33022,7 +33052,7 @@ GameObject:
   - component: {fileID: 4767879141092440}
   - component: {fileID: 65626762551858572}
   - component: {fileID: 114608048445485736}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (9)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -33092,7 +33122,7 @@ GameObject:
   - component: {fileID: 4139370428849872}
   - component: {fileID: 65625370883923582}
   - component: {fileID: 114009821298250892}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (14)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -33214,7 +33244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4590912973480662}
   - component: {fileID: 65555154840410638}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Goal
   m_TagString: Goal
   m_Icon: {fileID: 0}
@@ -33560,7 +33590,7 @@ GameObject:
   - component: {fileID: 4934894598585936}
   - component: {fileID: 33699084057087176}
   - component: {fileID: 23973887494622162}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33795,7 +33825,7 @@ GameObject:
   - component: {fileID: 65078778127259642}
   - component: {fileID: 114712994774110804}
   - component: {fileID: 114167541397473196}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -34317,7 +34347,7 @@ GameObject:
   - component: {fileID: 4369473650837474}
   - component: {fileID: 114742347433820838}
   - component: {fileID: 114105944105276570}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -34478,7 +34508,7 @@ GameObject:
   - component: {fileID: 4628189725493432}
   - component: {fileID: 65531559301684844}
   - component: {fileID: 114743963342624222}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_c
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -35089,7 +35119,7 @@ GameObject:
   - component: {fileID: 4557837497246422}
   - component: {fileID: 65868986979864978}
   - component: {fileID: 114086399548038186}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -35479,7 +35509,7 @@ GameObject:
   - component: {fileID: 4841048416443156}
   - component: {fileID: 65604296958670910}
   - component: {fileID: 114673177620378194}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -35635,7 +35665,7 @@ GameObject:
   - component: {fileID: 4813769884273720}
   - component: {fileID: 33719630506765708}
   - component: {fileID: 23932034310825652}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35725,7 +35755,7 @@ GameObject:
   - component: {fileID: 4267724422404928}
   - component: {fileID: 65813688702885490}
   - component: {fileID: 114215343441619138}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -35935,7 +35965,7 @@ GameObject:
   - component: {fileID: 4437746572234208}
   - component: {fileID: 33037937670886188}
   - component: {fileID: 23733719592764878}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36313,7 +36343,7 @@ GameObject:
   - component: {fileID: 4552753430146346}
   - component: {fileID: 33505220514720554}
   - component: {fileID: 23572295355493746}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37349,7 +37379,7 @@ GameObject:
   - component: {fileID: 4665174061431618}
   - component: {fileID: 65674369779142366}
   - component: {fileID: 114664426219204514}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -37740,7 +37770,7 @@ GameObject:
   - component: {fileID: 4180009258487636}
   - component: {fileID: 33336239895785604}
   - component: {fileID: 23576655311441122}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38280,7 +38310,7 @@ GameObject:
   - component: {fileID: 4861107885953364}
   - component: {fileID: 65182929375753262}
   - component: {fileID: 114061847777681234}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -38900,7 +38930,7 @@ GameObject:
   - component: {fileID: 4385668483015252}
   - component: {fileID: 114047448460438380}
   - component: {fileID: 114185452447906674}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -39240,7 +39270,7 @@ GameObject:
   - component: {fileID: 4376412422523642}
   - component: {fileID: 65095169303749512}
   - component: {fileID: 114818786202265510}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (8)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -39454,7 +39484,7 @@ GameObject:
   - component: {fileID: 4572932758913630}
   - component: {fileID: 33111056740338884}
   - component: {fileID: 23258379461866390}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39888,7 +39918,7 @@ GameObject:
   - component: {fileID: 4525842926560082}
   - component: {fileID: 65131853305400998}
   - component: {fileID: 114985860784830690}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -40245,7 +40275,7 @@ GameObject:
   - component: {fileID: 4528694205923574}
   - component: {fileID: 33888709675088522}
   - component: {fileID: 23152019569550764}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42046,7 +42076,7 @@ GameObject:
   - component: {fileID: 4179720503107976}
   - component: {fileID: 33831822031267992}
   - component: {fileID: 23540836392228580}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: goal_mid_transparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42226,7 +42256,7 @@ GameObject:
   - component: {fileID: 4903673748546524}
   - component: {fileID: 33226386479708938}
   - component: {fileID: 23082651618406168}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42573,7 +42603,7 @@ GameObject:
   - component: {fileID: 4620523416233120}
   - component: {fileID: 33452999808645392}
   - component: {fileID: 23590076833405738}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43005,7 +43035,7 @@ GameObject:
   - component: {fileID: 4208046283299508}
   - component: {fileID: 65261164417606964}
   - component: {fileID: 114788777531237146}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -43630,7 +43660,7 @@ GameObject:
   - component: {fileID: 4224539079880128}
   - component: {fileID: 65733580622236598}
   - component: {fileID: 114656347025534320}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (10)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -44008,7 +44038,7 @@ GameObject:
   - component: {fileID: 65024733781523422}
   - component: {fileID: 114798372000124244}
   - component: {fileID: 114566652050300072}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (7)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -44365,7 +44395,7 @@ GameObject:
   - component: {fileID: 4157642301787286}
   - component: {fileID: 65719319059104194}
   - component: {fileID: 114908621942391414}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (10)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -44580,7 +44610,7 @@ GameObject:
   - component: {fileID: 4843640287060948}
   - component: {fileID: 33690031254302556}
   - component: {fileID: 23747999638539904}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44670,7 +44700,7 @@ GameObject:
   - component: {fileID: 4612757676562202}
   - component: {fileID: 65276203247461196}
   - component: {fileID: 114042603979031084}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -45006,7 +45036,7 @@ GameObject:
   - component: {fileID: 4079879113915868}
   - component: {fileID: 65426409533512484}
   - component: {fileID: 114642917301372108}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -45162,7 +45192,7 @@ GameObject:
   - component: {fileID: 4228502832123346}
   - component: {fileID: 33632408341972532}
   - component: {fileID: 23914046755049956}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45626,7 +45656,7 @@ GameObject:
   - component: {fileID: 4892982138180632}
   - component: {fileID: 198512738583533174}
   - component: {fileID: 199789771486534744}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50275,7 +50305,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c50d77affeb31e14c9c062c282f13fc8, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50702,7 +50731,7 @@ GameObject:
   - component: {fileID: 4878000345455164}
   - component: {fileID: 33754170696774674}
   - component: {fileID: 23204022765743104}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50792,7 +50821,7 @@ GameObject:
   - component: {fileID: 4636545378387460}
   - component: {fileID: 65470700945569056}
   - component: {fileID: 114964245569243854}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (19)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -51388,7 +51417,7 @@ GameObject:
   - component: {fileID: 4009559103713366}
   - component: {fileID: 33421095521991826}
   - component: {fileID: 23309908595759232}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'mesh: goal_side'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51479,7 +51508,7 @@ GameObject:
   - component: {fileID: 4721529355896044}
   - component: {fileID: 65575364496663236}
   - component: {fileID: 114635746988809866}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (1)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -51548,7 +51577,7 @@ GameObject:
   - component: {fileID: 4475821757445866}
   - component: {fileID: 65110188956065108}
   - component: {fileID: 114775121822139652}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -51704,7 +51733,7 @@ GameObject:
   - component: {fileID: 4356085378266250}
   - component: {fileID: 65959854932770850}
   - component: {fileID: 114208463289395936}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (20)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -51863,7 +51892,7 @@ GameObject:
   - component: {fileID: 4188927466950008}
   - component: {fileID: 65494332857832598}
   - component: {fileID: 114754674921450230}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -51987,7 +52016,7 @@ GameObject:
   - component: {fileID: 4825524372256988}
   - component: {fileID: 33690403644816118}
   - component: {fileID: 23367274778752938}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52256,7 +52285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4534061509279168}
   - component: {fileID: 114807391631043138}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StreetLightBroken
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -52501,7 +52530,7 @@ GameObject:
   - component: {fileID: 4307678566866804}
   - component: {fileID: 33139081309780732}
   - component: {fileID: 23086794806112998}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52592,7 +52621,7 @@ GameObject:
   - component: {fileID: 4050772620511050}
   - component: {fileID: 33035315825883984}
   - component: {fileID: 23194507837921792}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52683,7 +52712,7 @@ GameObject:
   - component: {fileID: 4311404043757720}
   - component: {fileID: 33091243622398626}
   - component: {fileID: 23718414303688056}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52864,7 +52893,7 @@ GameObject:
   - component: {fileID: 4966731815381882}
   - component: {fileID: 114642997656233860}
   - component: {fileID: 114532102529929364}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -52989,7 +53018,7 @@ GameObject:
   - component: {fileID: 4031328721014380}
   - component: {fileID: 33950850896826194}
   - component: {fileID: 23296485546277388}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53079,7 +53108,7 @@ GameObject:
   - component: {fileID: 4843921846108504}
   - component: {fileID: 33133530849693876}
   - component: {fileID: 23334265481589092}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_debris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53837,7 +53866,7 @@ GameObject:
   - component: {fileID: 4835339952510504}
   - component: {fileID: 65174057399421148}
   - component: {fileID: 114042732072031994}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (16)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -53906,7 +53935,7 @@ GameObject:
   - component: {fileID: 4627129789085788}
   - component: {fileID: 65549427309987734}
   - component: {fileID: 114983832887848970}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (2)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -54065,7 +54094,7 @@ GameObject:
   - component: {fileID: 4564765345292466}
   - component: {fileID: 33005781883743054}
   - component: {fileID: 23775109967412674}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54403,7 +54432,7 @@ GameObject:
   - component: {fileID: 4961613897213886}
   - component: {fileID: 33158732337125530}
   - component: {fileID: 23741427475508960}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54674,7 +54703,7 @@ GameObject:
   - component: {fileID: 4289892177856716}
   - component: {fileID: 114778397678130046}
   - component: {fileID: 114186733443221458}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (9)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -55142,7 +55171,7 @@ GameObject:
   - component: {fileID: 65497305389390692}
   - component: {fileID: 114963718377819304}
   - component: {fileID: 114512402373597794}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (8)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -55319,7 +55348,7 @@ GameObject:
   - component: {fileID: 4822054986159608}
   - component: {fileID: 65193351210715540}
   - component: {fileID: 114587307979399536}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -55730,7 +55759,7 @@ GameObject:
   - component: {fileID: 4972822348293542}
   - component: {fileID: 33642041057068596}
   - component: {fileID: 23822189149978420}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55821,7 +55850,7 @@ GameObject:
   - component: {fileID: 4406598285579582}
   - component: {fileID: 65728856484583848}
   - component: {fileID: 114336366813671150}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (18)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -56000,7 +56029,7 @@ GameObject:
   - component: {fileID: 4421853369612560}
   - component: {fileID: 65285968517111064}
   - component: {fileID: 114286082643470804}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (3)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -56069,7 +56098,7 @@ GameObject:
   - component: {fileID: 4756847695379584}
   - component: {fileID: 65532883892089758}
   - component: {fileID: 114496646519416802}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -56136,7 +56165,7 @@ GameObject:
   - component: {fileID: 65375143098831314}
   - component: {fileID: 114255486579039252}
   - component: {fileID: 114177515131062740}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -56937,7 +56966,7 @@ GameObject:
   - component: {fileID: 4274809336458062}
   - component: {fileID: 33578073228864592}
   - component: {fileID: 23270807098734374}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57298,7 +57327,7 @@ GameObject:
   - component: {fileID: 4841257327414036}
   - component: {fileID: 33834265285324382}
   - component: {fileID: 23808738926961852}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57388,7 +57417,7 @@ GameObject:
   - component: {fileID: 4176312625304398}
   - component: {fileID: 33825069272051838}
   - component: {fileID: 23090801875979846}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57532,7 +57561,7 @@ GameObject:
   - component: {fileID: 4011894874399378}
   - component: {fileID: 33446725823889632}
   - component: {fileID: 23500552031038542}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58271,7 +58300,7 @@ GameObject:
   - component: {fileID: 4335638947827184}
   - component: {fileID: 33727425097068880}
   - component: {fileID: 23462766071404406}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58361,7 +58390,7 @@ GameObject:
   - component: {fileID: 4593127815462636}
   - component: {fileID: 33382689289251312}
   - component: {fileID: 23520488458437216}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58775,7 +58804,7 @@ GameObject:
   - component: {fileID: 4940866359644716}
   - component: {fileID: 65994677947980928}
   - component: {fileID: 114904974544543958}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -58841,7 +58870,7 @@ GameObject:
   - component: {fileID: 4378605090734308}
   - component: {fileID: 33689498500003232}
   - component: {fileID: 23623478444325014}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'mesh: goal_mid'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59906,7 +59935,7 @@ GameObject:
   - component: {fileID: 4246124039449508}
   - component: {fileID: 65848749861288026}
   - component: {fileID: 114506753306674188}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -60112,7 +60141,7 @@ GameObject:
   - component: {fileID: 4695566069463412}
   - component: {fileID: 65527803843210498}
   - component: {fileID: 114409415537348080}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -60642,7 +60671,7 @@ GameObject:
   - component: {fileID: 4050532099323352}
   - component: {fileID: 33855399091173698}
   - component: {fileID: 23785641954840166}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60732,7 +60761,7 @@ GameObject:
   - component: {fileID: 4404932078032838}
   - component: {fileID: 65632046343265420}
   - component: {fileID: 114560190796915732}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -62004,7 +62033,7 @@ GameObject:
   - component: {fileID: 4186573131102778}
   - component: {fileID: 33131292528442136}
   - component: {fileID: 23263840332402596}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62330,7 +62359,7 @@ GameObject:
   - component: {fileID: 4020307620744052}
   - component: {fileID: 33036930468621624}
   - component: {fileID: 23311639459835560}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62421,7 +62450,7 @@ GameObject:
   - component: {fileID: 4376732868151180}
   - component: {fileID: 33203669379234442}
   - component: {fileID: 23898918952616274}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62745,7 +62774,7 @@ GameObject:
   - component: {fileID: 4120106268505696}
   - component: {fileID: 33514725893366842}
   - component: {fileID: 23108157070003218}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63213,7 +63242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4979051004461558}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pickups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63723,7 +63752,7 @@ GameObject:
   - component: {fileID: 4153715611929946}
   - component: {fileID: 33015600527916466}
   - component: {fileID: 23737216170845538}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64228,7 +64257,7 @@ GameObject:
   - component: {fileID: 4688926089597268}
   - component: {fileID: 33764958697300110}
   - component: {fileID: 23522552002682600}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64462,7 +64491,7 @@ GameObject:
   - component: {fileID: 4550022893055776}
   - component: {fileID: 65819163015188714}
   - component: {fileID: 114269240091942354}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (4)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -64964,7 +64993,7 @@ GameObject:
   - component: {fileID: 4795372983428422}
   - component: {fileID: 33210497934939970}
   - component: {fileID: 23262074808226930}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65198,7 +65227,7 @@ GameObject:
   - component: {fileID: 4332398058390498}
   - component: {fileID: 33688909009174538}
   - component: {fileID: 23690973976017256}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65288,7 +65317,7 @@ GameObject:
   - component: {fileID: 4540248551043238}
   - component: {fileID: 65419603847954234}
   - component: {fileID: 114555607550573134}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (4)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -65736,7 +65765,7 @@ GameObject:
   - component: {fileID: 4303757127189140}
   - component: {fileID: 33136612304462342}
   - component: {fileID: 23887213472765140}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65879,7 +65908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4642024085420606}
   - component: {fileID: 114350495841401800}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -65931,7 +65960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344444369062882}
   - component: {fileID: 114237825911379678}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -67157,7 +67186,7 @@ GameObject:
   - component: {fileID: 4966303146249970}
   - component: {fileID: 65019509922797898}
   - component: {fileID: 114183299219882716}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BarrelEmpty (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -67587,7 +67616,7 @@ GameObject:
   - component: {fileID: 4143690406331978}
   - component: {fileID: 114396325881494460}
   - component: {fileID: 114023555548249428}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Car (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -68507,7 +68536,7 @@ GameObject:
   - component: {fileID: 4272835882256206}
   - component: {fileID: 33502741489836308}
   - component: {fileID: 23451720092477290}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_broken_street_light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68651,7 +68680,7 @@ GameObject:
   - component: {fileID: 4258562757478710}
   - component: {fileID: 65759036176967470}
   - component: {fileID: 114510821791155756}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -69311,7 +69340,7 @@ GameObject:
   - component: {fileID: 4417529087948184}
   - component: {fileID: 65696087013142062}
   - component: {fileID: 114387279300737776}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -69791,7 +69820,7 @@ GameObject:
   - component: {fileID: 4618868889990846}
   - component: {fileID: 33090341308168654}
   - component: {fileID: 23279329700118444}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69970,7 +69999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4695986237934430}
   - component: {fileID: 114688234806347650}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Debris (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -70385,7 +70414,7 @@ GameObject:
   - component: {fileID: 4143027390130494}
   - component: {fileID: 199122959221950390}
   - component: {fileID: 198587173324298978}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FireMobile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70436,7 +70465,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3bfa2f095c911d649bf4cb92a55ac974, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75260,7 +75288,7 @@ GameObject:
   - component: {fileID: 4504933726234224}
   - component: {fileID: 33205977579043812}
   - component: {fileID: 23159571429295002}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: pickup_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75350,7 +75378,7 @@ GameObject:
   - component: {fileID: 4282386589431666}
   - component: {fileID: 65355102935741862}
   - component: {fileID: 114022232130892280}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -75470,7 +75498,7 @@ GameObject:
   - component: {fileID: 4164510283809196}
   - component: {fileID: 33721173562620122}
   - component: {fileID: 23917307518260578}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'mesh: goal_side (flipped)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75705,7 +75733,7 @@ GameObject:
   - component: {fileID: 4154106126696226}
   - component: {fileID: 33040922347486516}
   - component: {fileID: 23159758442715180}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: goal_side_transparent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75795,7 +75823,7 @@ GameObject:
   - component: {fileID: 4454085199465748}
   - component: {fileID: 65272331212199422}
   - component: {fileID: 114873285463362770}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_b
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -76135,7 +76163,7 @@ GameObject:
   - component: {fileID: 4910499827667004}
   - component: {fileID: 33511175440585550}
   - component: {fileID: 23522387535481186}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76732,7 +76760,7 @@ GameObject:
   - component: {fileID: 4258520401116248}
   - component: {fileID: 33769093691896020}
   - component: {fileID: 23713954182604206}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_obstacle_lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77346,7 +77374,7 @@ GameObject:
   - component: {fileID: 65595800711896020}
   - component: {fileID: 114555464955596188}
   - component: {fileID: 114273521023462238}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -77758,7 +77786,7 @@ GameObject:
   - component: {fileID: 4436464920152562}
   - component: {fileID: 65174754230265684}
   - component: {fileID: 114581961548647582}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUp (6)
   m_TagString: Orb
   m_Icon: {fileID: 0}
@@ -78689,7 +78717,7 @@ GameObject:
   - component: {fileID: 4132878757400022}
   - component: {fileID: 33685069029384372}
   - component: {fileID: 23691269913150992}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: prop_barrel_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79083,7 +79111,7 @@ GameObject:
   - component: {fileID: 4617503781036558}
   - component: {fileID: 65127278091429152}
   - component: {fileID: 114218312285782700}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: collider_a
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

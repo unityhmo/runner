@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class MenuController : MonoBehaviour
 {
@@ -29,7 +31,16 @@ public class MenuController : MonoBehaviour
     private AudioClip _mainMenuThemeIntro;
     [SerializeField]
     private AudioClip _mainMenuThemeLoop;
+    [SerializeField] private float _resetWaitTime;
+    [SerializeField] private Text _resetText;
+    [SerializeField] private Color _resetTextDisabled;
+    [SerializeField] private Color _resetTextEnabled;
+    [SerializeField] private Image _fillImage;
     [SerializeField] private CanvasScaler _uiCanvas;
+
+    private bool _isReadyToReset;
+    private Sequence _resetSequence;
+    private Coroutine _resetCoroutine;
 
     private void Awake()
     {
@@ -49,7 +60,7 @@ public class MenuController : MonoBehaviour
         _toggleSound.isOn = _master.GetDataController().GetDataInfo().AudioEnabled;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
@@ -117,6 +128,7 @@ public class MenuController : MonoBehaviour
         _cameraAnimatorController.SetBool("isOptions", false);
         _cameraAnimatorController.SetBool("isCredits", false);
 
+        KillResetRoutine();
     }
 
     private void CreateStageButtons()
@@ -160,6 +172,48 @@ public class MenuController : MonoBehaviour
         _master.RefreshStages();
         CreateStageButtons();
         ResetPanels();
+    }
+
+    public void StartResetWaitTime()
+    {
+        if (_isReadyToReset)
+        {
+            RestartButtonHandler();
+        }
+        else
+        {
+            KillResetRoutine();
+            _resetCoroutine = StartCoroutine(ResetWaitTime());
+        }
+    }
+
+    private IEnumerator ResetWaitTime()
+    {
+        _resetSequence = DOTween.Sequence();
+        _resetSequence.Append(_fillImage.DOFillAmount(1f, _resetWaitTime).SetEase(Ease.Linear));
+        _resetSequence.Play();
+        yield return new WaitForSeconds(_resetWaitTime);
+        _isReadyToReset = true;
+        _resetText.color = _resetTextEnabled;
+    }
+
+    private void KillResetRoutine()
+    {
+        if (_resetCoroutine != null)
+        {
+            StopCoroutine(_resetCoroutine);
+            _resetCoroutine = null;
+        }
+        
+        if (_resetSequence != null)
+        {
+            _resetSequence.Kill();
+            _resetSequence = null;
+        }
+
+        _isReadyToReset = false;
+        _fillImage.fillAmount = 0;
+        _resetText.color = _resetTextDisabled;
     }
 
     public void UnlockLevelsButtonHandler(bool value)
